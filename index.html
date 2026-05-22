@@ -10,10 +10,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>School Essentials</title>
-  
-	<link rel="icon" type="image/png" href="favicon.png">
+
+  <link rel="icon" type="image/png" href="favicon.png">
 
   <style>
+
     *{
       margin:0;
       padding:0;
@@ -37,12 +38,11 @@
       z-index:1000;
       background:#111827;
       border-bottom:2px solid #1f2937;
-      padding:14px 25px;
+      padding:15px 25px;
 
       display:flex;
       justify-content:space-between;
       align-items:center;
-      gap:20px;
     }
 
     .logo{
@@ -51,16 +51,11 @@
       color:#f97316;
     }
 
-    nav{
-      display:flex;
-      gap:18px;
-      flex-wrap:wrap;
-    }
-
     nav a{
-      text-decoration:none;
       color:white;
-      font-weight:600;
+      text-decoration:none;
+      margin-left:18px;
+      font-weight:bold;
       transition:0.2s;
     }
 
@@ -69,43 +64,32 @@
     }
 
     .hero{
-      padding:50px 20px 40px;
       text-align:center;
+      padding:40px 20px 20px;
       background:linear-gradient(to bottom,#111827,#0f172a);
     }
 
     .hero h1{
-      font-size:3.2rem;
-      margin-bottom:10px;
       color:#f97316;
+      font-size:3rem;
+      margin-bottom:10px;
     }
 
     .hero p{
       color:#cbd5e1;
-      max-width:700px;
-      margin:auto;
-      line-height:1.5;
-      font-size:1.1rem;
-    }
-
-    .hero-buttons{
-      margin-top:25px;
-      display:flex;
-      justify-content:center;
-      gap:15px;
-      flex-wrap:wrap;
+      font-size:1.05rem;
     }
 
     .btn{
       background:#f97316;
       border:none;
       color:white;
-      padding:14px 24px;
+      padding:12px 20px;
       border-radius:12px;
       cursor:pointer;
-      font-size:1rem;
       font-weight:bold;
       transition:0.2s;
+      margin-top:20px;
     }
 
     .btn:hover{
@@ -113,17 +97,17 @@
       transform:translateY(-2px);
     }
 
-    section{
-      padding:35px 20px;
-      max-width:1400px;
+    .games-section{
+      max-width:1300px;
       margin:auto;
+      padding:25px 20px 40px;
     }
 
     .section-title{
+      text-align:center;
+      color:#f97316;
       font-size:2rem;
       margin-bottom:20px;
-      color:#f97316;
-      text-align:center;
     }
 
     .grid{
@@ -149,7 +133,8 @@
       width:100%;
       height:180px;
       object-fit:cover;
-      background:black;
+      display:block;
+      background:#1f2937;
     }
 
     .card-content{
@@ -157,13 +142,13 @@
     }
 
     .card h3{
-      margin-bottom:8px;
       color:#f97316;
+      margin-bottom:8px;
     }
 
     .card p{
       color:#cbd5e1;
-      margin-bottom:14px;
+      margin-bottom:15px;
       font-size:0.95rem;
     }
 
@@ -174,7 +159,7 @@
     .game-player{
       position:fixed;
       inset:0;
-      background:#000;
+      background:black;
       z-index:5000;
       display:none;
       flex-direction:column;
@@ -191,8 +176,8 @@
 
     .player-title{
       color:#f97316;
-      font-weight:bold;
       font-size:1.1rem;
+      font-weight:bold;
     }
 
     .player-buttons{
@@ -207,97 +192,27 @@
       background:black;
     }
 
-    .tool-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:20px;
-    }
-
-    .tool-box{
-      background:#111827;
-      border:1px solid #1f2937;
-      border-radius:18px;
-      padding:20px;
-    }
-
-    .tool-box h3{
-      color:#f97316;
-      margin-bottom:15px;
-    }
-
-    input,
-    textarea{
-      width:100%;
-      padding:12px;
-      margin-bottom:12px;
-      border:none;
-      border-radius:10px;
-      background:#1f2937;
-      color:white;
-      outline:none;
-    }
-
-    .timer{
-      text-align:center;
-      font-size:3rem;
-      margin:15px 0;
-      font-weight:bold;
-    }
-
-    .ad-box{
-      max-width:1200px;
-      margin:20px auto;
-      background:#111827;
-      border:1px solid #1f2937;
-      padding:20px;
-      border-radius:18px;
-    }
-
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      gap:15px;
-      margin-top:25px;
-    }
-
-    .stat{
-      background:#111827;
-      border:1px solid #1f2937;
-      border-radius:16px;
-      padding:20px;
-      text-align:center;
-    }
-
-    .stat h2{
-      color:#f97316;
-      margin-bottom:5px;
-      font-size:2rem;
-    }
-
     footer{
       text-align:center;
-      padding:30px 20px;
-      color:#94a3b8;
+      padding:25px;
       border-top:2px solid #1f2937;
-      margin-top:30px;
       background:#111827;
+      color:#94a3b8;
     }
 
     @media(max-width:700px){
+
+      header{
+        flex-direction:column;
+        gap:12px;
+      }
 
       .hero h1{
         font-size:2.2rem;
       }
 
-      nav{
-        justify-content:center;
-      }
-
-      header{
-        flex-direction:column;
-      }
-
     }
+
   </style>
 </head>
 
@@ -305,13 +220,10 @@
 
   <header>
 
-    <div class="logo">📘 School Essentials</div>
+    <div class="logo">🎮 School Essentials</div>
 
     <nav>
       <a href="#games">Games</a>
-      <a href="#tools">Study Tools</a>
-      <a href="#homework">Homework</a>
-      <a href="#stats">Stats</a>
     </nav>
 
   </header>
@@ -321,87 +233,26 @@
     <h1>School Essentials</h1>
 
     <p>
-      Play games, study smarter, use helpful tools, and survive school with one clean website.
+      Fast unblocked games with fullscreen support.
     </p>
 
-    <div class="hero-buttons">
-      <button class="btn" onclick="document.getElementById('games').scrollIntoView()">
-        Play Games
-      </button>
-
-      <button class="btn" onclick="document.getElementById('tools').scrollIntoView()">
-        Study Tools
-      </button>
-    </div>
-
-    <div class="stats" id="stats">
-
-      <div class="stat">
-        <h2>25+</h2>
-        <p>Games Ready</p>
-      </div>
-
-      <div class="stat">
-        <h2>100%</h2>
-        <p>Fullscreen Support</p>
-      </div>
-
-      <div class="stat">
-        <h2>24/7</h2>
-        <p>Always Online</p>
-      </div>
-
-    </div>
+    <button class="btn"
+    onclick="document.getElementById('games').scrollIntoView()">
+      Browse Games
+    </button>
 
   </section>
 
-  <!-- AdSense -->
-  <div class="ad-box">
+  <section class="games-section" id="games">
 
-    <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-4335653991954613"
-      data-ad-slot="1234567890"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-
-  </div>
-
-  <section id="games">
-
-    <h2 class="section-title">🎮 Games</h2>
+    <h2 class="section-title">🔥 Popular Games</h2>
 
     <div class="grid">
 
       <div class="card">
 
         <img class="game-thumb"
-        src="https://images.crazygames.com/games/tetris/cover_16x9-1707834121296.png"
-        alt="Tetris">
-
-        <div class="card-content">
-
-          <h3>Tetris</h3>
-
-          <p>Classic block stacking challenge.</p>
-
-          <button class="btn play-btn"
-          onclick="openGame('Tetris','https://tetris.com/play-tetris')">
-            Play Now
-          </button>
-
-        </div>
-
-      </div>
-
-      <div class="card">
-
-        <img class="game-thumb"
-        src="https://flappybird.io/web-assets/thumb.png"
+        src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Original_Flappy_Bird_gameplay.png"
         alt="Flappy Bird">
 
         <div class="card-content">
@@ -422,17 +273,38 @@
       <div class="card">
 
         <img class="game-thumb"
-        src="https://playsnake.org/assets/img/snake.png"
-        alt="Snake">
+        src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Chrome_T-Rex_Game.png"
+        alt="Dino Game">
 
         <div class="card-content">
 
-          <h3>Snake</h3>
+          <h3>Chrome Dino</h3>
 
-          <p>Grow longer and beat your score.</p>
+          <p>Jump over obstacles and survive.</p>
 
           <button class="btn play-btn"
-          onclick="openGame('Snake','https://playsnake.org')">
+          onclick="openGame('Chrome Dino','https://chromedino.com')">
+            Play Now
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img class="game-thumb"
+        src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Pacman.png"
+        alt="Pacman">
+
+        <div class="card-content">
+
+          <h3>Pacman</h3>
+
+          <p>Classic arcade maze game.</p>
+
+          <button class="btn play-btn"
+          onclick="openGame('Pacman','https://freepacman.org')">
             Play Now
           </button>
 
@@ -444,82 +316,8 @@
 
   </section>
 
-  <section id="tools">
-
-    <h2 class="section-title">🛠 Study Tools</h2>
-
-    <div class="tool-grid">
-
-      <div class="tool-box">
-
-        <h3>Calculator</h3>
-
-        <input type="number" id="num1" placeholder="First Number">
-
-        <input type="number" id="num2" placeholder="Second Number">
-
-        <button class="btn" style="width:100%;" onclick="calculate()">
-          Add Numbers
-        </button>
-
-        <p id="calc-result" style="margin-top:15px;"></p>
-
-      </div>
-
-      <div class="tool-box">
-
-        <h3>Pomodoro Timer</h3>
-
-        <div class="timer" id="timer">25:00</div>
-
-        <button class="btn" style="width:100%;" onclick="startTimer()">
-          Start Timer
-        </button>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <section id="homework">
-
-    <h2 class="section-title">📚 Homework Helper</h2>
-
-    <div class="tool-grid">
-
-      <div class="tool-box">
-
-        <h3>Homework Assistant</h3>
-
-        <textarea rows="7"
-        placeholder="Paste homework questions here..."></textarea>
-
-        <button class="btn" style="width:100%;">
-          Generate Help
-        </button>
-
-      </div>
-
-      <div class="tool-box">
-
-        <h3>Quick Notes</h3>
-
-        <textarea rows="7"
-        placeholder="Write notes here..."></textarea>
-
-        <button class="btn" style="width:100%;">
-          Save Notes
-        </button>
-
-      </div>
-
-    </div>
-
-  </section>
-
   <footer>
-    © 2026 School Essentials — Built For Students
+    © 2026 School Essentials
   </footer>
 
   <!-- GAME PLAYER -->
@@ -555,59 +353,6 @@
   </div>
 
   <script>
-
-    // Calculator
-
-    function calculate(){
-
-      let num1 = Number(document.getElementById('num1').value);
-      let num2 = Number(document.getElementById('num2').value);
-
-      document.getElementById('calc-result').innerText =
-      "Result: " + (num1 + num2);
-
-    }
-
-    // Timer
-
-    let timerStarted = false;
-
-    function startTimer(){
-
-      if(timerStarted) return;
-
-      timerStarted = true;
-
-      let time = 1500;
-
-      let timer = document.getElementById('timer');
-
-      let interval = setInterval(() => {
-
-        let minutes = Math.floor(time / 60);
-        let seconds = time % 60;
-
-        if(seconds < 10){
-          seconds = "0" + seconds;
-        }
-
-        timer.innerText = `${minutes}:${seconds}`;
-
-        if(time <= 0){
-
-          clearInterval(interval);
-
-          timer.innerText = "Done!";
-
-        }
-
-        time--;
-
-      },1000);
-
-    }
-
-    // Game System
 
     function openGame(title,url){
 
