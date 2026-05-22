@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4335653991954613"
+       crossorigin="anonymous"></script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GoatHub - School Survival</title>
+  <title>School Essentials</title>
+
   <style>
     * {
       margin: 0;
@@ -182,12 +188,25 @@
       text-align: center;
       margin: 20px 0;
     }
+
+    /* Ad Box */
+    .ad-box {
+      background: #1f2937;
+      padding: 20px;
+      margin: 40px auto;
+      max-width: 1000px;
+      border-radius: 16px;
+      border: 1px solid #374151;
+      text-align: center;
+    }
   </style>
 </head>
+
 <body>
 
 <header>
   <h1>🐐 GoatHub</h1>
+
   <nav>
     <a href="#games">Games</a>
     <a href="#homework">Homework</a>
@@ -203,8 +222,25 @@
   <button class="btn">Start Exploring</button>
 </section>
 
+<!-- ADSENSE AD -->
+<div class="ad-box">
+
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4335653991954613"
+       data-ad-slot="1234567890"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+</div>
+
 <section id="games">
   <h2 class="section-title">🎮 Unblocked Games</h2>
+
   <div class="grid">
 
     <div class="card">
@@ -230,18 +266,23 @@
 
 <section id="homework">
   <h2 class="section-title">📚 Homework Helper</h2>
+
   <div class="tools">
 
     <div class="tool-box">
       <h3>AI Homework Assistant</h3>
       <textarea rows="6" placeholder="Paste homework here..."></textarea>
-      <button class="btn" style="margin-top:10px; width:100%;">Generate Help</button>
+      <button class="btn" style="margin-top:10px; width:100%;">
+        Generate Help
+      </button>
     </div>
 
     <div class="tool-box">
       <h3>Notes Saver</h3>
       <textarea rows="6" placeholder="Write notes..."></textarea>
-      <button class="btn" style="margin-top:10px; width:100%;">Save Notes</button>
+      <button class="btn" style="margin-top:10px; width:100%;">
+        Save Notes
+      </button>
     </div>
 
   </div>
@@ -254,59 +295,35 @@
 
     <div class="tool-box">
       <h3>Calculator</h3>
+
       <input type="number" id="num1" placeholder="First Number">
       <input type="number" id="num2" placeholder="Second Number">
-      <button class="btn" onclick="calculate()" style="margin-top:10px; width:100%;">Add</button>
+
+      <button class="btn"
+              onclick="calculate()"
+              style="margin-top:10px; width:100%;">
+
+        Add
+
+      </button>
+
       <p id="calc-result" style="margin-top:15px;"></p>
     </div>
 
     <div class="tool-box">
       <h3>Pomodoro Timer</h3>
+
       <div class="timer" id="timer">25:00</div>
-      <button class="btn" onclick="startTimer()" style="width:100%;">Start Timer</button>
+
+      <button class="btn"
+              onclick="startTimer()"
+              style="width:100%;">
+
+        Start Timer
+
+      </button>
     </div>
 
-    <div class="tool-box">
-      <h3>Daily XP</h3>
-      <p>Level 12 Student</p>
-      <div class="xp-bar">
-        <div class="xp-fill"></div>
-      </div>
-      <p style="margin-top:10px;">650 / 1000 XP</p>
-    </div>
-
-  </div>
-</section>
-
-<section id="music">
-  <h2 class="section-title">🎵 Focus Music</h2>
-
-  <div class="grid">
-
-    <div class="card">
-      <h3>Lofi Beats</h3>
-      <iframe class="music" src="https://www.youtube.com/embed/jfKfPfyJRdk"></iframe>
-    </div>
-
-    <div class="card">
-      <h3>Rain Sounds</h3>
-      <iframe class="music" src="https://www.youtube.com/embed/mPZkdNFkNps"></iframe>
-    </div>
-
-  </div>
-</section>
-
-<section id="leaderboard">
-  <h2 class="section-title">🏆 Leaderboard</h2>
-
-  <div class="card" style="max-width:600px; margin:auto;">
-    <ol class="leaderboard">
-      <li>GoatPlayer123 - 12,450 XP</li>
-      <li>MathDestroyer - 10,900 XP</li>
-      <li>SchoolSpeedrun - 9,770 XP</li>
-      <li>LateHomework - 8,520 XP</li>
-      <li>StudyGod - 7,330 XP</li>
-    </ol>
   </div>
 </section>
 
@@ -318,19 +335,23 @@
   function calculate() {
     let num1 = Number(document.getElementById('num1').value);
     let num2 = Number(document.getElementById('num2').value);
-    document.getElementById('calc-result').innerText = 'Result: ' + (num1 + num2);
+
+    document.getElementById('calc-result').innerText =
+      'Result: ' + (num1 + num2);
   }
 
   let timerStarted = false;
 
   function startTimer() {
     if(timerStarted) return;
+
     timerStarted = true;
 
     let time = 1500;
     let timer = document.getElementById('timer');
 
     let interval = setInterval(() => {
+
       let minutes = Math.floor(time / 60);
       let seconds = time % 60;
 
@@ -344,6 +365,7 @@
       }
 
       time--;
+
     }, 1000);
   }
 </script>
