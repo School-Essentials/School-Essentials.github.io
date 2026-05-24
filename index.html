@@ -42,11 +42,8 @@
       position:sticky;
       top:0;
       z-index:1000;
-
       background:#0f172a;
-
       border-bottom:1px solid #1e293b;
-
       padding:16px 24px;
 
       display:flex;
@@ -105,20 +102,13 @@
     .btn{
       background:#f97316;
       color:white;
-
       border:none;
-
       padding:14px 24px;
-
       border-radius:14px;
-
       font-size:1rem;
       font-weight:bold;
-
       cursor:pointer;
-
       transition:0.2s;
-
       margin-top:22px;
     }
 
@@ -143,23 +133,14 @@
     .search-bar{
       width:100%;
       max-width:500px;
-
       display:block;
-
       margin:0 auto 30px;
-
       padding:14px 18px;
-
       border:none;
-
       border-radius:14px;
-
       background:#0f172a;
-
       border:1px solid #1e293b;
-
       color:white;
-
       font-size:1rem;
     }
 
@@ -170,22 +151,16 @@
 
     .grid{
       display:grid;
-
       grid-template-columns:
       repeat(auto-fit,minmax(280px,1fr));
-
       gap:24px;
     }
 
     .card{
       background:#0f172a;
-
       border:1px solid #1e293b;
-
       border-radius:20px;
-
       overflow:hidden;
-
       transition:0.2s;
     }
 
@@ -225,35 +200,25 @@
 
     .ad-box{
       max-width:1200px;
-
       margin:10px auto 30px;
-
       background:#0f172a;
-
       border:1px solid #1e293b;
-
       border-radius:18px;
-
       padding:18px;
     }
 
     .game-player{
       position:fixed;
       inset:0;
-
       background:black;
-
       z-index:9999;
-
       display:none;
       flex-direction:column;
     }
 
     .player-top{
       background:#0f172a;
-
       border-bottom:2px solid #1e293b;
-
       padding:12px 15px;
 
       display:flex;
@@ -281,15 +246,10 @@
 
     footer{
       margin-top:40px;
-
       background:#0f172a;
-
       border-top:1px solid #1e293b;
-
       text-align:center;
-
       padding:25px;
-
       color:#94a3b8;
     }
 
@@ -385,7 +345,7 @@
 
     <div class="grid" id="gameGrid">
 
-      <!-- FLAPPY -->
+      <!-- FLAPPY BIRD -->
 
       <div class="card game-card">
 
@@ -501,25 +461,25 @@
 
       </div>
 
-      <!-- COOKIE CLICKER -->
+      <!-- 2048 -->
 
       <div class="card game-card">
 
         <img
           class="game-thumb"
-          src="clicker.png"
-          alt="Cookie Clicker">
+          src="2048.png"
+          alt="2048">
 
         <div class="card-content">
 
-          <h3>Cookie Clicker</h3>
+          <h3>2048</h3>
 
-          <p>Click fast and build your cookie empire.</p>
+          <p>Combine numbers and reach 2048.</p>
 
           <button class="btn play-btn"
           onclick="openGame(
-            'Cookie Clicker',
-            'https://orteil.dashnet.org/cookieclicker/'
+            '2048',
+            'https://play2048.co/'
           )">
 
             Play Now
@@ -530,25 +490,25 @@
 
       </div>
 
-      <!-- TOWER DEFENSE -->
+      <!-- TIC TAC TOE -->
 
       <div class="card game-card">
 
         <img
           class="game-thumb"
-          src="towerdefense.png"
-          alt="Tower Defense">
+          src="tictactoe.png"
+          alt="Tic Tac Toe">
 
         <div class="card-content">
 
-          <h3>Tower Defense</h3>
+          <h3>Tic Tac Toe</h3>
 
-          <p>Defend your base against endless waves.</p>
+          <p>Classic X and O strategy game.</p>
 
           <button class="btn play-btn"
           onclick="openGame(
-            'Tower Defense',
-            'https://watchdocumentaries.com/games/tower-defense/'
+            'Tic Tac Toe',
+            'https://playtictactoe.org/'
           )">
 
             Play Now
@@ -577,7 +537,7 @@
           <button class="btn play-btn"
           onclick="openGame(
             'Chess',
-            'https://www.chess.com/play/computer'
+            'https://www.mathsisfun.com/games/chess.html'
           )">
 
             Play Now
@@ -606,7 +566,7 @@
           <button class="btn play-btn"
           onclick="openGame(
             'Checkers',
-            'https://cardgames.io/checkers/'
+            'https://www.mathsisfun.com/games/checkers.html'
           )">
 
             Play Now
