@@ -12,11 +12,9 @@
 
   <title>School Essentials</title>
 
-  <!-- ADSENSE VERIFY -->
   <meta name="google-adsense-account"
         content="ca-pub-4335653991954613">
 
-  <!-- FAVICON -->
   <link rel="icon" type="image/png" href="favicon.png">
 
   <style>
@@ -38,19 +36,13 @@
       overflow-x:hidden;
     }
 
-    /* HEADER */
-
     header{
       position:sticky;
       top:0;
       z-index:1000;
-
       background:#0f172a;
-
       border-bottom:1px solid #1e293b;
-
       padding:16px 24px;
-
       display:flex;
       justify-content:space-between;
       align-items:center;
@@ -78,18 +70,10 @@
       color:#f97316;
     }
 
-    /* HERO */
-
     .hero{
       text-align:center;
       padding:70px 20px 50px;
-
-      background:
-      linear-gradient(
-      to bottom,
-      #0f172a,
-      #020617
-      );
+      background:linear-gradient(to bottom,#0f172a,#020617);
     }
 
     .hero h1{
@@ -110,16 +94,11 @@
       background:#f97316;
       color:white;
       border:none;
-
       padding:14px 24px;
-
       border-radius:14px;
-
       font-size:1rem;
       font-weight:bold;
-
       cursor:pointer;
-
       transition:0.2s;
     }
 
@@ -136,16 +115,12 @@
 
     .ad-box{
       max-width:1200px;
-
       margin:10px auto 35px;
-
       background:#0f172a;
-
       border:1px solid #1e293b;
-
       border-radius:18px;
-
       padding:18px;
+      min-height:90px;
     }
 
     /* GAMES */
@@ -166,23 +141,14 @@
     .search-bar{
       width:100%;
       max-width:520px;
-
       display:block;
-
       margin:0 auto 30px;
-
       padding:14px 18px;
-
       border:none;
-
       border-radius:14px;
-
       background:#0f172a;
-
       border:1px solid #1e293b;
-
       color:white;
-
       font-size:1rem;
     }
 
@@ -193,22 +159,15 @@
 
     .grid{
       display:grid;
-
-      grid-template-columns:
-      repeat(auto-fit,minmax(280px,1fr));
-
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
       gap:24px;
     }
 
     .card{
       background:#0f172a;
-
       border:1px solid #1e293b;
-
       border-radius:20px;
-
       overflow:hidden;
-
       transition:0.2s;
     }
 
@@ -245,27 +204,21 @@
       width:100%;
     }
 
-    /* GAME PLAYER */
+    /* PLAYER */
 
     .game-player{
       position:fixed;
       inset:0;
-
       background:black;
-
       z-index:9999;
-
       display:none;
       flex-direction:column;
     }
 
     .player-top{
       background:#0f172a;
-
       border-bottom:2px solid #1e293b;
-
       padding:12px 15px;
-
       display:flex;
       justify-content:space-between;
       align-items:center;
@@ -289,23 +242,14 @@
       background:black;
     }
 
-    /* FOOTER */
-
     footer{
       margin-top:40px;
-
       background:#0f172a;
-
       border-top:1px solid #1e293b;
-
       text-align:center;
-
       padding:25px;
-
       color:#94a3b8;
     }
-
-    /* MOBILE */
 
     @media(max-width:700px){
 
@@ -376,10 +320,6 @@
       data-ad-format="auto"
       data-full-width-responsive="true"></ins>
 
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-
   </div>
 
   <!-- GAMES -->
@@ -390,8 +330,6 @@
       🔥 Popular Games
     </h2>
 
-    <!-- SEARCH -->
-
     <input
       type="text"
       id="searchInput"
@@ -399,11 +337,9 @@
       class="search-bar"
       onkeyup="searchGames()">
 
-    <!-- GRID -->
-
     <div class="grid">
 
-      <!-- FLAPPY BIRD -->
+      <!-- FLAPPY -->
 
       <div class="card game-card">
 
@@ -418,10 +354,7 @@
           <p>Fly through pipes and survive.</p>
 
           <button class="btn play-btn"
-          onclick="openGame(
-          'Flappy Bird',
-          'https://flappybird.io'
-          )">
+          onclick="openGame('Flappy Bird','https://flappybird.io')">
 
             Play Now
 
@@ -437,7 +370,7 @@
 
         <img class="game-thumb"
         src="dino.png"
-        alt="Chrome Dino">
+        alt="Dino">
 
         <div class="card-content">
 
@@ -446,10 +379,7 @@
           <p>Jump over obstacles and survive.</p>
 
           <button class="btn play-btn"
-          onclick="openGame(
-          'Chrome Dino',
-          'https://chromedino.com'
-          )">
+          onclick="openGame('Chrome Dino','https://chromedino.com')">
 
             Play Now
 
@@ -474,10 +404,7 @@
           <p>Classic arcade maze game.</p>
 
           <button class="btn play-btn"
-          onclick="openGame(
-          'Pacman',
-          'https://freepacman.org'
-          )">
+          onclick="openGame('Pacman','https://freepacman.org')">
 
             Play Now
 
@@ -502,10 +429,7 @@
           <p>Roll fast and avoid falling.</p>
 
           <button class="btn play-btn"
-          onclick="openGame(
-          'Slope',
-          'https://slopegame.io'
-          )">
+          onclick="openGame('Slope','https://slopegame.io')">
 
             Play Now
 
@@ -530,10 +454,7 @@
           <p>Combine numbers and reach 2048.</p>
 
           <button class="btn play-btn"
-          onclick="openGame(
-          '2048',
-          'https://play2048.co/'
-          )">
+          onclick="openGame('2048','https://play2048.co/')">
 
             Play Now
 
@@ -558,10 +479,7 @@
           <p>Classic X and O strategy game.</p>
 
           <button class="btn play-btn"
-          onclick="openGame(
-          'Tic Tac Toe',
-          'https://play.gamepix.com/tic-tac-toe/embed'
-          )">
+          onclick="openGame('Tic Tac Toe','https://papergames.io/en/tic-tac-toe')">
 
             Play Now
 
@@ -586,10 +504,7 @@
           <p>Click cookies and build your empire.</p>
 
           <button class="btn play-btn"
-          onclick="openGame(
-          'Cookie Clicker',
-          'https://watchdocumentaries.com/cookie-clicker-game/'
-          )">
+          onclick="window.open('https://cookieclicker.ee/','_blank')">
 
             Play Now
 
@@ -611,13 +526,10 @@
 
           <h3>Tower Defense</h3>
 
-          <p>Defend your base against endless waves.</p>
+          <p>Defend your base against waves.</p>
 
           <button class="btn play-btn"
-          onclick="openGame(
-          'Tower Defense',
-          'https://play.gamepix.com/cursed-treasure-level-pack/embed'
-          )">
+          onclick="openGame('Tower Defense','https://play.gamepix.com/cursed-treasure-level-pack/embed')">
 
             Play Now
 
@@ -642,10 +554,7 @@
           <p>Classic strategy board game.</p>
 
           <button class="btn play-btn"
-          onclick="openGame(
-          'Chess',
-          'https://www.mathsisfun.com/games/chess.html'
-          )">
+          onclick="openGame('Chess','https://www.mathsisfun.com/games/chess.html')">
 
             Play Now
 
@@ -667,13 +576,10 @@
 
           <h3>Checkers</h3>
 
-          <p>Jump pieces and outsmart your opponent.</p>
+          <p>Jump pieces and win the match.</p>
 
           <button class="btn play-btn"
-          onclick="openGame(
-          'Checkers',
-          'https://www.mathsisfun.com/games/checkers.html'
-          )">
+          onclick="openGame('Checkers','https://www.mathsisfun.com/games/checkers.html')">
 
             Play Now
 
@@ -736,9 +642,13 @@
 
   </div>
 
-  <!-- JAVASCRIPT -->
-
   <script>
+
+    // ADS
+
+    (adsbygoogle = window.adsbygoogle || []).push({});
+
+    // OPEN GAME
 
     function openGame(title,url){
 
@@ -758,6 +668,8 @@
 
     }
 
+    // CLOSE GAME
+
     function closeGame(){
 
       document.getElementById(
@@ -771,6 +683,8 @@
       document.body.style.overflow = 'auto';
 
     }
+
+    // FULLSCREEN
 
     function fullscreenGame(){
 
@@ -802,6 +716,8 @@
       }
 
     }
+
+    // SEARCH
 
     function searchGames(){
 
