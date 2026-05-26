@@ -3,17 +3,20 @@
 <head>
 
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport"
+  content="width=device-width, initial-scale=1.0">
 
-  <title>School Essentials</title>
+  <title>School Essentials MMORPG</title>
 
   <!-- FAVICON -->
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon"
+  type="image/png"
+  href="favicon.png">
 
-  <!-- ADSENSE -->
+  <!-- GOOGLE ADSENSE -->
   <script async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4335653991954613"
-    crossorigin="anonymous"></script>
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4335653991954613"
+  crossorigin="anonymous"></script>
 
   <meta name="google-adsense-account"
   content="ca-pub-4335653991954613">
@@ -28,87 +31,256 @@
     }
 
     body{
-      background:#020617;
       overflow:hidden;
+      background:#020617;
       color:white;
     }
 
     canvas{
       display:block;
-      background:#111827;
+      background:#020617;
     }
 
+    /* HUD */
+
     .hud{
+
       position:fixed;
+
       top:15px;
       left:15px;
 
-      background:rgba(15,23,42,0.9);
+      width:300px;
+
+      background:rgba(15,23,42,0.95);
 
       border:2px solid #1e293b;
 
-      border-radius:16px;
+      border-radius:20px;
 
-      padding:15px;
+      padding:18px;
 
-      width:280px;
+      z-index:500;
 
-      z-index:100;
+      backdrop-filter:blur(10px);
+
     }
 
     .hud h1{
       color:#f97316;
-      font-size:1.5rem;
-      margin-bottom:10px;
+      margin-bottom:15px;
+      font-size:1.8rem;
     }
 
     .stat{
-      margin-bottom:8px;
+      margin-bottom:10px;
       color:#cbd5e1;
+      font-size:1rem;
     }
 
-    .quest{
-      margin-top:15px;
-      padding-top:12px;
+    .xp-bar{
+
+      width:100%;
+      height:18px;
+
+      background:#1e293b;
+
+      border-radius:20px;
+
+      overflow:hidden;
+
+      margin-top:8px;
+
+    }
+
+    .xp-fill{
+
+      height:100%;
+      width:0%;
+
+      background:#f97316;
+
+      transition:0.3s;
+
+    }
+
+    /* QUEST */
+
+    .quest-box{
+
+      margin-top:18px;
+
+      padding-top:15px;
+
       border-top:1px solid #334155;
+
     }
 
-    .controls{
-      position:fixed;
-      bottom:15px;
-      left:15px;
-
-      background:rgba(15,23,42,0.9);
-
-      border:2px solid #1e293b;
-
-      border-radius:16px;
-
-      padding:12px;
-
-      z-index:100;
-
-      color:#cbd5e1;
+    .quest-title{
+      color:#f97316;
+      margin-bottom:8px;
+      font-weight:bold;
     }
 
-    .school-title{
+    /* ADS */
+
+    .ads-panel{
+
       position:fixed;
+
       top:15px;
       right:15px;
 
-      background:rgba(15,23,42,0.9);
+      width:320px;
+
+      background:rgba(15,23,42,0.95);
 
       border:2px solid #1e293b;
 
-      border-radius:16px;
+      border-radius:20px;
 
-      padding:12px 18px;
+      padding:15px;
+
+      z-index:500;
+
+    }
+
+    .ads-title{
+
+      text-align:center;
 
       color:#f97316;
 
+      margin-bottom:10px;
+
       font-weight:bold;
 
-      z-index:100;
+    }
+
+    /* DIALOG */
+
+    .dialogue-box{
+
+      position:fixed;
+
+      bottom:20px;
+      left:50%;
+
+      transform:translateX(-50%);
+
+      width:800px;
+      max-width:92%;
+
+      background:rgba(15,23,42,0.97);
+
+      border:2px solid #f97316;
+
+      border-radius:20px;
+
+      padding:20px;
+
+      z-index:1000;
+
+      display:none;
+
+    }
+
+    .dialogue-name{
+
+      color:#f97316;
+
+      font-size:1.2rem;
+
+      font-weight:bold;
+
+      margin-bottom:10px;
+
+    }
+
+    .dialogue-text{
+
+      color:#e2e8f0;
+
+      line-height:1.6;
+
+    }
+
+    /* CONTROLS */
+
+    .controls{
+
+      position:fixed;
+
+      bottom:20px;
+      left:20px;
+
+      background:rgba(15,23,42,0.95);
+
+      border:2px solid #1e293b;
+
+      border-radius:18px;
+
+      padding:12px;
+
+      color:#cbd5e1;
+
+      z-index:500;
+
+    }
+
+    /* INVENTORY */
+
+    .inventory{
+
+      position:fixed;
+
+      bottom:20px;
+      right:20px;
+
+      width:300px;
+
+      background:rgba(15,23,42,0.95);
+
+      border:2px solid #1e293b;
+
+      border-radius:20px;
+
+      padding:15px;
+
+      z-index:500;
+
+    }
+
+    .inventory h2{
+      color:#f97316;
+      margin-bottom:12px;
+      font-size:1.2rem;
+    }
+
+    .item{
+      background:#1e293b;
+      padding:10px;
+      border-radius:12px;
+      margin-bottom:8px;
+      color:#e2e8f0;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:900px){
+
+      .ads-panel{
+        display:none;
+      }
+
+      .inventory{
+        width:220px;
+      }
+
+      .hud{
+        width:240px;
+      }
+
     }
 
   </style>
@@ -124,32 +296,58 @@
     <h1>🎒 School Essentials</h1>
 
     <div class="stat">
-      Level: <span id="level">1</span>
+      Level:
+      <span id="level">1</span>
     </div>
 
     <div class="stat">
-      XP: <span id="xp">0</span>
+      XP:
+      <span id="xp">0</span>/100
+    </div>
+
+    <div class="xp-bar">
+      <div class="xp-fill"
+      id="xpFill"></div>
     </div>
 
     <div class="stat">
-      Coins: <span id="coins">0</span>
+      Coins:
+      <span id="coins">0</span>
     </div>
 
     <div class="stat">
-      Energy: <span id="energy">100</span>
+      Energy:
+      <span id="energy">100</span>
     </div>
 
-    <div class="quest">
+    <div class="quest-box">
 
-      <strong style="color:#f97316;">
+      <div class="quest-title">
         Current Quest
-      </strong>
+      </div>
 
-      <p id="questText">
-        Talk to the teacher in Math Class.
-      </p>
+      <div id="questText">
+        Talk to the Math Teacher.
+      </div>
 
     </div>
+
+  </div>
+
+  <!-- ADS -->
+
+  <div class="ads-panel">
+
+    <div class="ads-title">
+      Sponsored
+    </div>
+
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-4335653991954613"
+      data-ad-slot="1234567890"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
 
   </div>
 
@@ -158,16 +356,49 @@
   <div class="controls">
 
     WASD = Move<br>
-    E = Interact<br>
-    SHIFT = Sprint
+    SHIFT = Sprint<br>
+    E = Interact
 
   </div>
 
-  <!-- TITLE -->
+  <!-- INVENTORY -->
 
-  <div class="school-title">
+  <div class="inventory">
 
-    🏫 School Essentials
+    <h2>🎒 Inventory</h2>
+
+    <div class="item">
+      📘 Math Book
+    </div>
+
+    <div class="item">
+      🍎 Cafeteria Snack
+    </div>
+
+    <div class="item">
+      ✏ Pencil
+    </div>
+
+  </div>
+
+  <!-- DIALOG -->
+
+  <div class="dialogue-box"
+  id="dialogueBox">
+
+    <div class="dialogue-name"
+    id="dialogueName">
+
+      NPC
+
+    </div>
+
+    <div class="dialogue-text"
+    id="dialogueText">
+
+      Hello.
+
+    </div>
 
   </div>
 
@@ -177,6 +408,11 @@
 
   <script>
 
+    // ADS
+
+    (adsbygoogle =
+    window.adsbygoogle || []).push({});
+
     // CANVAS
 
     const canvas =
@@ -185,15 +421,18 @@
     const ctx =
     canvas.getContext("2d");
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width =
+    window.innerWidth;
+
+    canvas.height =
+    window.innerHeight;
 
     // PLAYER
 
     const player = {
 
-      x:200,
-      y:200,
+      x:300,
+      y:300,
 
       size:35,
 
@@ -203,7 +442,7 @@
 
     };
 
-    // GAME DATA
+    // STATS
 
     let level = 1;
     let xp = 0;
@@ -216,7 +455,7 @@
 
     document.addEventListener(
       "keydown",
-      (e)=>{
+      e=>{
 
         keys[e.key.toLowerCase()] = true;
 
@@ -225,7 +464,7 @@
 
     document.addEventListener(
       "keyup",
-      (e)=>{
+      e=>{
 
         keys[e.key.toLowerCase()] = false;
 
@@ -237,24 +476,35 @@
     const npcs = [
 
       {
-        x:600,
-        y:200,
+        x:700,
+        y:180,
         color:"#38bdf8",
-        text:"Teacher: Complete Math Quiz!"
+        name:"Math Teacher",
+        text:"Complete your algebra homework to earn XP."
       },
 
       {
-        x:850,
-        y:500,
+        x:1000,
+        y:550,
         color:"#22c55e",
-        text:"Student: Want snacks from the cafeteria?"
+        name:"Student",
+        text:"The cafeteria has energy drinks today."
       },
 
       {
-        x:350,
+        x:450,
         y:700,
         color:"#e879f9",
-        text:"Principal: Don't skip class!"
+        name:"Principal",
+        text:"Attendance matters. Don't skip class."
+      },
+
+      {
+        x:1300,
+        y:350,
+        color:"#ef4444",
+        name:"Gym Coach",
+        text:"Run laps to increase stamina."
       }
 
     ];
@@ -266,35 +516,35 @@
       {
         x:100,
         y:100,
-        w:350,
-        h:250,
+        w:400,
+        h:260,
         color:"#1e293b",
         label:"Math Class"
       },
 
       {
-        x:550,
+        x:620,
         y:100,
-        w:350,
-        h:250,
+        w:420,
+        h:260,
         color:"#1e293b",
         label:"Science Lab"
       },
 
       {
         x:100,
-        y:450,
-        w:350,
-        h:250,
+        y:480,
+        w:400,
+        h:260,
         color:"#1e293b",
         label:"Cafeteria"
       },
 
       {
-        x:550,
-        y:450,
-        w:350,
-        h:250,
+        x:620,
+        y:480,
+        w:420,
+        h:260,
         color:"#1e293b",
         label:"Gym"
       }
@@ -305,31 +555,23 @@
 
     function update(){
 
-      let moveSpeed =
+      let speed =
       keys["shift"] ? 7 : 4;
 
       if(keys["w"]){
-
-        player.y -= moveSpeed;
-
+        player.y -= speed;
       }
 
       if(keys["s"]){
-
-        player.y += moveSpeed;
-
+        player.y += speed;
       }
 
       if(keys["a"]){
-
-        player.x -= moveSpeed;
-
+        player.x -= speed;
       }
 
       if(keys["d"]){
-
-        player.x += moveSpeed;
-
+        player.x += speed;
       }
 
       // INTERACT
@@ -338,18 +580,21 @@
 
         npcs.forEach(npc=>{
 
-          const dx =
+          let dx =
           player.x - npc.x;
 
-          const dy =
+          let dy =
           player.y - npc.y;
 
-          const distance =
+          let distance =
           Math.sqrt(dx*dx + dy*dy);
 
-          if(distance < 70){
+          if(distance < 80){
 
-            alert(npc.text);
+            showDialogue(
+              npc.name,
+              npc.text
+            );
 
             xp += 10;
             coins += 5;
@@ -375,8 +620,6 @@
 
     function draw(){
 
-      // BACKGROUND
-
       ctx.fillStyle = "#020617";
 
       ctx.fillRect(
@@ -386,11 +629,15 @@
         canvas.height
       );
 
-      // FLOOR GRID
+      // GRID
 
-      for(let x=0;x<canvas.width;x+=60){
+      for(let x=0;
+      x<canvas.width;
+      x+=60){
 
-        for(let y=0;y<canvas.height;y+=60){
+        for(let y=0;
+        y<canvas.height;
+        y+=60){
 
           ctx.strokeStyle =
           "#0f172a";
@@ -423,7 +670,7 @@
         ctx.strokeStyle =
         "#f97316";
 
-        ctx.lineWidth = 3;
+        ctx.lineWidth = 4;
 
         ctx.strokeRect(
           room.x,
@@ -436,7 +683,7 @@
         "white";
 
         ctx.font =
-        "24px Arial";
+        "28px Arial";
 
         ctx.fillText(
           room.label,
@@ -460,6 +707,18 @@
           35
         );
 
+        ctx.fillStyle =
+        "white";
+
+        ctx.font =
+        "16px Arial";
+
+        ctx.fillText(
+          npc.name,
+          npc.x - 10,
+          npc.y - 10
+        );
+
       });
 
       // PLAYER
@@ -474,8 +733,6 @@
         player.size
       );
 
-      // PLAYER LABEL
-
       ctx.fillStyle =
       "white";
 
@@ -484,9 +741,41 @@
 
       ctx.fillText(
         "YOU",
-        player.x - 5,
+        player.x,
         player.y - 10
       );
+
+    }
+
+    // DIALOG
+
+    function showDialogue(name,text){
+
+      const box =
+      document.getElementById(
+      "dialogueBox"
+      );
+
+      document.getElementById(
+      "dialogueName"
+      ).innerText = name;
+
+      document.getElementById(
+      "dialogueText"
+      ).innerText = text;
+
+      box.style.display = "block";
+
+      clearTimeout(
+      window.dialogTimeout
+      );
+
+      window.dialogTimeout =
+      setTimeout(()=>{
+
+        box.style.display = "none";
+
+      },4000);
 
     }
 
@@ -506,22 +795,27 @@
       document.getElementById(
       "energy").innerText = energy;
 
+      document.getElementById(
+      "xpFill"
+      ).style.width =
+      xp + "%";
+
     }
 
-    // LOOP
+    // GAME LOOP
 
-    function gameLoop(){
+    function loop(){
 
       update();
       draw();
 
       requestAnimationFrame(
-        gameLoop
+      loop
       );
 
     }
 
-    gameLoop();
+    loop();
 
     // RESIZE
 
