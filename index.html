@@ -2,22 +2,21 @@
 <html lang="en">
 <head>
 
-  <!-- GOOGLE ADSENSE -->
-  <script async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4335653991954613"
-    crossorigin="anonymous"></script>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>School Essentials</title>
 
-  <!-- ADSENSE VERIFY -->
-  <meta name="google-adsense-account"
-        content="ca-pub-4335653991954613">
-
   <!-- FAVICON -->
   <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- ADSENSE -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4335653991954613"
+    crossorigin="anonymous"></script>
+
+  <meta name="google-adsense-account"
+  content="ca-pub-4335653991954613">
 
   <style>
 
@@ -28,283 +27,88 @@
       font-family:Arial,sans-serif;
     }
 
-    html{
-      scroll-behavior:smooth;
-    }
-
     body{
       background:#020617;
-      color:white;
-      overflow-x:hidden;
-    }
-
-    /* HEADER */
-
-    header{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      background:#0f172a;
-      border-bottom:1px solid #1e293b;
-      padding:16px 24px;
-
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-
-    .logo{
-      font-size:1.8rem;
-      font-weight:bold;
-      color:#f97316;
-    }
-
-    nav{
-      display:flex;
-      gap:18px;
-    }
-
-    nav a{
-      color:white;
-      text-decoration:none;
-      font-weight:bold;
-      transition:0.2s;
-    }
-
-    nav a:hover{
-      color:#f97316;
-    }
-
-    /* HERO */
-
-    .hero{
-      text-align:center;
-      padding:70px 20px 50px;
-
-      background:
-      linear-gradient(
-      to bottom,
-      #0f172a,
-      #020617
-      );
-    }
-
-    .hero h1{
-      font-size:4rem;
-      color:#f97316;
-      margin-bottom:15px;
-    }
-
-    .hero p{
-      color:#cbd5e1;
-      font-size:1.15rem;
-      max-width:700px;
-      margin:auto;
-      line-height:1.5;
-    }
-
-    .btn{
-      background:#f97316;
-      color:white;
-      border:none;
-
-      padding:14px 24px;
-
-      border-radius:14px;
-
-      font-size:1rem;
-      font-weight:bold;
-
-      cursor:pointer;
-
-      transition:0.2s;
-    }
-
-    .btn:hover{
-      background:#ea580c;
-      transform:translateY(-3px);
-    }
-
-    .hero-btn{
-      margin-top:25px;
-    }
-
-    /* ADS */
-
-    .ad-box{
-      max-width:1200px;
-      margin:10px auto 35px;
-      background:#0f172a;
-      border:1px solid #1e293b;
-      border-radius:18px;
-      padding:18px;
-    }
-
-    /* GAMES */
-
-    .games-section{
-      max-width:1450px;
-      margin:auto;
-      padding:20px;
-    }
-
-    .section-title{
-      text-align:center;
-      color:#f97316;
-      font-size:2.3rem;
-      margin-bottom:25px;
-    }
-
-    .search-bar{
-      width:100%;
-      max-width:520px;
-
-      display:block;
-
-      margin:0 auto 30px;
-
-      padding:14px 18px;
-
-      border:none;
-
-      border-radius:14px;
-
-      background:#0f172a;
-
-      border:1px solid #1e293b;
-
-      color:white;
-
-      font-size:1rem;
-    }
-
-    .search-bar:focus{
-      outline:none;
-      border-color:#f97316;
-    }
-
-    .grid{
-      display:grid;
-
-      grid-template-columns:
-      repeat(auto-fit,minmax(280px,1fr));
-
-      gap:24px;
-    }
-
-    .card{
-      background:#0f172a;
-
-      border:1px solid #1e293b;
-
-      border-radius:20px;
-
       overflow:hidden;
-
-      transition:0.2s;
+      color:white;
     }
 
-    .card:hover{
-      transform:translateY(-5px);
-      border-color:#f97316;
-    }
-
-    .game-thumb{
-      width:100%;
-      height:190px;
-      object-fit:cover;
+    canvas{
       display:block;
-      background:#1e293b;
+      background:#111827;
     }
 
-    .card-content{
-      padding:18px;
-    }
-
-    .card h3{
-      color:#f97316;
-      margin-bottom:10px;
-      font-size:1.4rem;
-    }
-
-    .card p{
-      color:#cbd5e1;
-      margin-bottom:16px;
-      line-height:1.4;
-    }
-
-    .play-btn{
-      width:100%;
-    }
-
-    /* PLAYER */
-
-    .game-player{
+    .hud{
       position:fixed;
-      inset:0;
-      background:black;
-      z-index:9999;
-      display:none;
-      flex-direction:column;
+      top:15px;
+      left:15px;
+
+      background:rgba(15,23,42,0.9);
+
+      border:2px solid #1e293b;
+
+      border-radius:16px;
+
+      padding:15px;
+
+      width:280px;
+
+      z-index:100;
     }
 
-    .player-top{
-      background:#0f172a;
-      border-bottom:2px solid #1e293b;
-      padding:12px 15px;
-
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-
-    .player-title{
+    .hud h1{
       color:#f97316;
-      font-size:1.2rem;
+      font-size:1.5rem;
+      margin-bottom:10px;
+    }
+
+    .stat{
+      margin-bottom:8px;
+      color:#cbd5e1;
+    }
+
+    .quest{
+      margin-top:15px;
+      padding-top:12px;
+      border-top:1px solid #334155;
+    }
+
+    .controls{
+      position:fixed;
+      bottom:15px;
+      left:15px;
+
+      background:rgba(15,23,42,0.9);
+
+      border:2px solid #1e293b;
+
+      border-radius:16px;
+
+      padding:12px;
+
+      z-index:100;
+
+      color:#cbd5e1;
+    }
+
+    .school-title{
+      position:fixed;
+      top:15px;
+      right:15px;
+
+      background:rgba(15,23,42,0.9);
+
+      border:2px solid #1e293b;
+
+      border-radius:16px;
+
+      padding:12px 18px;
+
+      color:#f97316;
+
       font-weight:bold;
-    }
 
-    .player-buttons{
-      display:flex;
-      gap:10px;
-    }
-
-    .player-frame{
-      flex:1;
-      width:100%;
-      border:none;
-      background:black;
-    }
-
-    /* FOOTER */
-
-    footer{
-      margin-top:40px;
-      background:#0f172a;
-      border-top:1px solid #1e293b;
-      text-align:center;
-      padding:25px;
-      color:#94a3b8;
-    }
-
-    /* MOBILE */
-
-    @media(max-width:700px){
-
-      header{
-        flex-direction:column;
-        gap:12px;
-      }
-
-      .hero h1{
-        font-size:2.5rem;
-      }
-
-      nav{
-        flex-wrap:wrap;
-        justify-content:center;
-      }
-
+      z-index:100;
     }
 
   </style>
@@ -313,500 +117,426 @@
 
 <body>
 
-  <!-- HEADER -->
+  <!-- HUD -->
 
-  <header>
+  <div class="hud">
 
-    <div class="logo">
-      🎮 School Essentials
+    <h1>🎒 School Essentials</h1>
+
+    <div class="stat">
+      Level: <span id="level">1</span>
     </div>
 
-    <nav>
-      <a href="#games">Games</a>
-    </nav>
+    <div class="stat">
+      XP: <span id="xp">0</span>
+    </div>
 
-  </header>
+    <div class="stat">
+      Coins: <span id="coins">0</span>
+    </div>
 
-  <!-- HERO -->
+    <div class="stat">
+      Energy: <span id="energy">100</span>
+    </div>
 
-  <section class="hero">
+    <div class="quest">
 
-    <h1>School Essentials</h1>
+      <strong style="color:#f97316;">
+        Current Quest
+      </strong>
 
-    <p>
-      Fast unblocked games with fullscreen support.
-    </p>
+      <p id="questText">
+        Talk to the teacher in Math Class.
+      </p>
 
-    <button
-      class="btn hero-btn"
-      onclick="document.getElementById('games').scrollIntoView()">
-
-      Browse Games
-
-    </button>
-
-  </section>
-
-  <!-- ADS -->
-
-  <div class="ad-box">
-
-    <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-4335653991954613"
-      data-ad-slot="1234567890"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
-
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+    </div>
 
   </div>
 
-  <!-- GAMES -->
+  <!-- CONTROLS -->
 
-  <section class="games-section" id="games">
+  <div class="controls">
 
-    <h2 class="section-title">
-      🔥 Popular Games
-    </h2>
-
-    <input
-      type="text"
-      id="searchInput"
-      placeholder="Search games..."
-      class="search-bar"
-      onkeyup="searchGames()">
-
-    <div class="grid">
-
-      <!-- FLAPPY -->
-
-      <div class="card game-card">
-
-        <img class="game-thumb"
-        src="flappybird.png">
-
-        <div class="card-content">
-
-          <h3>Flappy Bird</h3>
-
-          <p>Fly through pipes and survive.</p>
-
-          <button class="btn play-btn"
-          onclick="openGame(
-          'Flappy Bird',
-          'https://flappybird.io'
-          )">
-
-            Play Now
-
-          </button>
-
-        </div>
-
-      </div>
-
-      <!-- DINO -->
-
-      <div class="card game-card">
-
-        <img class="game-thumb"
-        src="dino.png">
-
-        <div class="card-content">
-
-          <h3>Chrome Dino</h3>
-
-          <p>Jump over obstacles and survive.</p>
-
-          <button class="btn play-btn"
-          onclick="openGame(
-          'Chrome Dino',
-          'https://chromedino.com'
-          )">
-
-            Play Now
-
-          </button>
-
-        </div>
-
-      </div>
-
-      <!-- PACMAN -->
-
-      <div class="card game-card">
-
-        <img class="game-thumb"
-        src="pacman.png">
-
-        <div class="card-content">
-
-          <h3>Pacman</h3>
-
-          <p>Classic arcade maze game.</p>
-
-          <button class="btn play-btn"
-          onclick="openGame(
-          'Pacman',
-          'https://freepacman.org'
-          )">
-
-            Play Now
-
-          </button>
-
-        </div>
-
-      </div>
-
-      <!-- SLOPE -->
-
-      <div class="card game-card">
-
-        <img class="game-thumb"
-        src="slope.png">
-
-        <div class="card-content">
-
-          <h3>Slope</h3>
-
-          <p>Roll fast and avoid falling.</p>
-
-          <button class="btn play-btn"
-          onclick="openGame(
-          'Slope',
-          'https://slopegame.io'
-          )">
-
-            Play Now
-
-          </button>
-
-        </div>
-
-      </div>
-
-      <!-- 2048 -->
-
-      <div class="card game-card">
-
-        <img class="game-thumb"
-        src="2048.png">
-
-        <div class="card-content">
-
-          <h3>2048</h3>
-
-          <p>Combine numbers and reach 2048.</p>
-
-          <button class="btn play-btn"
-          onclick="openGame(
-          '2048',
-          'https://games.crazygames.com/en_US/2048/index.html'
-          )">
-
-            Play Now
-
-          </button>
-
-        </div>
-
-      </div>
-
-      <!-- TIC TAC TOE -->
-
-      <div class="card game-card">
-
-        <img class="game-thumb"
-        src="tictactoe.png">
-
-        <div class="card-content">
-
-          <h3>Tic Tac Toe</h3>
-
-          <p>Classic X and O strategy game.</p>
-
-          <button class="btn play-btn"
-          onclick="openGame(
-          'Tic Tac Toe',
-          'https://play.gamepix.com/tic-tac-toe/embed'
-          )">
-
-            Play Now
-
-          </button>
-
-        </div>
-
-      </div>
-
-      <!-- COOKIE CLICKER -->
-
-      <div class="card game-card">
-
-        <img class="game-thumb"
-        src="clicker.png">
-
-        <div class="card-content">
-
-          <h3>Cookie Clicker</h3>
-
-          <p>Click cookies and build your empire.</p>
-
-          <button class="btn play-btn"
-          onclick="openGame(
-          'Cookie Clicker',
-          'https://cookieclicker.ee/'
-          )">
-
-            Play Now
-
-          </button>
-
-        </div>
-
-      </div>
-
-      <!-- TOWER DEFENSE -->
-
-      <div class="card game-card">
-
-        <img class="game-thumb"
-        src="towerdefense.png">
-
-        <div class="card-content">
-
-          <h3>Tower Defense</h3>
-
-          <p>Defend your base against waves.</p>
-
-          <button class="btn play-btn"
-          onclick="openGame(
-          'Tower Defense',
-          'https://play.gamepix.com/cursed-treasure-level-pack/embed'
-          )">
-
-            Play Now
-
-          </button>
-
-        </div>
-
-      </div>
-
-      <!-- CHESS -->
-
-      <div class="card game-card">
-
-        <img class="game-thumb"
-        src="chess.png">
-
-        <div class="card-content">
-
-          <h3>Chess</h3>
-
-          <p>Classic strategy board game.</p>
-
-          <button class="btn play-btn"
-          onclick="openGame(
-          'Chess',
-          'https://playpager.com/embed/chess/index.html'
-          )">
-
-            Play Now
-
-          </button>
-
-        </div>
-
-      </div>
-
-      <!-- CHECKERS -->
-
-      <div class="card game-card">
-
-        <img class="game-thumb"
-        src="checkers.png">
-
-        <div class="card-content">
-
-          <h3>Checkers</h3>
-
-          <p>Jump pieces and win the match.</p>
-
-          <button class="btn play-btn"
-          onclick="openGame(
-          'Checkers',
-          'https://playpager.com/embed/checkers/index.html'
-          )">
-
-            Play Now
-
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    © 2026 School Essentials
-
-  </footer>
-
-  <!-- PLAYER -->
-
-  <div class="game-player" id="gamePlayer">
-
-    <div class="player-top">
-
-      <div class="player-title"
-      id="gameTitle">
-
-        Game
-
-      </div>
-
-      <div class="player-buttons">
-
-        <button class="btn"
-        onclick="fullscreenGame()">
-
-          Fullscreen
-
-        </button>
-
-        <button class="btn"
-        onclick="closeGame()">
-
-          Close
-
-        </button>
-
-      </div>
-
-    </div>
-
-    <iframe
-      id="gameFrame"
-      class="player-frame"
-      allowfullscreen
-      allow="fullscreen; autoplay">
-    </iframe>
+    WASD = Move<br>
+    E = Interact<br>
+    SHIFT = Sprint
 
   </div>
 
-  <!-- JAVASCRIPT -->
+  <!-- TITLE -->
+
+  <div class="school-title">
+
+    🏫 School Essentials
+
+  </div>
+
+  <!-- GAME -->
+
+  <canvas id="game"></canvas>
 
   <script>
 
-    function openGame(title,url){
+    // CANVAS
 
-      document.getElementById(
-      'gameTitle'
-      ).innerText = title;
+    const canvas =
+    document.getElementById("game");
 
-      document.getElementById(
-      'gameFrame'
-      ).src = url;
+    const ctx =
+    canvas.getContext("2d");
 
-      document.getElementById(
-      'gamePlayer'
-      ).style.display = 'flex';
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-      document.body.style.overflow = 'hidden';
+    // PLAYER
+
+    const player = {
+
+      x:200,
+      y:200,
+
+      size:35,
+
+      speed:4,
+
+      color:"#f97316"
+
+    };
+
+    // GAME DATA
+
+    let level = 1;
+    let xp = 0;
+    let coins = 0;
+    let energy = 100;
+
+    // KEYS
+
+    const keys = {};
+
+    document.addEventListener(
+      "keydown",
+      (e)=>{
+
+        keys[e.key.toLowerCase()] = true;
+
+      }
+    );
+
+    document.addEventListener(
+      "keyup",
+      (e)=>{
+
+        keys[e.key.toLowerCase()] = false;
+
+      }
+    );
+
+    // NPCS
+
+    const npcs = [
+
+      {
+        x:600,
+        y:200,
+        color:"#38bdf8",
+        text:"Teacher: Complete Math Quiz!"
+      },
+
+      {
+        x:850,
+        y:500,
+        color:"#22c55e",
+        text:"Student: Want snacks from the cafeteria?"
+      },
+
+      {
+        x:350,
+        y:700,
+        color:"#e879f9",
+        text:"Principal: Don't skip class!"
+      }
+
+    ];
+
+    // BUILDINGS
+
+    const rooms = [
+
+      {
+        x:100,
+        y:100,
+        w:350,
+        h:250,
+        color:"#1e293b",
+        label:"Math Class"
+      },
+
+      {
+        x:550,
+        y:100,
+        w:350,
+        h:250,
+        color:"#1e293b",
+        label:"Science Lab"
+      },
+
+      {
+        x:100,
+        y:450,
+        w:350,
+        h:250,
+        color:"#1e293b",
+        label:"Cafeteria"
+      },
+
+      {
+        x:550,
+        y:450,
+        w:350,
+        h:250,
+        color:"#1e293b",
+        label:"Gym"
+      }
+
+    ];
+
+    // UPDATE
+
+    function update(){
+
+      let moveSpeed =
+      keys["shift"] ? 7 : 4;
+
+      if(keys["w"]){
+
+        player.y -= moveSpeed;
+
+      }
+
+      if(keys["s"]){
+
+        player.y += moveSpeed;
+
+      }
+
+      if(keys["a"]){
+
+        player.x -= moveSpeed;
+
+      }
+
+      if(keys["d"]){
+
+        player.x += moveSpeed;
+
+      }
+
+      // INTERACT
+
+      if(keys["e"]){
+
+        npcs.forEach(npc=>{
+
+          const dx =
+          player.x - npc.x;
+
+          const dy =
+          player.y - npc.y;
+
+          const distance =
+          Math.sqrt(dx*dx + dy*dy);
+
+          if(distance < 70){
+
+            alert(npc.text);
+
+            xp += 10;
+            coins += 5;
+
+            if(xp >= 100){
+
+              xp = 0;
+              level++;
+
+            }
+
+            updateHud();
+
+          }
+
+        });
+
+      }
 
     }
 
-    function closeGame(){
+    // DRAW
 
-      document.getElementById(
-      'gamePlayer'
-      ).style.display = 'none';
+    function draw(){
 
-      document.getElementById(
-      'gameFrame'
-      ).src = '';
+      // BACKGROUND
 
-      document.body.style.overflow = 'auto';
+      ctx.fillStyle = "#020617";
 
-    }
-
-    function fullscreenGame(){
-
-      let iframe =
-      document.getElementById(
-      'gameFrame'
+      ctx.fillRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
       );
 
-      if(iframe.requestFullscreen){
+      // FLOOR GRID
 
-        iframe.requestFullscreen();
+      for(let x=0;x<canvas.width;x+=60){
 
-      }
+        for(let y=0;y<canvas.height;y+=60){
 
-      else if(
-      iframe.webkitRequestFullscreen
-      ){
+          ctx.strokeStyle =
+          "#0f172a";
 
-        iframe.webkitRequestFullscreen();
-
-      }
-
-      else if(
-      iframe.msRequestFullscreen
-      ){
-
-        iframe.msRequestFullscreen();
-
-      }
-
-    }
-
-    function searchGames(){
-
-      let input =
-      document.getElementById(
-      "searchInput"
-      ).value.toLowerCase();
-
-      let cards =
-      document.getElementsByClassName(
-      "game-card"
-      );
-
-      for(let i = 0; i < cards.length; i++){
-
-        let title =
-        cards[i]
-        .getElementsByTagName("h3")[0]
-        .innerText
-        .toLowerCase();
-
-        if(title.includes(input)){
-
-          cards[i].style.display = "";
+          ctx.strokeRect(
+            x,
+            y,
+            60,
+            60
+          );
 
         }
 
-        else{
-
-          cards[i].style.display = "none";
-
-        }
-
       }
 
+      // ROOMS
+
+      rooms.forEach(room=>{
+
+        ctx.fillStyle =
+        room.color;
+
+        ctx.fillRect(
+          room.x,
+          room.y,
+          room.w,
+          room.h
+        );
+
+        ctx.strokeStyle =
+        "#f97316";
+
+        ctx.lineWidth = 3;
+
+        ctx.strokeRect(
+          room.x,
+          room.y,
+          room.w,
+          room.h
+        );
+
+        ctx.fillStyle =
+        "white";
+
+        ctx.font =
+        "24px Arial";
+
+        ctx.fillText(
+          room.label,
+          room.x + 20,
+          room.y + 40
+        );
+
+      });
+
+      // NPCS
+
+      npcs.forEach(npc=>{
+
+        ctx.fillStyle =
+        npc.color;
+
+        ctx.fillRect(
+          npc.x,
+          npc.y,
+          35,
+          35
+        );
+
+      });
+
+      // PLAYER
+
+      ctx.fillStyle =
+      player.color;
+
+      ctx.fillRect(
+        player.x,
+        player.y,
+        player.size,
+        player.size
+      );
+
+      // PLAYER LABEL
+
+      ctx.fillStyle =
+      "white";
+
+      ctx.font =
+      "18px Arial";
+
+      ctx.fillText(
+        "YOU",
+        player.x - 5,
+        player.y - 10
+      );
+
     }
+
+    // HUD
+
+    function updateHud(){
+
+      document.getElementById(
+      "level").innerText = level;
+
+      document.getElementById(
+      "xp").innerText = xp;
+
+      document.getElementById(
+      "coins").innerText = coins;
+
+      document.getElementById(
+      "energy").innerText = energy;
+
+    }
+
+    // LOOP
+
+    function gameLoop(){
+
+      update();
+      draw();
+
+      requestAnimationFrame(
+        gameLoop
+      );
+
+    }
+
+    gameLoop();
+
+    // RESIZE
+
+    window.addEventListener(
+      "resize",
+      ()=>{
+
+        canvas.width =
+        window.innerWidth;
+
+        canvas.height =
+        window.innerHeight;
+
+      }
+    );
 
   </script>
 
