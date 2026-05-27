@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-  <!-- GOOGLE ADSENSE -->
+  <!-- ADSENSE -->
   <script async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4335653991954613"
     crossorigin="anonymous"></script>
@@ -15,7 +15,7 @@
   <meta name="google-adsense-account"
         content="ca-pub-4335653991954613">
 
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" href="favicon.png">
 
   <style>
 
@@ -27,54 +27,14 @@
     }
 
     body{
-      background:#020617;
       overflow:hidden;
-      color:white;
+      background:#0f172a;
     }
 
     canvas{
       display:block;
-      background:#1e293b;
+      background:#3b7a44;
       image-rendering:pixelated;
-    }
-
-    /* TOP UI */
-
-    .topbar{
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      height:70px;
-      background:rgba(15,23,42,0.95);
-      border-bottom:2px solid #334155;
-      z-index:1000;
-
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-
-      padding:0 20px;
-    }
-
-    .logo{
-      color:#f97316;
-      font-size:1.8rem;
-      font-weight:bold;
-    }
-
-    .stats{
-      display:flex;
-      gap:15px;
-      flex-wrap:wrap;
-    }
-
-    .stat{
-      background:#0f172a;
-      border:1px solid #334155;
-      padding:8px 14px;
-      border-radius:12px;
-      font-size:0.95rem;
     }
 
     /* TAB MENU */
@@ -82,7 +42,7 @@
     .tab-menu{
       position:fixed;
       inset:0;
-      background:rgba(0,0,0,0.88);
+      background:rgba(0,0,0,0.9);
       z-index:5000;
 
       display:none;
@@ -90,11 +50,11 @@
       justify-content:center;
     }
 
-    .tab-content{
-      width:90%;
+    .menu{
+      width:92%;
       max-width:1200px;
 
-      background:#0f172a;
+      background:#111827;
 
       border:2px solid #334155;
 
@@ -103,76 +63,172 @@
       padding:30px;
     }
 
-    .tab-title{
+    .menu h1{
       text-align:center;
       color:#f97316;
-      font-size:2.7rem;
       margin-bottom:25px;
+      font-size:2.8rem;
     }
 
     .menu-grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
       gap:20px;
     }
 
-    .menu-box{
-      background:#111827;
-      border:1px solid #334155;
+    .box{
+      background:#1e293b;
       border-radius:18px;
       padding:20px;
+      border:1px solid #334155;
     }
 
-    .menu-box h2{
+    .box h2{
       color:#f97316;
       margin-bottom:15px;
     }
 
     .item{
-      background:#1e293b;
+      background:#0f172a;
       padding:12px;
       border-radius:12px;
       margin-bottom:10px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
+      color:white;
     }
 
     .btn{
       background:#f97316;
-      color:white;
       border:none;
-      padding:10px 14px;
-      border-radius:10px;
-      cursor:pointer;
+      color:white;
+      padding:12px 16px;
+      border-radius:12px;
       font-weight:bold;
-      transition:0.2s;
+      cursor:pointer;
+      width:100%;
+      margin-top:10px;
     }
 
     .btn:hover{
       background:#ea580c;
-      transform:translateY(-2px);
     }
 
-    .ad-box{
-      margin-top:18px;
-      background:#111827;
-      border:1px solid #334155;
-      border-radius:18px;
-      padding:12px;
+    /* HOTBAR */
+
+    .hotbar{
+      position:fixed;
+      bottom:18px;
+      left:50%;
+      transform:translateX(-50%);
+
+      display:flex;
+      gap:10px;
+
+      z-index:1000;
     }
+
+    .slot{
+      width:70px;
+      height:70px;
+
+      background:#111827;
+
+      border:3px solid #334155;
+
+      border-radius:14px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      color:white;
+      font-size:1.6rem;
+    }
+
+    .selected{
+      border-color:#f97316;
+    }
+
+    /* PLAYER STATS */
+
+    .player-ui{
+      position:fixed;
+      bottom:105px;
+      left:50%;
+      transform:translateX(-50%);
+
+      background:rgba(15,23,42,0.95);
+
+      border:2px solid #334155;
+
+      border-radius:18px;
+
+      padding:10px 18px;
+
+      display:flex;
+      gap:18px;
+
+      color:white;
+
+      z-index:1000;
+    }
+
+    .stat{
+      font-weight:bold;
+    }
+
+    .xp-bar{
+      position:fixed;
+      bottom:155px;
+      left:50%;
+      transform:translateX(-50%);
+
+      width:320px;
+      height:18px;
+
+      background:#1e293b;
+
+      border-radius:10px;
+
+      overflow:hidden;
+
+      z-index:1000;
+    }
+
+    .xp-fill{
+      height:100%;
+      width:0%;
+      background:#f97316;
+    }
+
+    /* ADS */
+
+    .ad-box{
+      margin-top:15px;
+      background:#0f172a;
+      padding:12px;
+      border-radius:12px;
+    }
+
+    /* HELP */
 
     .help{
       position:fixed;
-      bottom:10px;
-      left:10px;
-      background:rgba(15,23,42,0.9);
+      top:15px;
+      left:15px;
+
+      background:rgba(15,23,42,0.95);
+
       border:1px solid #334155;
-      border-radius:14px;
+
       padding:12px;
-      z-index:1000;
-      font-size:0.9rem;
+
+      border-radius:14px;
+
+      color:white;
+
       line-height:1.5;
+
+      z-index:1000;
     }
 
   </style>
@@ -181,68 +237,57 @@
 
 <body>
 
-  <!-- TOP BAR -->
+  <!-- HELP -->
 
-  <div class="topbar">
-
-    <div class="logo">
-      🎮 School Essentials MMORPG
-    </div>
-
-    <div class="stats">
-
-      <div class="stat">
-        ❤️ HP:
-        <span id="hpText">100</span>
-      </div>
-
-      <div class="stat">
-        ⚔️ Level:
-        <span id="levelText">1</span>
-      </div>
-
-      <div class="stat">
-        💰 Coins:
-        <span id="coinText">0</span>
-      </div>
-
-      <div class="stat">
-        🧠 XP:
-        <span id="xpText">0</span>
-      </div>
-
-      <div class="stat">
-        🛡️ Gear:
-        <span id="gearText">Basic</span>
-      </div>
-
-    </div>
-
+  <div class="help">
+    WASD = Move<br>
+    SHIFT = Sprint<br>
+    E = Attack<br>
+    TAB = Open Menu
   </div>
 
   <!-- TAB MENU -->
 
   <div class="tab-menu" id="tabMenu">
 
-    <div class="tab-content">
+    <div class="menu">
 
-      <div class="tab-title">
-        School Essentials
-      </div>
+      <h1>School Essentials</h1>
 
       <div class="menu-grid">
 
+        <!-- PLAYER -->
+
+        <div class="box">
+
+          <h2>Player</h2>
+
+          <div class="item">
+            Level:
+            <span id="levelText">1</span>
+          </div>
+
+          <div class="item">
+            XP:
+            <span id="xpText">0</span>/100
+          </div>
+
+        </div>
+
         <!-- INVENTORY -->
 
-        <div class="menu-box">
+        <div class="box">
 
-          <h2>🎒 Inventory</h2>
+          <h2>Inventory</h2>
 
-          <div id="inventoryList">
+          <div id="inventory">
 
             <div class="item">
-              <span>Notebook Sword</span>
-              <span>⚔️</span>
+              📘 Starter Book
+            </div>
+
+            <div class="item">
+              ✏️ Pencil Sword
             </div>
 
           </div>
@@ -251,58 +296,31 @@
 
         <!-- BLACKSMITH -->
 
-        <div class="menu-box">
+        <div class="box">
 
-          <h2>🔨 Blacksmith</h2>
+          <h2>Blacksmith</h2>
 
-          <div class="item">
-            <span>Upgrade Weapon</span>
+          <button class="btn"
+          onclick="upgradeSword()">
 
-            <button class="btn"
-            onclick="upgradeWeapon()">
-              50 Coins
-            </button>
-          </div>
+            Upgrade Sword - 50 Coins
 
-          <div class="item">
-            <span>Armor Upgrade</span>
+          </button>
 
-            <button class="btn"
-            onclick="upgradeArmor()">
-              40 Coins
-            </button>
-          </div>
+          <button class="btn"
+          onclick="healPlayer()">
 
-        </div>
+            Heal - 25 Coins
 
-        <!-- QUESTS -->
-
-        <div class="menu-box">
-
-          <h2>📜 Quests</h2>
-
-          <div class="item">
-            <span>Defeat Hall Monsters</span>
-            <span>+25 XP</span>
-          </div>
-
-          <div class="item">
-            <span>Explore Library</span>
-            <span>+15 Coins</span>
-          </div>
-
-          <div class="item">
-            <span>Reach Level 5</span>
-            <span>Rare Gear</span>
-          </div>
+          </button>
 
         </div>
 
         <!-- ADS -->
 
-        <div class="menu-box">
+        <div class="box">
 
-          <h2>📢 Sponsored</h2>
+          <h2>Sponsored</h2>
 
           <div class="ad-box">
 
@@ -323,14 +341,52 @@
 
   </div>
 
-  <!-- HELP -->
+  <!-- XP -->
 
-  <div class="help">
-    WASD = Move<br>
-    SHIFT = Sprint<br>
-    TAB = Open Menu<br>
-    E = Interact<br>
-    Auto Save Enabled
+  <div class="xp-bar">
+    <div class="xp-fill" id="xpFill"></div>
+  </div>
+
+  <!-- PLAYER UI -->
+
+  <div class="player-ui">
+
+    <div class="stat">
+      ❤️
+      <span id="healthText">100</span>
+    </div>
+
+    <div class="stat">
+      💰
+      <span id="coinsText">0</span>
+    </div>
+
+  </div>
+
+  <!-- HOTBAR -->
+
+  <div class="hotbar">
+
+    <div class="slot selected">
+      ⚔️
+    </div>
+
+    <div class="slot">
+      🧪
+    </div>
+
+    <div class="slot">
+      🛡️
+    </div>
+
+    <div class="slot">
+      🍎
+    </div>
+
+    <div class="slot">
+      📘
+    </div>
+
   </div>
 
   <!-- GAME -->
@@ -341,27 +397,35 @@
 
     (adsbygoogle = window.adsbygoogle || []).push({});
 
-    const canvas = document.getElementById("game");
-    const ctx = canvas.getContext("2d");
+    const canvas =
+    document.getElementById("game");
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    const ctx =
+    canvas.getContext("2d");
+
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
 
     // PLAYER
 
     const player = {
 
-      x:200,
-      y:200,
-      size:34,
-      speed:4,
-      color:"#f97316",
+      x:900,
+      y:900,
 
-      hp:100,
-      level:1,
-      xp:0,
+      size:32,
+
+      speed:4,
+
+      health:100,
+
       coins:0,
-      gear:"Basic"
+
+      xp:0,
+
+      level:1,
+
+      damage:1
 
     };
 
@@ -378,7 +442,7 @@
 
     const keys = {};
 
-    document.addEventListener("keydown",e=>{
+    addEventListener("keydown",e=>{
 
       keys[e.key.toLowerCase()] = true;
 
@@ -394,7 +458,7 @@
 
     });
 
-    document.addEventListener("keyup",e=>{
+    addEventListener("keyup",e=>{
 
       keys[e.key.toLowerCase()] = false;
 
@@ -408,22 +472,22 @@
 
     });
 
-    // BIG SCHOOL MAP
-
-    const world = {
-
-      width:5000,
-      height:5000
-
-    };
-
-    // BUILDINGS
+    // REAL MAP
 
     const buildings = [
 
       {
-        x:600,
+        x:500,
         y:500,
+        w:600,
+        h:400,
+        color:"#475569",
+        name:"School"
+      },
+
+      {
+        x:1500,
+        y:700,
         w:400,
         h:300,
         color:"#334155",
@@ -431,39 +495,30 @@
       },
 
       {
-        x:1300,
-        y:800,
+        x:2500,
+        y:500,
         w:450,
         h:350,
-        color:"#475569",
+        color:"#1e293b",
         name:"Blacksmith"
       },
 
       {
-        x:2400,
-        y:600,
-        w:600,
-        h:400,
-        color:"#1e293b",
-        name:"Cafeteria"
-      },
-
-      {
-        x:3200,
-        y:1300,
-        w:500,
-        h:350,
-        color:"#334155",
+        x:2200,
+        y:1800,
+        w:650,
+        h:500,
+        color:"#475569",
         name:"Gym"
       },
 
       {
-        x:1800,
-        y:2200,
-        w:700,
-        h:500,
-        color:"#475569",
-        name:"Main School"
+        x:700,
+        y:2100,
+        w:500,
+        h:350,
+        color:"#334155",
+        name:"Cafeteria"
       }
 
     ];
@@ -472,14 +527,16 @@
 
     const enemies = [];
 
-    for(let i=0;i<25;i++){
+    for(let i=0;i<20;i++){
 
       enemies.push({
 
-        x:Math.random()*4500,
-        y:Math.random()*4500,
+        x:Math.random()*3200,
+        y:Math.random()*3200,
+
         size:28,
-        hp:50
+
+        health:5
 
       });
 
@@ -490,7 +547,7 @@
     function saveGame(){
 
       localStorage.setItem(
-        "schoolEssentialsSave",
+        "schoolSave",
 
         JSON.stringify(player)
 
@@ -502,14 +559,15 @@
 
       const save =
       localStorage.getItem(
-        "schoolEssentialsSave"
+        "schoolSave"
       );
 
       if(save){
 
-        const data = JSON.parse(save);
-
-        Object.assign(player,data);
+        Object.assign(
+          player,
+          JSON.parse(save)
+        );
 
       }
 
@@ -521,31 +579,25 @@
 
     // UPGRADES
 
-    function upgradeWeapon(){
+    function upgradeSword(){
 
       if(player.coins >= 50){
 
         player.coins -= 50;
 
-        player.level++;
-
-        player.gear = "Steel";
-
-        updateUI();
+        player.damage++;
 
       }
 
     }
 
-    function upgradeArmor(){
+    function healPlayer(){
 
-      if(player.coins >= 40){
+      if(player.coins >= 25){
 
-        player.coins -= 40;
+        player.coins -= 25;
 
-        player.hp += 20;
-
-        updateUI();
+        player.health = 100;
 
       }
 
@@ -556,65 +608,49 @@
     function updateUI(){
 
       document.getElementById(
-        "hpText"
-      ).innerText = player.hp;
+        "healthText"
+      ).innerText =
+      Math.floor(player.health);
+
+      document.getElementById(
+        "coinsText"
+      ).innerText =
+      player.coins;
 
       document.getElementById(
         "levelText"
-      ).innerText = player.level;
-
-      document.getElementById(
-        "coinText"
-      ).innerText = player.coins;
+      ).innerText =
+      player.level;
 
       document.getElementById(
         "xpText"
-      ).innerText = player.xp;
+      ).innerText =
+      player.xp;
 
       document.getElementById(
-        "gearText"
-      ).innerText = player.gear;
+        "xpFill"
+      ).style.width =
+      player.xp + "%";
 
     }
 
-    // GAME LOOP
+    // UPDATE
 
     function update(){
 
-      let speed = player.speed;
-
-      if(keys["shift"]){
-
-        speed = 7;
-
-      }
+      let speed =
+      keys["shift"] ? 7 : 4;
 
       if(keys["w"]) player.y -= speed;
       if(keys["s"]) player.y += speed;
       if(keys["a"]) player.x -= speed;
       if(keys["d"]) player.x += speed;
 
-      // WORLD LIMITS
-
-      player.x = Math.max(
-        0,
-        Math.min(world.width,player.x)
-      );
-
-      player.y = Math.max(
-        0,
-        Math.min(world.height,player.y)
-      );
-
-      // CAMERA FOLLOW
-
       camera.x =
       player.x - canvas.width/2;
 
       camera.y =
       player.y - canvas.height/2;
-
-      // ENEMIES
 
       enemies.forEach(enemy=>{
 
@@ -627,16 +663,16 @@
         let dist =
         Math.sqrt(dx*dx + dy*dy);
 
-        if(dist < 300){
+        if(dist < 250){
 
-          enemy.x += dx/dist * 1;
-          enemy.y += dy/dist * 1;
+          enemy.x += dx/dist;
+          enemy.y += dy/dist;
 
         }
 
-        if(dist < 40){
+        if(dist < 35){
 
-          player.hp -= 0.05;
+          player.health -= 0.05;
 
         }
 
@@ -644,20 +680,20 @@
 
         if(keys["e"] && dist < 60){
 
-          enemy.hp -= 1;
+          enemy.health -= player.damage;
 
-          if(enemy.hp <= 0){
+          if(enemy.health <= 0){
 
             enemy.x =
-            Math.random()*4500;
+            Math.random()*3200;
 
             enemy.y =
-            Math.random()*4500;
+            Math.random()*3200;
 
-            enemy.hp = 50;
+            enemy.health = 5;
 
             player.coins += 10;
-            player.xp += 15;
+            player.xp += 10;
 
             if(player.xp >= 100){
 
@@ -689,7 +725,7 @@
 
       // GRASS
 
-      ctx.fillStyle = "#14532d";
+      ctx.fillStyle = "#3b7a44";
 
       ctx.fillRect(
         0,
@@ -698,45 +734,49 @@
         canvas.height
       );
 
-      // GRID
-
-      ctx.strokeStyle = "#166534";
-
-      for(let x=-camera.x%100;x<canvas.width;x+=100){
-
-        ctx.beginPath();
-        ctx.moveTo(x,0);
-        ctx.lineTo(x,canvas.height);
-        ctx.stroke();
-
-      }
-
-      for(let y=-camera.y%100;y<canvas.height;y+=100){
-
-        ctx.beginPath();
-        ctx.moveTo(0,y);
-        ctx.lineTo(canvas.width,y);
-        ctx.stroke();
-
-      }
-
       // ROADS
 
-      ctx.fillStyle = "#475569";
+      ctx.fillStyle = "#6b7280";
 
       ctx.fillRect(
         -camera.x,
-        950-camera.y,
-        world.width,
-        120
+        1000-camera.y,
+        4000,
+        140
       );
 
       ctx.fillRect(
-        2100-camera.x,
+        1800-camera.x,
         -camera.y,
-        120,
-        world.height
+        140,
+        4000
       );
+
+      // TREES
+
+      for(let i=0;i<80;i++){
+
+        let tx =
+        (i*280)%3800;
+
+        let ty =
+        Math.floor(i/8)*300;
+
+        ctx.fillStyle = "#14532d";
+
+        ctx.beginPath();
+
+        ctx.arc(
+          tx-camera.x,
+          ty-camera.y,
+          40,
+          0,
+          Math.PI*2
+        );
+
+        ctx.fill();
+
+      }
 
       // BUILDINGS
 
@@ -754,7 +794,7 @@
 
         ctx.fillStyle = "white";
 
-        ctx.font = "22px Arial";
+        ctx.font = "24px Arial";
 
         ctx.fillText(
           building.name,
@@ -781,8 +821,7 @@
 
       // PLAYER
 
-      ctx.fillStyle =
-      player.color;
+      ctx.fillStyle = "#f97316";
 
       ctx.fillRect(
         player.x-camera.x,
@@ -791,50 +830,30 @@
         player.size
       );
 
-      // PLAYER LABEL
-
-      ctx.fillStyle = "white";
-
-      ctx.font = "18px Arial";
-
-      ctx.fillText(
-        "You",
-        player.x-camera.x,
-        player.y-camera.y-10
-      );
-
     }
 
-    // LOOP
+    // GAME LOOP
 
-    function gameLoop(){
+    function loop(){
 
       update();
       draw();
 
-      requestAnimationFrame(
-        gameLoop
-      );
+      requestAnimationFrame(loop);
 
     }
 
     updateUI();
-    gameLoop();
+    loop();
 
     // RESIZE
 
-    window.addEventListener(
-      "resize",
-      ()=>{
+    addEventListener("resize",()=>{
 
-        canvas.width =
-        window.innerWidth;
+      canvas.width = innerWidth;
+      canvas.height = innerHeight;
 
-        canvas.height =
-        window.innerHeight;
-
-      }
-    );
+    });
 
   </script>
 
