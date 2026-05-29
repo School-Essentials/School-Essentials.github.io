@@ -7,15 +7,47 @@
 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4335653991954613"
 crossorigin="anonymous"></script>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- GOOGLE FUNDING CHOICES -->
+<script async
+src="https://fundingchoicesmessages.google.com/i/pub-4335653991954613?ers=1">
+</script>
 
-<title>School Essentials MMO</title>
+<script>
+(function() {
+function signalGooglefcPresent() {
+if (!window.frames['googlefcPresent']) {
+if (document.body) {
+
+const iframe =
+document.createElement('iframe');
+
+iframe.style =
+'width:0;height:0;border:none;z-index:-1000;left:-1000px;top:-1000px;';
+
+iframe.style.display = 'none';
+
+iframe.name = 'googlefcPresent';
+
+document.body.appendChild(iframe);
+
+}
+else{
+setTimeout(signalGooglefcPresent,0);
+}
+}
+}
+signalGooglefcPresent();
+})();
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <meta name="google-adsense-account"
 content="ca-pub-4335653991954613">
 
-<link rel="icon" type="image/png" href="favicon.png">
+<title>School Essentials MMO</title>
 
 <style>
 
@@ -32,7 +64,7 @@ background:#0b1220;
 color:white;
 }
 
-/* WORLD */
+/* GAME */
 
 #game{
 position:relative;
@@ -66,7 +98,7 @@ background:#8b7355;
 .water{
 position:absolute;
 background:#3399ff;
-border-radius:12px;
+border-radius:20px;
 }
 
 /* BUILDINGS */
@@ -75,17 +107,19 @@ border-radius:12px;
 position:absolute;
 background:#d1d5db;
 border:6px solid #6b7280;
-border-radius:18px;
+border-radius:20px;
 }
 
 .school-label{
 position:absolute;
-top:20px;
+top:-55px;
 left:50%;
 transform:translateX(-50%);
-font-size:30px;
+font-size:38px;
 font-weight:bold;
-color:#111827;
+color:white;
+text-shadow:0 0 10px black;
+z-index:999;
 }
 
 /* TREES */
@@ -118,7 +152,6 @@ background:#3b82f6;
 border-radius:14px;
 border:4px solid white;
 z-index:100;
-transition:0.05s linear;
 }
 
 #player::after{
@@ -148,7 +181,7 @@ font-weight:bold;
 font-size:20px;
 }
 
-/* ENEMIES */
+/* ENEMY */
 
 .enemy{
 position:absolute;
@@ -215,7 +248,6 @@ display:flex;
 justify-content:center;
 align-items:center;
 font-size:30px;
-transition:0.15s;
 }
 
 .slot.active{
@@ -257,7 +289,7 @@ justify-content:center;
 font-size:32px;
 }
 
-/* TAB MENU */
+/* TAB */
 
 #tabMenu{
 position:fixed;
@@ -318,11 +350,19 @@ cursor:pointer;
 z-index:1000;
 }
 
-#rewardBtn:hover{
-background:#ea580c;
+#boostTimer{
+position:fixed;
+right:30px;
+bottom:70px;
+background:#0f172a;
+padding:12px 18px;
+border-radius:14px;
+border:2px solid #334155;
+font-weight:bold;
+z-index:999;
 }
 
-/* DAMAGE TEXT */
+/* DAMAGE */
 
 #damageText{
 position:fixed;
@@ -349,6 +389,7 @@ display:none;
 
 </style>
 </head>
+
 <body>
 
 <div id="game">
@@ -370,6 +411,26 @@ SCHOOL
 </div>
 
 </div>
+
+<!-- EXTRA BUILDINGS -->
+
+<div class="building"
+style="
+left:1400px;
+top:1600px;
+width:350px;
+height:260px;
+background:#c084fc;
+"></div>
+
+<div class="building"
+style="
+left:3200px;
+top:1800px;
+width:420px;
+height:320px;
+background:#60a5fa;
+"></div>
 
 <!-- ROADS -->
 
@@ -410,12 +471,6 @@ style="left:700px;top:1300px;"></div>
 <div class="tree"
 style="left:3200px;top:2200px;"></div>
 
-<div class="tree"
-style="left:3500px;top:900px;"></div>
-
-<div class="tree"
-style="left:1600px;top:3200px;"></div>
-
 <!-- NPCS -->
 
 <div class="npc"
@@ -430,6 +485,12 @@ style="left:1800px;top:2200px;">
 ⚒
 </div>
 
+<div class="npc"
+id="merchant"
+style="left:1600px;top:1800px;">
+$
+</div>
+
 <!-- ENEMIES -->
 
 <div class="enemy"
@@ -440,9 +501,6 @@ style="left:3300px;top:2400px;"></div>
 
 <div class="enemy"
 style="left:2800px;top:2900px;"></div>
-
-<div class="enemy"
-style="left:3400px;top:3000px;"></div>
 
 <!-- PLAYER -->
 
@@ -475,7 +533,7 @@ HP: <span id="hp">100</span>
 <!-- QUEST -->
 
 <div id="quest">
-Quest: Talk to the teacher in the school.
+Quest: Talk to the teacher.
 </div>
 
 <!-- DAMAGE -->
@@ -486,25 +544,20 @@ Quest: Talk to the teacher in the school.
 
 <div id="hotbar">
 
-<div class="slot active" data-slot="1">
-🗡
-</div>
+<div class="slot active"
+data-slot="1">🗡</div>
 
-<div class="slot" data-slot="2">
-🏹
-</div>
+<div class="slot"
+data-slot="2">🏹</div>
 
-<div class="slot" data-slot="3">
-🧪
-</div>
+<div class="slot"
+data-slot="3">🧪</div>
 
-<div class="slot" data-slot="4">
-🛡
-</div>
+<div class="slot"
+data-slot="4">🛡</div>
 
-<div class="slot" data-slot="5">
-🍖
-</div>
+<div class="slot"
+data-slot="5">🍖</div>
 
 </div>
 
@@ -516,46 +569,33 @@ Quest: Talk to the teacher in the school.
 Inventory
 </h1>
 
-<div id="inventoryGrid">
-
-<div class="invSlot">🗡</div>
-<div class="invSlot">🏹</div>
-<div class="invSlot">🧪</div>
-<div class="invSlot">🛡</div>
-<div class="invSlot">🍖</div>
-<div class="invSlot"></div>
-
-<div class="invSlot"></div>
-<div class="invSlot"></div>
-<div class="invSlot"></div>
-<div class="invSlot"></div>
-<div class="invSlot"></div>
-<div class="invSlot"></div>
+<div id="inventoryGrid"></div>
 
 </div>
 
-</div>
-
-<!-- TAB MENU -->
+<!-- TAB -->
 
 <div id="tabMenu">
 
 <div id="tabContent">
 
-<h1 style="color:#f97316;margin-bottom:20px;">
+<h1 style="color:#f97316;">
 Player Stats
 </h1>
 
-<p style="margin-bottom:10px;">
-Level: <span id="tabLevel">1</span>
-</p>
-
-<p style="margin-bottom:10px;">
-XP: <span id="tabXP">0</span>
+<p>
+Level:
+<span id="tabLevel">1</span>
 </p>
 
 <p>
-Coins: <span id="tabCoins">0</span>
+XP:
+<span id="tabXP">0</span>
+</p>
+
+<p>
+Coins:
+<span id="tabCoins">0</span>
 </p>
 
 </div>
@@ -590,6 +630,10 @@ data-ad-format="vertical"></ins>
 ▶ Watch Ad → Double XP
 </button>
 
+<div id="boostTimer">
+XP Boost: 0:00
+</div>
+
 </div>
 
 <script>
@@ -599,7 +643,7 @@ data-ad-format="vertical"></ins>
 (adsbygoogle = window.adsbygoogle || []).push({});
 (adsbygoogle = window.adsbygoogle || []).push({});
 
-/* PLAYER */
+/* VARIABLES */
 
 const player =
 document.getElementById('player');
@@ -624,29 +668,72 @@ let hp = 100;
 
 let damage = 15;
 
+let xpNeeded = 100;
+
 let doubleXP = false;
 
-/* LOAD SAVE */
+let boostSeconds = 0;
+
+let questStage = 0;
+
+let inventory = [
+'🗡',
+'🏹',
+'🧪',
+'🛡',
+'🍖',
+'',
+'',
+'',
+'',
+'',
+'',
+''
+];
+
+const monsterDrops = [
+'🪙',
+'🧪',
+'💎',
+'⚔',
+'🛡',
+'🍖'
+];
+
+/* LOAD */
 
 function loadGame(){
 
 const save =
 JSON.parse(
-localStorage.getItem('schoolMMO')
-);
+localStorage.getItem(
+'schoolMMO'
+));
 
 if(save){
 
-x = save.x;
-y = save.y;
-xp = save.xp;
-level = save.level;
-coins = save.coins;
-hp = save.hp;
+x = save.x || 2400;
+y = save.y || 2400;
+xp = save.xp || 0;
+level = save.level || 1;
+coins = save.coins || 0;
+hp = save.hp || 100;
+damage = save.damage || 15;
+xpNeeded =
+save.xpNeeded || 100;
 
-updateHud();
+inventory =
+save.inventory || inventory;
+
+questStage =
+save.questStage || 0;
+
+boostSeconds =
+save.boostSeconds || 0;
 
 }
+
+updateHud();
 
 }
 
@@ -666,13 +753,46 @@ y,
 xp,
 level,
 coins,
-hp
+hp,
+damage,
+xpNeeded,
+inventory,
+questStage,
+boostSeconds
 
 })
 
 );
 
 },3000);
+
+/* INVENTORY */
+
+function renderInventory(){
+
+const grid =
+document.getElementById(
+'inventoryGrid'
+);
+
+grid.innerHTML = '';
+
+inventory.forEach(item=>{
+
+const slot =
+document.createElement('div');
+
+slot.className = 'invSlot';
+
+slot.innerText = item;
+
+grid.appendChild(slot);
+
+});
+
+}
+
+renderInventory();
 
 /* HUD */
 
@@ -706,9 +826,40 @@ document.getElementById(
 'tabCoins'
 ).innerText = coins;
 
+renderInventory();
+
 }
 
-/* MOVEMENT */
+/* XP */
+
+function gainXP(amount){
+
+xp += amount;
+
+while(xp >= xpNeeded){
+
+xp -= xpNeeded;
+
+level++;
+
+xpNeeded =
+Math.floor(
+xpNeeded * 1.35
+);
+
+damage += 5;
+
+hp += 20;
+
+coins += 50;
+
+}
+
+updateHud();
+
+}
+
+/* CONTROLS */
 
 window.addEventListener(
 'keydown',
@@ -716,8 +867,6 @@ window.addEventListener(
 e=>{
 
 keys[e.key.toLowerCase()] = true;
-
-/* TAB */
 
 if(e.key === 'Tab'){
 
@@ -728,8 +877,6 @@ document.getElementById(
 ).style.display = 'flex';
 
 }
-
-/* INVENTORY */
 
 if(e.key.toLowerCase() === 'e'){
 
@@ -742,7 +889,8 @@ if(inv.style.display === 'block'){
 
 inv.style.display = 'none';
 
-}else{
+}
+else{
 
 inv.style.display = 'block';
 
@@ -750,15 +898,11 @@ inv.style.display = 'block';
 
 }
 
-/* ATTACK */
-
 if(e.key === ' '){
 
 attack();
 
 }
-
-/* HOTBAR */
 
 if(['1','2','3','4','5']
 .includes(e.key)){
@@ -841,23 +985,46 @@ damageText.innerText = '';
 
 enemy.style.display = 'none';
 
-coins += 25;
+coins +=
+Math.floor(
+Math.random()*60
+)+20;
 
-xp += doubleXP ? 40 : 20;
+gainXP(
+doubleXP ? 45 : 25
+);
 
-if(xp >= 100){
+const rngDrop =
+monsterDrops[
+Math.floor(
+Math.random() *
+monsterDrops.length
+)
+];
 
-level++;
+let empty =
+inventory.indexOf('');
 
-xp = 0;
+if(empty !== -1){
 
-damage += 5;
-
-hp += 20;
+inventory[empty] =
+rngDrop;
 
 }
 
 updateHud();
+
+setTimeout(()=>{
+
+enemy.style.display = 'block';
+
+enemy.style.left =
+(Math.random()*4200+300)+'px';
+
+enemy.style.top =
+(Math.random()*4200+300)+'px';
+
+},15000);
 
 }
 
@@ -872,12 +1039,14 @@ document.getElementById(
 'teacher'
 );
 
-let questDone = false;
+const blacksmith =
+document.getElementById(
+'blacksmith'
+);
 
 setInterval(()=>{
 
-if(questDone)
-return;
+if(questStage === 0){
 
 let tx =
 parseInt(teacher.style.left);
@@ -890,32 +1059,23 @@ Math.hypot(tx - x, ty - y);
 
 if(dist < 120){
 
-questDone = true;
-
-xp += 50;
+questStage = 1;
 
 coins += 100;
 
-updateHud();
+gainXP(50);
 
 document.getElementById(
 'quest'
 ).innerText =
 
-'Quest Complete! +50 XP +100 Coins';
+'Quest 2: Visit the blacksmith';
 
 }
 
-},1000);
+}
 
-/* BLACKSMITH */
-
-const blacksmith =
-document.getElementById(
-'blacksmith'
-);
-
-setInterval(()=>{
+else if(questStage === 1){
 
 let bx =
 parseInt(blacksmith.style.left);
@@ -926,19 +1086,29 @@ parseInt(blacksmith.style.top);
 let dist =
 Math.hypot(bx - x, by - y);
 
-if(dist < 120 && coins >= 100){
+if(dist < 120){
 
-coins -= 100;
+questStage = 2;
+
+coins += 150;
+
+gainXP(75);
 
 damage += 5;
 
-updateHud();
+document.getElementById(
+'quest'
+).innerText =
+
+'Quest 3: Defeat enemies';
+
+}
 
 }
 
 },1000);
 
-/* AD REWARD */
+/* REWARD */
 
 document.getElementById(
 'rewardBtn'
@@ -946,13 +1116,41 @@ document.getElementById(
 
 doubleXP = true;
 
+boostSeconds = 300;
+
 document.getElementById(
 'rewardBtn'
 ).innerText =
 
 'Double XP Active!';
 
-setTimeout(()=>{
+};
+
+/* BOOST TIMER */
+
+setInterval(()=>{
+
+if(boostSeconds > 0){
+
+boostSeconds--;
+
+const mins =
+Math.floor(
+boostSeconds / 60
+);
+
+const secs =
+boostSeconds % 60;
+
+document.getElementById(
+'boostTimer'
+).innerText =
+
+`XP Boost: ${mins}:${secs
+.toString()
+.padStart(2,'0')}`;
+
+if(boostSeconds <= 0){
 
 doubleXP = false;
 
@@ -962,9 +1160,11 @@ document.getElementById(
 
 '▶ Watch Ad → Double XP';
 
-},300000);
+}
 
-};
+}
+
+},1000);
 
 /* GAME LOOP */
 
@@ -995,6 +1195,12 @@ updateHud();
 
 gameLoop();
 
+</script>
+
+<!-- ADSENSE AUTO ADS -->
+
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
 </body>
