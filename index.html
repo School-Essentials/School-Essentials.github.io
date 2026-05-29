@@ -2,1000 +2,1079 @@
 <html lang="en">
 <head>
 
-<!-- GOOGLE ADSENSE -->
-<script async
-src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4335653991954613"
-crossorigin="anonymous"></script>
+  <!-- GOOGLE ADSENSE -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4335653991954613"
+    crossorigin="anonymous"></script>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>School Essentials MMO</title>
+  <title>School Essentials MMO</title>
 
-<meta name="google-adsense-account"
-content="ca-pub-4335653991954613">
+  <!-- ADSENSE -->
+  <meta name="google-adsense-account"
+        content="ca-pub-4335653991954613">
 
-<link rel="icon" type="image/png" href="favicon.png">
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="favicon.png">
 
-<style>
+  <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial,sans-serif;
+    }
 
-body{
-overflow:hidden;
-background:#0b1220;
-color:white;
-}
+    body{
+      background:#0b1120;
+      color:white;
+      overflow:hidden;
+    }
 
-/* WORLD */
+    canvas{
+      display:block;
+      background:#1e293b;
+    }
 
-#game{
-position:relative;
-width:100vw;
-height:100vh;
-overflow:hidden;
-}
+    /* HUD */
 
-#world{
-position:absolute;
-width:5000px;
-height:5000px;
+    .hud{
+      position:fixed;
+      top:15px;
+      left:15px;
+      z-index:10;
 
-background:
-linear-gradient(
-to bottom,
-#2d8b57,
-#246c45
-);
-}
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
 
-/* ROADS */
+    .hud-box{
+      background:rgba(15,23,42,0.92);
+      border:2px solid #334155;
+      border-radius:14px;
+      padding:10px 14px;
+      min-width:210px;
+      backdrop-filter:blur(4px);
+    }
 
-.road{
-position:absolute;
-background:#8b7355;
-}
+    .hud-title{
+      color:#f97316;
+      font-weight:bold;
+      margin-bottom:6px;
+    }
 
-/* WATER */
+    .bar{
+      width:100%;
+      height:16px;
+      background:#1e293b;
+      border-radius:999px;
+      overflow:hidden;
+      margin-top:6px;
+    }
 
-.water{
-position:absolute;
-background:#3399ff;
-border-radius:12px;
-}
+    .fill{
+      height:100%;
+    }
 
-/* BUILDINGS */
+    .health-fill{
+      background:#ef4444;
+      width:100%;
+    }
 
-.building{
-position:absolute;
-background:#d1d5db;
-border:6px solid #6b7280;
-border-radius:18px;
-}
+    .xp-fill{
+      background:#22c55e;
+      width:0%;
+    }
 
-.school-label{
-position:absolute;
-top:20px;
-left:50%;
-transform:translateX(-50%);
-font-size:30px;
-font-weight:bold;
-color:#111827;
-}
+    /* QUESTS */
 
-/* TREES */
+    .quest-box{
+      position:fixed;
+      top:15px;
+      right:15px;
+      width:280px;
 
-.tree{
-position:absolute;
-width:90px;
-height:90px;
-background:#1d7a37;
-border-radius:50%;
-}
+      background:rgba(15,23,42,0.95);
+      border:2px solid #334155;
 
-.tree::after{
-content:'';
-position:absolute;
-width:18px;
-height:45px;
-background:#5b3a1d;
-left:36px;
-top:60px;
-}
+      border-radius:14px;
 
-/* PLAYER */
+      padding:14px;
 
-#player{
-position:absolute;
-width:64px;
-height:64px;
-background:#3b82f6;
-border-radius:14px;
-border:4px solid white;
-z-index:100;
-transition:0.05s linear;
-}
+      z-index:10;
+    }
 
-#player::after{
-content:'';
-position:absolute;
-width:22px;
-height:22px;
-background:#93c5fd;
-border-radius:50%;
-top:8px;
-left:18px;
-}
+    .quest-box h2{
+      color:#f97316;
+      margin-bottom:10px;
+      font-size:1.1rem;
+    }
 
-/* NPC */
+    .quest{
+      margin-bottom:10px;
+      padding:8px;
+      background:#111827;
+      border-radius:10px;
+    }
 
-.npc{
-position:absolute;
-width:60px;
-height:60px;
-background:#f59e0b;
-border-radius:50%;
-border:4px solid white;
-display:flex;
-justify-content:center;
-align-items:center;
-font-weight:bold;
-font-size:20px;
-}
+    .complete{
+      color:#22c55e;
+    }
 
-/* ENEMIES */
+    /* INVENTORY */
 
-.enemy{
-position:absolute;
-width:60px;
-height:60px;
-background:#dc2626;
-border-radius:14px;
-border:4px solid white;
-}
+    .inventory{
+      position:fixed;
+      bottom:20px;
+      left:50%;
+      transform:translateX(-50%);
 
-/* HUD */
+      display:flex;
+      gap:10px;
 
-#topHud{
-position:fixed;
-top:15px;
-left:50%;
-transform:translateX(-50%);
-display:flex;
-gap:14px;
-z-index:999;
-}
+      z-index:20;
+    }
 
-.hudBox{
-background:rgba(15,23,42,0.9);
-padding:12px 18px;
-border-radius:14px;
-border:2px solid #334155;
-font-weight:bold;
-}
+    .slot{
+      width:70px;
+      height:70px;
 
-/* QUEST */
+      background:rgba(15,23,42,0.95);
 
-#quest{
-position:fixed;
-top:80px;
-left:50%;
-transform:translateX(-50%);
-background:rgba(15,23,42,0.95);
-padding:14px 20px;
-border-radius:14px;
-border:2px solid #334155;
-z-index:999;
-}
+      border:3px solid #334155;
 
-/* HOTBAR */
+      border-radius:14px;
 
-#hotbar{
-position:fixed;
-bottom:20px;
-left:50%;
-transform:translateX(-50%);
-display:flex;
-gap:8px;
-z-index:999;
-}
+      display:flex;
+      justify-content:center;
+      align-items:center;
 
-.slot{
-width:70px;
-height:70px;
-background:#1e293b;
-border:3px solid #475569;
-border-radius:14px;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:30px;
-transition:0.15s;
-}
+      font-size:2rem;
 
-.slot.active{
-border-color:#f97316;
-transform:translateY(-5px);
-}
+      transition:0.2s;
+    }
 
-/* INVENTORY */
+    .slot.active{
+      border-color:#f97316;
+      transform:translateY(-5px);
+    }
 
-#inventory{
-position:fixed;
-left:50%;
-top:50%;
-transform:translate(-50%,-50%);
-width:650px;
-background:rgba(15,23,42,0.97);
-padding:25px;
-border-radius:22px;
-border:3px solid #334155;
-display:none;
-z-index:3000;
-}
+    /* HOTBAR LABELS */
 
-#inventoryGrid{
-display:grid;
-grid-template-columns:repeat(6,1fr);
-gap:10px;
-margin-top:20px;
-}
+    .slot-number{
+      position:absolute;
+      margin-top:48px;
+      font-size:0.75rem;
+      color:#cbd5e1;
+    }
 
-.invSlot{
-height:80px;
-background:#1e293b;
-border:2px solid #475569;
-border-radius:12px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:32px;
-}
+    /* TAB MENU */
 
-/* TAB MENU */
+    .tab-screen{
+      position:fixed;
+      inset:0;
 
-#tabMenu{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,0.7);
-display:none;
-justify-content:center;
-align-items:center;
-z-index:4000;
-}
+      background:rgba(0,0,0,0.8);
 
-#tabContent{
-width:400px;
-background:#0f172a;
-padding:35px;
-border-radius:24px;
-border:3px solid #334155;
-text-align:center;
-}
+      z-index:50;
 
-/* ADS */
+      display:none;
+      justify-content:center;
+      align-items:center;
+    }
 
-#adLeft,
-#adRight{
-position:fixed;
-top:120px;
-width:160px;
-height:600px;
-background:#111827;
-border-radius:18px;
-border:2px solid #1e293b;
-padding:10px;
-z-index:500;
-}
+    .tab-content{
+      width:80%;
+      max-width:900px;
 
-#adLeft{
-left:10px;
-}
+      background:#0f172a;
 
-#adRight{
-right:10px;
-}
+      border:2px solid #334155;
 
-/* REWARD */
+      border-radius:20px;
 
-#rewardBtn{
-position:fixed;
-right:30px;
-bottom:120px;
-padding:16px 22px;
-background:#f97316;
-border:none;
-border-radius:16px;
-font-size:16px;
-font-weight:bold;
-color:white;
-cursor:pointer;
-z-index:1000;
-}
+      padding:30px;
+    }
 
-#rewardBtn:hover{
-background:#ea580c;
-}
+    .tab-title{
+      font-size:2rem;
+      color:#f97316;
+      margin-bottom:20px;
+    }
 
-/* DAMAGE TEXT */
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:20px;
+    }
 
-#damageText{
-position:fixed;
-top:140px;
-left:50%;
-transform:translateX(-50%);
-font-size:34px;
-font-weight:bold;
-color:#ff6666;
-z-index:5000;
-pointer-events:none;
-}
+    .stat-card{
+      background:#111827;
+      padding:20px;
+      border-radius:16px;
+      border:2px solid #1e293b;
+    }
 
-/* MOBILE */
+    .stat-card h3{
+      color:#f97316;
+      margin-bottom:10px;
+    }
 
-@media(max-width:1000px){
+    /* ADS */
 
-#adLeft,
-#adRight{
-display:none;
-}
+    .left-ad,
+    .right-ad{
+      position:fixed;
+      top:120px;
+      width:160px;
+      height:600px;
+      z-index:5;
+      background:#0f172a;
+      border:2px solid #1e293b;
+      border-radius:18px;
+      overflow:hidden;
+    }
 
-}
+    .left-ad{
+      left:10px;
+    }
 
-</style>
+    .right-ad{
+      right:10px;
+    }
+
+    /* VIDEO AD */
+
+    .reward-box{
+      position:fixed;
+      bottom:120px;
+      right:20px;
+
+      background:#0f172a;
+
+      border:2px solid #f97316;
+
+      border-radius:16px;
+
+      padding:16px;
+
+      z-index:15;
+
+      width:260px;
+    }
+
+    .reward-box h3{
+      color:#f97316;
+      margin-bottom:10px;
+    }
+
+    .reward-btn{
+      width:100%;
+      padding:12px;
+      background:#f97316;
+      border:none;
+      border-radius:12px;
+      color:white;
+      font-weight:bold;
+      cursor:pointer;
+      margin-top:10px;
+    }
+
+    .reward-btn:hover{
+      background:#ea580c;
+    }
+
+    /* NPC CHAT */
+
+    .dialogue{
+      position:fixed;
+      bottom:120px;
+      left:20px;
+
+      width:350px;
+
+      background:rgba(15,23,42,0.95);
+
+      border:2px solid #334155;
+
+      border-radius:18px;
+
+      padding:18px;
+
+      z-index:15;
+
+      display:none;
+    }
+
+    .dialogue h3{
+      color:#f97316;
+      margin-bottom:10px;
+    }
+
+    .dialogue button{
+      margin-top:12px;
+      width:100%;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:1200px){
+
+      .left-ad,
+      .right-ad{
+        display:none;
+      }
+
+    }
+
+  </style>
+
 </head>
+
 <body>
 
-<div id="game">
+  <!-- ADS -->
 
-<div id="world">
+  <div class="left-ad">
 
-<!-- SCHOOL -->
+    <ins class="adsbygoogle"
+      style="display:block;width:160px;height:600px"
+      data-ad-client="ca-pub-4335653991954613"
+      data-ad-slot="1234567890"></ins>
 
-<div class="building"
-style="
-left:2100px;
-top:1800px;
-width:700px;
-height:420px;
-">
+  </div>
 
-<div class="school-label">
-SCHOOL
-</div>
+  <div class="right-ad">
 
-</div>
+    <ins class="adsbygoogle"
+      style="display:block;width:160px;height:600px"
+      data-ad-client="ca-pub-4335653991954613"
+      data-ad-slot="1234567890"></ins>
 
-<!-- ROADS -->
+  </div>
 
-<div class="road"
-style="
-left:0;
-top:1980px;
-width:5000px;
-height:140px;
-"></div>
+  <!-- HUD -->
 
-<div class="road"
-style="
-left:2400px;
-top:0;
-width:140px;
-height:5000px;
-"></div>
+  <div class="hud">
 
-<!-- WATER -->
+    <div class="hud-box">
 
-<div class="water"
-style="
-left:900px;
-top:600px;
-width:600px;
-height:350px;
-"></div>
+      <div class="hud-title">
+        🎮 Player
+      </div>
 
-<!-- TREES -->
+      <div>Level: <span id="level">1</span></div>
 
-<div class="tree"
-style="left:600px;top:1200px;"></div>
+      <div>Coins: <span id="coins">50</span></div>
 
-<div class="tree"
-style="left:700px;top:1300px;"></div>
+      <div>Health</div>
 
-<div class="tree"
-style="left:3200px;top:2200px;"></div>
+      <div class="bar">
+        <div class="fill health-fill"
+        id="healthFill"></div>
+      </div>
 
-<div class="tree"
-style="left:3500px;top:900px;"></div>
+      <div>XP</div>
 
-<div class="tree"
-style="left:1600px;top:3200px;"></div>
+      <div class="bar">
+        <div class="fill xp-fill"
+        id="xpFill"></div>
+      </div>
 
-<!-- NPCS -->
+    </div>
 
-<div class="npc"
-id="teacher"
-style="left:2350px;top:2050px;">
-!
-</div>
+  </div>
 
-<div class="npc"
-id="blacksmith"
-style="left:1800px;top:2200px;">
-⚒
-</div>
+  <!-- QUESTS -->
 
-<!-- ENEMIES -->
+  <div class="quest-box">
 
-<div class="enemy"
-style="left:3000px;top:2500px;"></div>
+    <h2>📜 Quests</h2>
 
-<div class="enemy"
-style="left:3300px;top:2400px;"></div>
+    <div class="quest" id="quest1">
+      Talk to the Principal
+    </div>
 
-<div class="enemy"
-style="left:2800px;top:2900px;"></div>
+    <div class="quest" id="quest2">
+      Defeat 3 Hall Monsters (0/3)
+    </div>
 
-<div class="enemy"
-style="left:3400px;top:3000px;"></div>
+    <div class="quest" id="quest3">
+      Visit the Blacksmith
+    </div>
 
-<!-- PLAYER -->
+  </div>
 
-<div id="player"></div>
+  <!-- VIDEO AD -->
 
-</div>
+  <div class="reward-box">
 
-<!-- HUD -->
+    <h3>🎥 Watch Ad Reward</h3>
 
-<div id="topHud">
+    <p>
+      Watch a short ad for DOUBLE XP for 5 minutes.
+    </p>
 
-<div class="hudBox">
-Lvl: <span id="level">1</span>
-</div>
+    <button
+      class="reward-btn"
+      onclick="watchAd()">
 
-<div class="hudBox">
-XP: <span id="xp">0</span>/100
-</div>
+      Watch Ad
 
-<div class="hudBox">
-Coins: <span id="coins">0</span>
-</div>
+    </button>
 
-<div class="hudBox">
-HP: <span id="hp">100</span>
-</div>
+  </div>
 
-</div>
+  <!-- NPC DIALOG -->
 
-<!-- QUEST -->
+  <div class="dialogue"
+  id="dialogueBox">
 
-<div id="quest">
-Quest: Talk to the teacher in the school.
-</div>
+    <h3 id="npcName">
+      NPC
+    </h3>
 
-<!-- DAMAGE -->
+    <p id="npcText">
+      Hello!
+    </p>
 
-<div id="damageText"></div>
+    <button
+      class="reward-btn"
+      onclick="closeDialogue()">
 
-<!-- HOTBAR -->
+      Continue
 
-<div id="hotbar">
+    </button>
 
-<div class="slot active" data-slot="1">
-🗡
-</div>
+  </div>
 
-<div class="slot" data-slot="2">
-🏹
-</div>
+  <!-- TAB SCREEN -->
 
-<div class="slot" data-slot="3">
-🧪
-</div>
+  <div class="tab-screen"
+  id="tabScreen">
 
-<div class="slot" data-slot="4">
-🛡
-</div>
+    <div class="tab-content">
 
-<div class="slot" data-slot="5">
-🍖
-</div>
+      <div class="tab-title">
+        School Essentials MMO
+      </div>
 
-</div>
+      <div class="stats-grid">
 
-<!-- INVENTORY -->
+        <div class="stat-card">
 
-<div id="inventory">
+          <h3>📈 Stats</h3>
 
-<h1 style="color:#f97316;">
-Inventory
-</h1>
+          <p>Level: <span id="tabLevel">1</span></p>
+          <p>XP: <span id="tabXP">0</span></p>
+          <p>Coins: <span id="tabCoins">50</span></p>
 
-<div id="inventoryGrid">
+        </div>
 
-<div class="invSlot">🗡</div>
-<div class="invSlot">🏹</div>
-<div class="invSlot">🧪</div>
-<div class="invSlot">🛡</div>
-<div class="invSlot">🍖</div>
-<div class="invSlot"></div>
+        <div class="stat-card">
 
-<div class="invSlot"></div>
-<div class="invSlot"></div>
-<div class="invSlot"></div>
-<div class="invSlot"></div>
-<div class="invSlot"></div>
-<div class="invSlot"></div>
+          <h3>⚔ Gear</h3>
 
-</div>
+          <p>Weapon: Wooden Sword</p>
+          <p>Armor: Student Hoodie</p>
 
-</div>
+        </div>
 
-<!-- TAB MENU -->
+        <div class="stat-card">
 
-<div id="tabMenu">
+          <h3>🌍 Zone</h3>
 
-<div id="tabContent">
+          <p>School Courtyard</p>
+          <p>Enemies nearby</p>
 
-<h1 style="color:#f97316;margin-bottom:20px;">
-Player Stats
-</h1>
+        </div>
 
-<p style="margin-bottom:10px;">
-Level: <span id="tabLevel">1</span>
-</p>
+      </div>
 
-<p style="margin-bottom:10px;">
-XP: <span id="tabXP">0</span>
-</p>
+    </div>
 
-<p>
-Coins: <span id="tabCoins">0</span>
-</p>
+  </div>
 
-</div>
+  <!-- INVENTORY -->
 
-</div>
+  <div class="inventory">
 
-<!-- ADS -->
+    <div class="slot active">
+      ⚔
+      <div class="slot-number">1</div>
+    </div>
 
-<div id="adLeft">
+    <div class="slot">
+      🛡
+      <div class="slot-number">2</div>
+    </div>
 
-<ins class="adsbygoogle"
-style="display:block"
-data-ad-client="ca-pub-4335653991954613"
-data-ad-slot="1234567890"
-data-ad-format="vertical"></ins>
+    <div class="slot">
+      🧪
+      <div class="slot-number">3</div>
+    </div>
 
-</div>
+    <div class="slot">
+      🍎
+      <div class="slot-number">4</div>
+    </div>
 
-<div id="adRight">
+    <div class="slot">
+      📘
+      <div class="slot-number">5</div>
+    </div>
 
-<ins class="adsbygoogle"
-style="display:block"
-data-ad-client="ca-pub-4335653991954613"
-data-ad-slot="1234567890"
-data-ad-format="vertical"></ins>
+  </div>
 
-</div>
+  <!-- GAME -->
 
-<!-- REWARD -->
+  <canvas id="game"></canvas>
 
-<button id="rewardBtn">
-▶ Watch Ad → Double XP
-</button>
+  <script>
 
-</div>
+    const canvas =
+    document.getElementById("game");
 
-<script>
+    const ctx =
+    canvas.getContext("2d");
 
-/* ADS */
+    canvas.width =
+    window.innerWidth;
 
-(adsbygoogle = window.adsbygoogle || []).push({});
-(adsbygoogle = window.adsbygoogle || []).push({});
+    canvas.height =
+    window.innerHeight;
 
-/* PLAYER */
+    let camera = {
+      x:0,
+      y:0
+    };
 
-const player =
-document.getElementById('player');
+    let player = {
+      x:900,
+      y:700,
+      size:34,
+      speed:4,
+      health:100,
+      level:1,
+      xp:0,
+      coins:50,
+      kills:0
+    };
 
-const world =
-document.getElementById('world');
+    let xpMultiplier = 1;
 
-const enemies =
-document.querySelectorAll('.enemy');
+    let keys = {};
 
-let x = 2400;
-let y = 2400;
+    let npcList = [
 
-let speed = 6;
+      {
+        x:700,
+        y:620,
+        name:"Principal",
+        text:"Welcome to School Essentials. Defeat the hall monsters."
+      },
 
-let keys = {};
+      {
+        x:1100,
+        y:900,
+        name:"Blacksmith",
+        text:"I can upgrade your gear soon."
+      }
 
-let xp = 0;
-let level = 1;
-let coins = 0;
-let hp = 100;
+    ];
 
-let damage = 15;
+    let enemies = [];
 
-let doubleXP = false;
+    for(let i = 0; i < 8; i++){
 
-/* LOAD SAVE */
+      enemies.push({
 
-function loadGame(){
+        x:Math.random()*2200+300,
+        y:Math.random()*1800+300,
+        size:28,
+        health:50
 
-const save =
-JSON.parse(
-localStorage.getItem('schoolMMO')
-);
+      });
 
-if(save){
+    }
 
-x = save.x;
-y = save.y;
-xp = save.xp;
-level = save.level;
-coins = save.coins;
-hp = save.hp;
+    document.addEventListener(
+    "keydown",
+    e=>{
 
-updateHud();
+      keys[e.key.toLowerCase()] = true;
 
-}
+      if(e.key === "Tab"){
 
-}
+        e.preventDefault();
 
-loadGame();
+        document.getElementById(
+        "tabScreen"
+        ).style.display = "flex";
 
-/* SAVE */
+      }
 
-setInterval(()=>{
+    });
 
-localStorage.setItem(
-'schoolMMO',
+    document.addEventListener(
+    "keyup",
+    e=>{
 
-JSON.stringify({
+      keys[e.key.toLowerCase()] = false;
 
-x,
-y,
-xp,
-level,
-coins,
-hp
+      if(e.key === "Tab"){
 
-})
+        document.getElementById(
+        "tabScreen"
+        ).style.display = "none";
 
-);
+      }
 
-},3000);
+    });
 
-/* HUD */
+    canvas.addEventListener(
+    "click",
+    ()=>{
 
-function updateHud(){
+      enemies.forEach(enemy=>{
 
-document.getElementById(
-'xp'
-).innerText = xp;
+        let dx =
+        enemy.x - player.x;
 
-document.getElementById(
-'level'
-).innerText = level;
+        let dy =
+        enemy.y - player.y;
 
-document.getElementById(
-'coins'
-).innerText = coins;
+        let dist =
+        Math.sqrt(dx*dx + dy*dy);
 
-document.getElementById(
-'hp'
-).innerText = hp;
+        if(dist < 100){
 
-document.getElementById(
-'tabXP'
-).innerText = xp;
+          enemy.health -= 25;
 
-document.getElementById(
-'tabLevel'
-).innerText = level;
+          if(enemy.health <= 0){
 
-document.getElementById(
-'tabCoins'
-).innerText = coins;
+            enemy.x =
+            Math.random()*2200;
 
-}
+            enemy.y =
+            Math.random()*1800;
 
-/* MOVEMENT */
+            enemy.health = 50;
 
-window.addEventListener(
-'keydown',
+            player.coins += 15;
 
-e=>{
+            player.xp += 20 * xpMultiplier;
 
-keys[e.key.toLowerCase()] = true;
+            player.kills++;
 
-/* TAB */
+            updateUI();
 
-if(e.key === 'Tab'){
+          }
 
-e.preventDefault();
+        }
 
-document.getElementById(
-'tabMenu'
-).style.display = 'flex';
+      });
 
-}
+    });
 
-/* INVENTORY */
+    function update(){
 
-if(e.key.toLowerCase() === 'e'){
+      if(keys["w"]) player.y -= player.speed;
+      if(keys["s"]) player.y += player.speed;
+      if(keys["a"]) player.x -= player.speed;
+      if(keys["d"]) player.x += player.speed;
 
-const inv =
-document.getElementById(
-'inventory'
-);
+      camera.x =
+      player.x - canvas.width/2;
 
-if(inv.style.display === 'block'){
+      camera.y =
+      player.y - canvas.height/2;
 
-inv.style.display = 'none';
+      npcList.forEach(npc=>{
 
-}else{
+        let dx =
+        npc.x - player.x;
 
-inv.style.display = 'block';
+        let dy =
+        npc.y - player.y;
 
-}
+        let dist =
+        Math.sqrt(dx*dx + dy*dy);
 
-}
+        if(dist < 70){
 
-/* ATTACK */
+          if(keys["e"]){
 
-if(e.key === ' '){
+            openDialogue(
+            npc.name,
+            npc.text
+            );
 
-attack();
+          }
 
-}
+        }
 
-/* HOTBAR */
+      });
 
-if(['1','2','3','4','5']
-.includes(e.key)){
+      if(player.kills >= 3){
 
-selectSlot(e.key);
+        document.getElementById(
+        "quest2"
+        ).innerHTML =
+        "✔ Defeat 3 Hall Monsters";
 
-}
+        document.getElementById(
+        "quest2"
+        ).classList.add(
+        "complete"
+        );
 
-});
+      }
 
-window.addEventListener(
-'keyup',
+      if(player.xp >= 100){
 
-e=>{
+        player.level++;
 
-keys[e.key.toLowerCase()] = false;
+        player.xp = 0;
 
-if(e.key === 'Tab'){
+        updateUI();
 
-document.getElementById(
-'tabMenu'
-).style.display = 'none';
+      }
 
-}
+    }
 
-});
+    function drawMap(){
 
-/* HOTBAR */
+      ctx.fillStyle =
+      "#2e8b57";
 
-function selectSlot(num){
+      ctx.fillRect(
+      -camera.x,
+      -camera.y,
+      3000,
+      3000
+      );
 
-document.querySelectorAll('.slot')
-.forEach(slot=>{
+      /* ROADS */
 
-slot.classList.remove('active');
+      ctx.fillStyle =
+      "#64748b";
 
-if(slot.dataset.slot === num){
+      ctx.fillRect(
+      500-camera.x,
+      650-camera.y,
+      1500,
+      180
+      );
 
-slot.classList.add('active');
+      ctx.fillRect(
+      1100-camera.x,
+      300-camera.y,
+      180,
+      1400
+      );
 
-}
+      /* BUILDINGS */
 
-});
+      drawBuilding(
+      700,
+      350,
+      320,
+      220,
+      "#334155",
+      "School"
+      );
 
-}
+      drawBuilding(
+      1400,
+      900,
+      260,
+      200,
+      "#78350f",
+      "Blacksmith"
+      );
 
-/* ATTACK */
+      drawBuilding(
+      450,
+      1200,
+      300,
+      200,
+      "#1e40af",
+      "Library"
+      );
 
-function attack(){
+    }
 
-const damageText =
-document.getElementById(
-'damageText'
-);
+    function drawBuilding(
+    x,y,w,h,color,name){
 
-enemies.forEach(enemy=>{
+      ctx.fillStyle = color;
 
-if(enemy.style.display === 'none')
-return;
+      ctx.fillRect(
+      x-camera.x,
+      y-camera.y,
+      w,h
+      );
 
-let ex =
-parseInt(enemy.style.left);
+      ctx.fillStyle =
+      "white";
 
-let ey =
-parseInt(enemy.style.top);
+      ctx.font =
+      "20px Arial";
 
-let dist =
-Math.hypot(ex - x, ey - y);
+      ctx.fillText(
+      name,
+      x-camera.x+20,
+      y-camera.y+35
+      );
 
-if(dist < 140){
+    }
 
-damageText.innerText =
-'-' + damage;
+    function drawPlayer(){
 
-setTimeout(()=>{
+      ctx.fillStyle =
+      "#f97316";
 
-damageText.innerText = '';
+      ctx.beginPath();
 
-},400);
+      ctx.arc(
+      player.x-camera.x,
+      player.y-camera.y,
+      player.size,
+      0,
+      Math.PI*2
+      );
 
-enemy.style.display = 'none';
+      ctx.fill();
 
-coins += 25;
+      ctx.fillStyle =
+      "white";
 
-xp += doubleXP ? 40 : 20;
+      ctx.font =
+      "16px Arial";
 
-if(xp >= 100){
+      ctx.fillText(
+      "YOU",
+      player.x-camera.x-18,
+      player.y-camera.y-45
+      );
 
-level++;
+    }
 
-xp = 0;
+    function drawNPCs(){
 
-damage += 5;
+      npcList.forEach(npc=>{
 
-hp += 20;
+        ctx.fillStyle =
+        "#3b82f6";
 
-}
+        ctx.beginPath();
 
-updateHud();
+        ctx.arc(
+        npc.x-camera.x,
+        npc.y-camera.y,
+        30,
+        0,
+        Math.PI*2
+        );
 
-}
+        ctx.fill();
 
-});
+        ctx.fillStyle =
+        "white";
 
-}
+        ctx.fillText(
+        npc.name,
+        npc.x-camera.x-35,
+        npc.y-camera.y-40
+        );
 
-/* QUEST */
+      });
 
-const teacher =
-document.getElementById(
-'teacher'
-);
+    }
 
-let questDone = false;
+    function drawEnemies(){
 
-setInterval(()=>{
+      enemies.forEach(enemy=>{
 
-if(questDone)
-return;
+        ctx.fillStyle =
+        "#dc2626";
 
-let tx =
-parseInt(teacher.style.left);
+        ctx.beginPath();
 
-let ty =
-parseInt(teacher.style.top);
+        ctx.arc(
+        enemy.x-camera.x,
+        enemy.y-camera.y,
+        enemy.size,
+        0,
+        Math.PI*2
+        );
 
-let dist =
-Math.hypot(tx - x, ty - y);
+        ctx.fill();
 
-if(dist < 120){
+        ctx.fillStyle =
+        "white";
 
-questDone = true;
+        ctx.fillText(
+        "Hall Monster",
+        enemy.x-camera.x-45,
+        enemy.y-camera.y-40
+        );
 
-xp += 50;
+      });
 
-coins += 100;
+    }
 
-updateHud();
+    function updateUI(){
 
-document.getElementById(
-'quest'
-).innerText =
+      document.getElementById(
+      "coins"
+      ).innerText =
+      player.coins;
 
-'Quest Complete! +50 XP +100 Coins';
+      document.getElementById(
+      "level"
+      ).innerText =
+      player.level;
 
-}
+      document.getElementById(
+      "tabCoins"
+      ).innerText =
+      player.coins;
 
-},1000);
+      document.getElementById(
+      "tabLevel"
+      ).innerText =
+      player.level;
 
-/* BLACKSMITH */
+      document.getElementById(
+      "tabXP"
+      ).innerText =
+      player.xp;
 
-const blacksmith =
-document.getElementById(
-'blacksmith'
-);
+      document.getElementById(
+      "xpFill"
+      ).style.width =
+      player.xp + "%";
 
-setInterval(()=>{
+    }
 
-let bx =
-parseInt(blacksmith.style.left);
+    function openDialogue(name,text){
 
-let by =
-parseInt(blacksmith.style.top);
+      document.getElementById(
+      "dialogueBox"
+      ).style.display = "block";
 
-let dist =
-Math.hypot(bx - x, by - y);
+      document.getElementById(
+      "npcName"
+      ).innerText = name;
 
-if(dist < 120 && coins >= 100){
+      document.getElementById(
+      "npcText"
+      ).innerText = text;
 
-coins -= 100;
+    }
 
-damage += 5;
+    function closeDialogue(){
 
-updateHud();
+      document.getElementById(
+      "dialogueBox"
+      ).style.display = "none";
 
-}
+    }
 
-},1000);
+    function watchAd(){
 
-/* AD REWARD */
+      alert(
+      "Ad watched! Double XP activated for 5 minutes."
+      );
 
-document.getElementById(
-'rewardBtn'
-).onclick = ()=>{
+      xpMultiplier = 2;
 
-doubleXP = true;
+      setTimeout(()=>{
 
-document.getElementById(
-'rewardBtn'
-).innerText =
+        xpMultiplier = 1;
 
-'Double XP Active!';
+      },300000);
 
-setTimeout(()=>{
+    }
 
-doubleXP = false;
+    function saveGame(){
 
-document.getElementById(
-'rewardBtn'
-).innerText =
+      localStorage.setItem(
+      "schoolMMO",
+      JSON.stringify(player)
+      );
 
-'▶ Watch Ad → Double XP';
+    }
 
-},300000);
+    function loadGame(){
 
-};
+      let save =
+      localStorage.getItem(
+      "schoolMMO"
+      );
 
-/* GAME LOOP */
+      if(save){
 
-function gameLoop(){
+        player =
+        JSON.parse(save);
 
-if(keys['w']) y -= speed;
-if(keys['s']) y += speed;
-if(keys['a']) x -= speed;
-if(keys['d']) x += speed;
+        updateUI();
 
-player.style.left = x + 'px';
-player.style.top = y + 'px';
+      }
 
-const camX =
-window.innerWidth / 2 - x - 32;
+    }
 
-const camY =
-window.innerHeight / 2 - y - 32;
+    setInterval(
+    saveGame,
+    5000
+    );
 
-world.style.transform =
-`translate(${camX}px, ${camY}px)`;
+    loadGame();
 
-requestAnimationFrame(gameLoop);
+    function gameLoop(){
 
-}
+      ctx.clearRect(
+      0,
+      0,
+      canvas.width,
+      canvas.height
+      );
 
-updateHud();
+      update();
 
-gameLoop();
+      drawMap();
 
-</script>
+      drawNPCs();
+
+      drawEnemies();
+
+      drawPlayer();
+
+      requestAnimationFrame(
+      gameLoop
+      );
+
+    }
+
+    updateUI();
+
+    gameLoop();
+
+    (adsbygoogle =
+    window.adsbygoogle || [])
+    .push({});
+
+    (adsbygoogle =
+    window.adsbygoogle || [])
+    .push({});
+
+  </script>
 
 </body>
 </html>
