@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-  <!-- ADSENSE -->
+  <!-- GOOGLE ADSENSE -->
   <script async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4335653991954613"
     crossorigin="anonymous"></script>
@@ -15,7 +15,7 @@
   <meta name="google-adsense-account"
         content="ca-pub-4335653991954613">
 
-  <link rel="icon" href="favicon.png">
+  <link rel="icon" type="image/png" href="favicon.png">
 
   <style>
 
@@ -28,107 +28,79 @@
 
     body{
       overflow:hidden;
-      background:#0f172a;
+      background:#020617;
+      color:white;
     }
 
     canvas{
       display:block;
-      background:#3b7a44;
-      image-rendering:pixelated;
-    }
-
-    /* TAB MENU */
-
-    .tab-menu{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,0.9);
-      z-index:5000;
-
-      display:none;
-      align-items:center;
-      justify-content:center;
-    }
-
-    .menu{
-      width:92%;
-      max-width:1200px;
-
-      background:#111827;
-
-      border:2px solid #334155;
-
-      border-radius:25px;
-
-      padding:30px;
-    }
-
-    .menu h1{
-      text-align:center;
-      color:#f97316;
-      margin-bottom:25px;
-      font-size:2.8rem;
-    }
-
-    .menu-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:20px;
-    }
-
-    .box{
-      background:#1e293b;
-      border-radius:18px;
-      padding:20px;
-      border:1px solid #334155;
-    }
-
-    .box h2{
-      color:#f97316;
-      margin-bottom:15px;
-    }
-
-    .item{
       background:#0f172a;
-      padding:12px;
-      border-radius:12px;
-      margin-bottom:10px;
-      color:white;
     }
 
-    .btn{
-      background:#f97316;
-      border:none;
-      color:white;
-      padding:12px 16px;
-      border-radius:12px;
-      font-weight:bold;
-      cursor:pointer;
+    /* TOP UI */
+
+    .top-ui{
+      position:fixed;
+      top:15px;
+      left:15px;
+      z-index:100;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .ui-box{
+      background:#111827;
+      border:2px solid #334155;
+      border-radius:14px;
+      padding:10px;
+      width:260px;
+    }
+
+    .bar{
       width:100%;
-      margin-top:10px;
+      height:22px;
+      background:#1e293b;
+      border-radius:10px;
+      overflow:hidden;
+      margin-top:6px;
     }
 
-    .btn:hover{
-      background:#ea580c;
+    .fill{
+      height:100%;
+      transition:0.2s;
+    }
+
+    .health{
+      background:#ef4444;
+      width:100%;
+    }
+
+    .xp{
+      background:#3b82f6;
+      width:0%;
+    }
+
+    .coins{
+      color:#facc15;
+      font-weight:bold;
     }
 
     /* HOTBAR */
 
     .hotbar{
       position:fixed;
-      bottom:18px;
+      bottom:15px;
       left:50%;
       transform:translateX(-50%);
-
       display:flex;
       gap:10px;
-
-      z-index:1000;
+      z-index:100;
     }
 
     .slot{
-      width:70px;
-      height:70px;
+      width:72px;
+      height:72px;
 
       background:#111827;
 
@@ -140,95 +112,215 @@
       align-items:center;
       justify-content:center;
 
-      color:white;
-      font-size:1.6rem;
+      font-size:2rem;
+
+      position:relative;
     }
 
-    .selected{
-      border-color:#f97316;
+    .slot-num{
+      position:absolute;
+      top:4px;
+      left:6px;
+      font-size:0.7rem;
+      color:#94a3b8;
     }
 
-    /* PLAYER STATS */
+    /* TAB MENU */
 
-    .player-ui{
+    .tab-screen{
       position:fixed;
-      bottom:105px;
-      left:50%;
-      transform:translateX(-50%);
+      inset:0;
 
-      background:rgba(15,23,42,0.95);
+      background:rgba(0,0,0,0.85);
 
+      z-index:200;
+
+      display:none;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .tab-container{
+      width:90%;
+      max-width:1100px;
+
+      background:#0f172a;
+
+      border:3px solid #334155;
+
+      border-radius:24px;
+
+      padding:30px;
+    }
+
+    .tab-title{
+      font-size:2rem;
+      color:#f97316;
+      margin-bottom:20px;
+    }
+
+    .tab-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+
+    .tab-box{
+      background:#111827;
       border:2px solid #334155;
-
       border-radius:18px;
-
-      padding:10px 18px;
-
-      display:flex;
-      gap:18px;
-
-      color:white;
-
-      z-index:1000;
+      padding:20px;
     }
 
-    .stat{
-      font-weight:bold;
+    .inventory-grid{
+      display:grid;
+      grid-template-columns:repeat(9,1fr);
+      gap:10px;
+      margin-top:15px;
     }
 
-    .xp-bar{
-      position:fixed;
-      bottom:155px;
-      left:50%;
-      transform:translateX(-50%);
-
-      width:320px;
-      height:18px;
+    .inventory-slot{
+      aspect-ratio:1/1;
 
       background:#1e293b;
 
+      border:2px solid #334155;
+
       border-radius:10px;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      font-size:2rem;
+    }
+
+    /* QUEST */
+
+    .quest-box{
+      position:fixed;
+      top:220px;
+      left:15px;
+
+      width:260px;
+
+      background:#111827;
+
+      border:2px solid #334155;
+
+      border-radius:16px;
+
+      padding:15px;
+
+      z-index:100;
+    }
+
+    .quest-box h3{
+      color:#f97316;
+      margin-bottom:10px;
+    }
+
+    /* DIALOG */
+
+    .dialogue{
+      position:fixed;
+
+      bottom:120px;
+      left:50%;
+
+      transform:translateX(-50%);
+
+      width:700px;
+      max-width:90%;
+
+      background:#111827;
+
+      border:3px solid #334155;
+
+      border-radius:18px;
+
+      padding:20px;
+
+      z-index:300;
+
+      display:none;
+    }
+
+    .dialog-name{
+      color:#f97316;
+      font-size:1.2rem;
+      font-weight:bold;
+      margin-bottom:10px;
+    }
+
+    .dialog-text{
+      color:#e2e8f0;
+      line-height:1.5;
+    }
+
+    /* MINIMAP */
+
+    .minimap{
+      position:fixed;
+      top:15px;
+      right:15px;
+
+      width:220px;
+      height:220px;
+
+      background:#111827;
+
+      border:3px solid #334155;
+
+      border-radius:18px;
 
       overflow:hidden;
 
-      z-index:1000;
+      z-index:100;
     }
 
-    .xp-fill{
-      height:100%;
-      width:0%;
-      background:#f97316;
+    .minimap-title{
+      text-align:center;
+      background:#0f172a;
+      padding:8px;
+      color:#f97316;
+      font-weight:bold;
     }
 
     /* ADS */
 
-    .ad-box{
-      margin-top:15px;
-      background:#0f172a;
-      padding:12px;
-      border-radius:12px;
+    .ad-left,
+    .ad-right{
+      position:fixed;
+      top:120px;
+      width:160px;
+      height:600px;
+      z-index:50;
+
+      background:#111827;
+
+      border:2px solid #334155;
+
+      border-radius:16px;
+
+      overflow:hidden;
     }
 
-    /* HELP */
+    .ad-left{
+      left:10px;
+    }
 
-    .help{
-      position:fixed;
-      top:15px;
-      left:15px;
+    .ad-right{
+      right:10px;
+    }
 
-      background:rgba(15,23,42,0.95);
+    @media(max-width:1200px){
 
-      border:1px solid #334155;
+      .ad-left,
+      .ad-right{
+        display:none;
+      }
 
-      padding:12px;
-
-      border-radius:14px;
-
-      color:white;
-
-      line-height:1.5;
-
-      z-index:1000;
     }
 
   </style>
@@ -237,99 +329,174 @@
 
 <body>
 
-  <!-- HELP -->
+  <!-- ADS -->
 
-  <div class="help">
-    WASD = Move<br>
-    SHIFT = Sprint<br>
-    E = Attack<br>
-    TAB = Open Menu
+  <div class="ad-left">
+
+    <ins class="adsbygoogle"
+      style="display:block;width:160px;height:600px"
+      data-ad-client="ca-pub-4335653991954613"
+      data-ad-slot="1234567890"></ins>
+
   </div>
 
-  <!-- TAB MENU -->
+  <div class="ad-right">
 
-  <div class="tab-menu" id="tabMenu">
+    <ins class="adsbygoogle"
+      style="display:block;width:160px;height:600px"
+      data-ad-client="ca-pub-4335653991954613"
+      data-ad-slot="1234567890"></ins>
 
-    <div class="menu">
+  </div>
 
-      <h1>School Essentials</h1>
+  <!-- UI -->
 
-      <div class="menu-grid">
+  <div class="top-ui">
 
-        <!-- PLAYER -->
+    <div class="ui-box">
 
-        <div class="box">
+      ❤️ Health
 
-          <h2>Player</h2>
+      <div class="bar">
+        <div class="fill health"
+        id="healthFill"></div>
+      </div>
 
-          <div class="item">
+    </div>
+
+    <div class="ui-box">
+
+      ⭐ XP
+
+      <div class="bar">
+        <div class="fill xp"
+        id="xpFill"></div>
+      </div>
+
+    </div>
+
+    <div class="ui-box coins"
+    id="coinsText">
+
+      🪙 Coins: 0
+
+    </div>
+
+  </div>
+
+  <!-- QUEST -->
+
+  <div class="quest-box">
+
+    <h3>📜 Main Quest</h3>
+
+    <p id="questText">
+      Defeat 5 corrupted slimes near the school.
+    </p>
+
+  </div>
+
+  <!-- MINIMAP -->
+
+  <div class="minimap">
+
+    <div class="minimap-title">
+      🗺 Campus Map
+    </div>
+
+    <canvas id="miniMap"
+    width="220"
+    height="180"></canvas>
+
+  </div>
+
+  <!-- HOTBAR -->
+
+  <div class="hotbar">
+
+    <div class="slot">
+      <div class="slot-num">1</div>
+      ⚔️
+    </div>
+
+    <div class="slot">
+      <div class="slot-num">2</div>
+      🛡️
+    </div>
+
+    <div class="slot">
+      <div class="slot-num">3</div>
+      🧪
+    </div>
+
+    <div class="slot">
+      <div class="slot-num">4</div>
+      🏹
+    </div>
+
+    <div class="slot">
+      <div class="slot-num">5</div>
+      💎
+    </div>
+
+  </div>
+
+  <!-- TAB -->
+
+  <div class="tab-screen"
+  id="tabMenu">
+
+    <div class="tab-container">
+
+      <div class="tab-title">
+        🎮 School Essentials MMORPG
+      </div>
+
+      <div class="tab-grid">
+
+        <div class="tab-box">
+
+          <h2>Player Stats</h2>
+
+          <br>
+
+          <p>
             Level:
             <span id="levelText">1</span>
-          </div>
+          </p>
 
-          <div class="item">
+          <br>
+
+          <p>
             XP:
             <span id="xpText">0</span>/100
-          </div>
+          </p>
+
+          <br>
+
+          <p>
+            Weapon Level:
+            <span id="weaponText">1</span>
+          </p>
 
         </div>
 
-        <!-- INVENTORY -->
-
-        <div class="box">
+        <div class="tab-box">
 
           <h2>Inventory</h2>
 
-          <div id="inventory">
+          <div class="inventory-grid">
 
-            <div class="item">
-              📘 Starter Book
-            </div>
+            <div class="inventory-slot">⚔️</div>
+            <div class="inventory-slot">🛡️</div>
+            <div class="inventory-slot">🧪</div>
+            <div class="inventory-slot">🏹</div>
+            <div class="inventory-slot">💎</div>
 
-            <div class="item">
-              ✏️ Pencil Sword
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- BLACKSMITH -->
-
-        <div class="box">
-
-          <h2>Blacksmith</h2>
-
-          <button class="btn"
-          onclick="upgradeSword()">
-
-            Upgrade Sword - 50 Coins
-
-          </button>
-
-          <button class="btn"
-          onclick="healPlayer()">
-
-            Heal - 25 Coins
-
-          </button>
-
-        </div>
-
-        <!-- ADS -->
-
-        <div class="box">
-
-          <h2>Sponsored</h2>
-
-          <div class="ad-box">
-
-            <ins class="adsbygoogle"
-              style="display:block"
-              data-ad-client="ca-pub-4335653991954613"
-              data-ad-slot="1234567890"
-              data-ad-format="auto"
-              data-full-width-responsive="true"></ins>
+            <div class="inventory-slot"></div>
+            <div class="inventory-slot"></div>
+            <div class="inventory-slot"></div>
+            <div class="inventory-slot"></div>
 
           </div>
 
@@ -341,50 +508,23 @@
 
   </div>
 
-  <!-- XP -->
+  <!-- DIALOG -->
 
-  <div class="xp-bar">
-    <div class="xp-fill" id="xpFill"></div>
-  </div>
+  <div class="dialogue"
+  id="dialogueBox">
 
-  <!-- PLAYER UI -->
+    <div class="dialog-name"
+    id="dialogueName">
 
-  <div class="player-ui">
+      NPC
 
-    <div class="stat">
-      ❤️
-      <span id="healthText">100</span>
     </div>
 
-    <div class="stat">
-      💰
-      <span id="coinsText">0</span>
-    </div>
+    <div class="dialog-text"
+    id="dialogueText">
 
-  </div>
+      Hello there.
 
-  <!-- HOTBAR -->
-
-  <div class="hotbar">
-
-    <div class="slot selected">
-      ⚔️
-    </div>
-
-    <div class="slot">
-      🧪
-    </div>
-
-    <div class="slot">
-      🛡️
-    </div>
-
-    <div class="slot">
-      🍎
-    </div>
-
-    <div class="slot">
-      📘
     </div>
 
   </div>
@@ -395,312 +535,235 @@
 
   <script>
 
-    (adsbygoogle = window.adsbygoogle || []).push({});
-
     const canvas =
     document.getElementById("game");
 
     const ctx =
     canvas.getContext("2d");
 
-    canvas.width = innerWidth;
-    canvas.height = innerHeight;
+    canvas.width =
+    window.innerWidth;
 
-    // PLAYER
+    canvas.height =
+    window.innerHeight;
+
+    const miniMap =
+    document.getElementById(
+    "miniMap"
+    );
+
+    const miniCtx =
+    miniMap.getContext("2d");
+
+    const mapWidth = 3200;
+    const mapHeight = 3200;
 
     const player = {
 
-      x:900,
-      y:900,
+      x:1600,
+      y:1600,
 
-      size:32,
+      size:30,
 
-      speed:4,
+      speed:5,
 
       health:100,
-
-      coins:0,
+      maxHealth:100,
 
       xp:0,
 
       level:1,
 
-      damage:1
+      coins:0,
+
+      weapon:1
 
     };
-
-    // CAMERA
 
     const camera = {
-
       x:0,
       y:0
-
     };
-
-    // KEYS
 
     const keys = {};
 
-    addEventListener("keydown",e=>{
+    let kills = 0;
 
-      keys[e.key.toLowerCase()] = true;
+    /* NPCS */
 
-      if(e.key === "Tab"){
-
-        e.preventDefault();
-
-        document.getElementById(
-          "tabMenu"
-        ).style.display = "flex";
-
-      }
-
-    });
-
-    addEventListener("keyup",e=>{
-
-      keys[e.key.toLowerCase()] = false;
-
-      if(e.key === "Tab"){
-
-        document.getElementById(
-          "tabMenu"
-        ).style.display = "none";
-
-      }
-
-    });
-
-    // REAL MAP
-
-    const buildings = [
+    const npcs = [
 
       {
-        x:500,
-        y:500,
-        w:600,
-        h:400,
-        color:"#475569",
-        name:"School"
+        x:1600,
+        y:1450,
+
+        name:"Principal Oak",
+
+        color:"#60a5fa",
+
+        dialogue:
+        "The school has been invaded by corrupted slimes. Save the campus."
       },
 
       {
-        x:1500,
-        y:700,
-        w:400,
-        h:300,
-        color:"#334155",
-        name:"Library"
+        x:1050,
+        y:950,
+
+        name:"Blacksmith Ron",
+
+        color:"#f97316",
+
+        dialogue:
+        "Press F near me to upgrade your weapon for 50 coins."
       },
 
       {
-        x:2500,
-        y:500,
-        w:450,
-        h:350,
-        color:"#1e293b",
-        name:"Blacksmith"
-      },
-
-      {
-        x:2200,
+        x:2400,
         y:1800,
-        w:650,
-        h:500,
-        color:"#475569",
-        name:"Gym"
-      },
 
-      {
-        x:700,
-        y:2100,
-        w:500,
-        h:350,
-        color:"#334155",
-        name:"Cafeteria"
+        name:"Librarian Luna",
+
+        color:"#a855f7",
+
+        dialogue:
+        "Legends say a hidden boss lives near the football field."
       }
 
     ];
 
-    // ENEMIES
+    /* ENEMIES */
 
     const enemies = [];
 
-    for(let i=0;i<20;i++){
+    for(let i=0;i<25;i++){
 
       enemies.push({
 
-        x:Math.random()*3200,
-        y:Math.random()*3200,
+        x:Math.random()*mapWidth,
+        y:Math.random()*mapHeight,
 
-        size:28,
+        size:25,
 
-        health:5
+        health:40,
+
+        alive:true
 
       });
 
     }
 
-    // SAVE SYSTEM
+    /* LOOT */
 
-    function saveGame(){
+    const coins = [];
 
-      localStorage.setItem(
-        "schoolSave",
+    for(let i=0;i<40;i++){
 
-        JSON.stringify(player)
+      coins.push({
 
-      );
+        x:Math.random()*mapWidth,
+        y:Math.random()*mapHeight,
 
-    }
+        taken:false
 
-    function loadGame(){
-
-      const save =
-      localStorage.getItem(
-        "schoolSave"
-      );
-
-      if(save){
-
-        Object.assign(
-          player,
-          JSON.parse(save)
-        );
-
-      }
+      });
 
     }
-
-    loadGame();
-
-    setInterval(saveGame,5000);
-
-    // UPGRADES
-
-    function upgradeSword(){
-
-      if(player.coins >= 50){
-
-        player.coins -= 50;
-
-        player.damage++;
-
-      }
-
-    }
-
-    function healPlayer(){
-
-      if(player.coins >= 25){
-
-        player.coins -= 25;
-
-        player.health = 100;
-
-      }
-
-    }
-
-    // UI
-
-    function updateUI(){
-
-      document.getElementById(
-        "healthText"
-      ).innerText =
-      Math.floor(player.health);
-
-      document.getElementById(
-        "coinsText"
-      ).innerText =
-      player.coins;
-
-      document.getElementById(
-        "levelText"
-      ).innerText =
-      player.level;
-
-      document.getElementById(
-        "xpText"
-      ).innerText =
-      player.xp;
-
-      document.getElementById(
-        "xpFill"
-      ).style.width =
-      player.xp + "%";
-
-    }
-
-    // UPDATE
 
     function update(){
 
-      let speed =
-      keys["shift"] ? 7 : 4;
+      if(keys["w"]) player.y -= player.speed;
+      if(keys["s"]) player.y += player.speed;
+      if(keys["a"]) player.x -= player.speed;
+      if(keys["d"]) player.x += player.speed;
 
-      if(keys["w"]) player.y -= speed;
-      if(keys["s"]) player.y += speed;
-      if(keys["a"]) player.x -= speed;
-      if(keys["d"]) player.x += speed;
+      player.x =
+      Math.max(
+      0,
+      Math.min(mapWidth,player.x)
+      );
+
+      player.y =
+      Math.max(
+      0,
+      Math.min(mapHeight,player.y)
+      );
 
       camera.x =
-      player.x - canvas.width/2;
+      player.x-canvas.width/2;
 
       camera.y =
-      player.y - canvas.height/2;
+      player.y-canvas.height/2;
 
-      enemies.forEach(enemy=>{
+      /* ATTACK */
 
-        let dx =
-        player.x - enemy.x;
+      if(keys[" "]){
 
-        let dy =
-        player.y - enemy.y;
+        enemies.forEach(enemy=>{
 
-        let dist =
-        Math.sqrt(dx*dx + dy*dy);
+          if(enemy.alive){
 
-        if(dist < 250){
+            const dx =
+            enemy.x-player.x;
 
-          enemy.x += dx/dist;
-          enemy.y += dy/dist;
+            const dy =
+            enemy.y-player.y;
 
-        }
+            const dist =
+            Math.sqrt(dx*dx+dy*dy);
 
-        if(dist < 35){
+            if(dist < 90){
 
-          player.health -= 0.05;
+              enemy.health -=
+              0.5 * player.weapon;
 
-        }
+              if(enemy.health <= 0){
 
-        // ATTACK
+                enemy.alive = false;
 
-        if(keys["e"] && dist < 60){
+                kills++;
 
-          enemy.health -= player.damage;
+                player.coins += 20;
 
-          if(enemy.health <= 0){
+                player.xp += 25;
 
-            enemy.x =
-            Math.random()*3200;
+                if(player.xp >= 100){
 
-            enemy.y =
-            Math.random()*3200;
+                  player.level++;
 
-            enemy.health = 5;
+                  player.xp = 0;
 
-            player.coins += 10;
-            player.xp += 10;
+                }
 
-            if(player.xp >= 100){
-
-              player.level++;
-              player.xp = 0;
+              }
 
             }
+
+          }
+
+        });
+
+      }
+
+      /* COINS */
+
+      coins.forEach(c=>{
+
+        if(!c.taken){
+
+          const dx =
+          c.x-player.x;
+
+          const dy =
+          c.y-player.y;
+
+          const dist =
+          Math.sqrt(dx*dx+dy*dy);
+
+          if(dist < 40){
+
+            c.taken = true;
+
+            player.coins += 5;
 
           }
 
@@ -708,152 +771,486 @@
 
       });
 
-      updateUI();
+      /* UI */
+
+      document.getElementById(
+      "healthFill"
+      ).style.width =
+      (player.health/player.maxHealth*100)
+      +"%";
+
+      document.getElementById(
+      "xpFill"
+      ).style.width =
+      player.x+"%";
+
+      document.getElementById(
+      "coinsText"
+      ).innerText =
+      "🪙 Coins: "+player.coins;
+
+      document.getElementById(
+      "levelText"
+      ).innerText =
+      player.level;
+
+      document.getElementById(
+      "xpText"
+      ).innerText =
+      player.xp;
+
+      document.getElementById(
+      "weaponText"
+      ).innerText =
+      player.weapon;
+
+      if(kills >= 5){
+
+        document.getElementById(
+        "questText"
+        ).innerText =
+        "Quest Complete! Explore the campus.";
+
+      }
+
+      /* SAVE */
+
+      localStorage.setItem(
+      "schoolMMOsave",
+      JSON.stringify(player)
+      );
 
     }
 
-    // DRAW
+    const save =
+    localStorage.getItem(
+    "schoolMMOsave"
+    );
 
-    function draw(){
+    if(save){
 
-      ctx.clearRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
+      Object.assign(
+      player,
+      JSON.parse(save)
       );
 
-      // GRASS
+    }
 
-      ctx.fillStyle = "#3b7a44";
+    function drawMap(){
+
+      for(let x=0;x<mapWidth;x+=100){
+
+        for(let y=0;y<mapHeight;y+=100){
+
+          ctx.fillStyle =
+          (x+y)%200===0
+          ? "#1e293b"
+          : "#0f172a";
+
+          ctx.fillRect(
+            x-camera.x,
+            y-camera.y,
+            100,
+            100
+          );
+
+        }
+
+      }
+
+      /* SCHOOL */
+
+      ctx.fillStyle = "#475569";
 
       ctx.fillRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
+        1400-camera.x,
+        1300-camera.y,
+        500,
+        350
       );
 
-      // ROADS
+      ctx.fillStyle = "white";
 
-      ctx.fillStyle = "#6b7280";
+      ctx.font = "38px Arial";
+
+      ctx.fillText(
+        "SCHOOL",
+        1540-camera.x,
+        1490-camera.y
+      );
+
+      /* LIBRARY */
+
+      ctx.fillStyle = "#312e81";
 
       ctx.fillRect(
-        -camera.x,
-        1000-camera.y,
-        4000,
-        140
+        2300-camera.x,
+        800-camera.y,
+        350,
+        250
       );
+
+      ctx.fillStyle = "white";
+
+      ctx.fillText(
+        "LIBRARY",
+        2390-camera.x,
+        940-camera.y
+      );
+
+      /* BLACKSMITH */
+
+      ctx.fillStyle = "#7c2d12";
 
       ctx.fillRect(
-        1800-camera.x,
-        -camera.y,
-        140,
-        4000
+        900-camera.x,
+        800-camera.y,
+        250,
+        220
       );
 
-      // TREES
+      ctx.fillStyle = "white";
 
-      for(let i=0;i<80;i++){
+      ctx.fillText(
+        "BLACKSMITH",
+        920-camera.x,
+        930-camera.y
+      );
 
-        let tx =
-        (i*280)%3800;
+      /* FOOTBALL FIELD */
 
-        let ty =
-        Math.floor(i/8)*300;
+      ctx.fillStyle = "#14532d";
 
-        ctx.fillStyle = "#14532d";
+      ctx.fillRect(
+        600-camera.x,
+        2200-camera.y,
+        700,
+        400
+      );
+
+      ctx.fillStyle = "white";
+
+      ctx.fillText(
+        "FOOTBALL FIELD",
+        760-camera.x,
+        2420-camera.y
+      );
+
+    }
+
+    function drawPlayer(){
+
+      ctx.fillStyle = "#f97316";
+
+      ctx.beginPath();
+
+      ctx.arc(
+        player.x-camera.x,
+        player.y-camera.y,
+        player.size,
+        0,
+        Math.PI*2
+      );
+
+      ctx.fill();
+
+      ctx.fillStyle = "white";
+
+      ctx.fillText(
+        "Lv."+player.level,
+        player.x-camera.x-20,
+        player.y-camera.y-40
+      );
+
+    }
+
+    function drawEnemies(){
+
+      enemies.forEach(enemy=>{
+
+        if(enemy.alive){
+
+          ctx.fillStyle = "#22c55e";
+
+          ctx.beginPath();
+
+          ctx.arc(
+            enemy.x-camera.x,
+            enemy.y-camera.y,
+            enemy.size,
+            0,
+            Math.PI*2
+          );
+
+          ctx.fill();
+
+          ctx.fillStyle = "white";
+
+          ctx.fillText(
+            "Slime",
+            enemy.x-camera.x-20,
+            enemy.y-camera.y-35
+          );
+
+        }
+
+      });
+
+    }
+
+    function drawNPCs(){
+
+      npcs.forEach(npc=>{
+
+        ctx.fillStyle = npc.color;
 
         ctx.beginPath();
 
         ctx.arc(
-          tx-camera.x,
-          ty-camera.y,
-          40,
+          npc.x-camera.x,
+          npc.y-camera.y,
+          28,
           0,
           Math.PI*2
         );
 
         ctx.fill();
 
-      }
-
-      // BUILDINGS
-
-      buildings.forEach(building=>{
-
-        ctx.fillStyle =
-        building.color;
-
-        ctx.fillRect(
-          building.x-camera.x,
-          building.y-camera.y,
-          building.w,
-          building.h
-        );
-
         ctx.fillStyle = "white";
 
-        ctx.font = "24px Arial";
-
         ctx.fillText(
-          building.name,
-          building.x-camera.x+20,
-          building.y-camera.y+40
+          npc.name,
+          npc.x-camera.x-40,
+          npc.y-camera.y-38
         );
 
       });
 
-      // ENEMIES
+    }
+
+    function drawCoins(){
+
+      coins.forEach(c=>{
+
+        if(!c.taken){
+
+          ctx.fillStyle = "#facc15";
+
+          ctx.beginPath();
+
+          ctx.arc(
+            c.x-camera.x,
+            c.y-camera.y,
+            10,
+            0,
+            Math.PI*2
+          );
+
+          ctx.fill();
+
+        }
+
+      });
+
+    }
+
+    function drawMiniMap(){
+
+      miniCtx.clearRect(0,0,220,180);
+
+      miniCtx.fillStyle =
+      "#0f172a";
+
+      miniCtx.fillRect(
+        0,0,220,180
+      );
+
+      miniCtx.fillStyle =
+      "#22c55e";
 
       enemies.forEach(enemy=>{
 
-        ctx.fillStyle = "#dc2626";
+        if(enemy.alive){
 
-        ctx.fillRect(
-          enemy.x-camera.x,
-          enemy.y-camera.y,
-          enemy.size,
-          enemy.size
-        );
+          miniCtx.fillRect(
+            enemy.x/mapWidth*220,
+            enemy.y/mapHeight*180,
+            4,
+            4
+          );
+
+        }
 
       });
 
-      // PLAYER
+      miniCtx.fillStyle =
+      "#f97316";
 
-      ctx.fillStyle = "#f97316";
-
-      ctx.fillRect(
-        player.x-camera.x,
-        player.y-camera.y,
-        player.size,
-        player.size
+      miniCtx.fillRect(
+        player.x/mapWidth*220,
+        player.y/mapHeight*180,
+        6,
+        6
       );
 
     }
 
-    // GAME LOOP
+    function gameLoop(){
 
-    function loop(){
+      ctx.clearRect(
+      0,
+      0,
+      canvas.width,
+      canvas.height
+      );
+
+      drawMap();
+
+      drawCoins();
+
+      drawEnemies();
+
+      drawNPCs();
+
+      drawPlayer();
+
+      drawMiniMap();
 
       update();
-      draw();
 
-      requestAnimationFrame(loop);
+      requestAnimationFrame(
+      gameLoop
+      );
 
     }
 
-    updateUI();
-    loop();
+    gameLoop();
 
-    // RESIZE
+    /* KEYS */
 
-    addEventListener("resize",()=>{
+    window.addEventListener(
+    "keydown",
+    e=>{
 
-      canvas.width = innerWidth;
-      canvas.height = innerHeight;
+      keys[e.key.toLowerCase()] = true;
+
+      /* TAB */
+
+      if(e.key === "Tab"){
+
+        e.preventDefault();
+
+        document.getElementById(
+        "tabMenu"
+        ).style.display = "flex";
+
+      }
+
+      /* TALK */
+
+      if(e.key.toLowerCase() === "e"){
+
+        npcs.forEach(npc=>{
+
+          const dx =
+          npc.x-player.x;
+
+          const dy =
+          npc.y-player.y;
+
+          const dist =
+          Math.sqrt(dx*dx+dy*dy);
+
+          if(dist < 100){
+
+            document.getElementById(
+            "dialogueBox"
+            ).style.display =
+            "block";
+
+            document.getElementById(
+            "dialogueName"
+            ).innerText =
+            npc.name;
+
+            document.getElementById(
+            "dialogueText"
+            ).innerText =
+            npc.dialogue;
+
+          }
+
+        });
+
+      }
+
+      /* BLACKSMITH */
+
+      if(e.key.toLowerCase() === "f"){
+
+        const blacksmith =
+        npcs[1];
+
+        const dx =
+        blacksmith.x-player.x;
+
+        const dy =
+        blacksmith.y-player.y;
+
+        const dist =
+        Math.sqrt(dx*dx+dy*dy);
+
+        if(dist < 120){
+
+          if(player.coins >= 50){
+
+            player.coins -= 50;
+
+            player.weapon++;
+
+          }
+
+        }
+
+      }
+
+      /* CLOSE DIALOG */
+
+      if(e.key === "Escape"){
+
+        document.getElementById(
+        "dialogueBox"
+        ).style.display =
+        "none";
+
+      }
 
     });
+
+    window.addEventListener(
+    "keyup",
+    e=>{
+
+      keys[e.key.toLowerCase()] =
+      false;
+
+      if(e.key === "Tab"){
+
+        document.getElementById(
+        "tabMenu"
+        ).style.display = "none";
+
+      }
+
+    });
+
+    /* ADS */
+
+    (adsbygoogle =
+    window.adsbygoogle || []).push({});
+
+    (adsbygoogle =
+    window.adsbygoogle || []).push({});
 
   </script>
 
