@@ -8,17 +8,14 @@
     crossorigin="anonymous"></script>
 
   <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>School Essentials MMO</title>
+  <title>School Essentials MMO RPG</title>
 
   <meta name="google-adsense-account"
         content="ca-pub-4335653991954613">
 
-  <link rel="icon"
-        type="image/png"
-        href="favicon.png">
+  <link rel="icon" type="image/png" href="favicon.png">
 
   <style>
 
@@ -30,284 +27,278 @@
     }
 
     body{
-      background:#0b1120;
       overflow:hidden;
+      background:#0f172a;
       color:white;
-    }
-
-    /* SIDE ADS */
-
-    .side-ad{
-      position:fixed;
-      top:0;
-      width:160px;
-      height:100vh;
-
-      background:#111827;
-
-      border-left:1px solid #1e293b;
-      border-right:1px solid #1e293b;
-
-      z-index:5;
-    }
-
-    .left-ad{
-      left:0;
-    }
-
-    .right-ad{
-      right:0;
-    }
-
-    @media(max-width:1200px){
-
-      .side-ad{
-        display:none;
-      }
-
-    }
-
-    /* GAME */
-
-    #gameContainer{
-      position:relative;
-
-      width:calc(100vw - 320px);
-      height:100vh;
-
-      margin:auto;
-    }
-
-    @media(max-width:1200px){
-
-      #gameContainer{
-        width:100vw;
-      }
-
     }
 
     canvas{
       display:block;
-      background:#2d5a27;
-      image-rendering:pixelated;
+      background:#4ade80;
     }
 
-    /* HUD */
+    /* TOP HUD */
 
-    #hud{
-      position:absolute;
-      top:15px;
-      left:15px;
-
+    #topHud{
+      position:fixed;
+      top:12px;
+      left:50%;
+      transform:translateX(-50%);
       display:flex;
       gap:12px;
-
-      z-index:10;
+      z-index:1000;
     }
 
-    .hud-box{
-      background:rgba(15,23,42,0.9);
-
-      border:1px solid #1e293b;
-
-      padding:10px 14px;
-
-      border-radius:12px;
-
+    .hudBox{
+      background:rgba(15,23,42,0.95);
+      border:2px solid #f97316;
+      border-radius:14px;
+      padding:10px 18px;
       font-weight:bold;
-    }
-
-    /* HOTBAR */
-
-    #hotbar{
-      position:absolute;
-
-      bottom:20px;
-      left:50%;
-
-      transform:translateX(-50%);
-
-      display:flex;
-      gap:8px;
-
-      z-index:10;
-    }
-
-    .slot{
-      width:60px;
-      height:60px;
-
-      background:#111827;
-
-      border:2px solid #374151;
-
-      border-radius:12px;
-
-      display:flex;
-      align-items:center;
-      justify-content:center;
-
-      font-size:1.3rem;
-    }
-
-    /* INVENTORY */
-
-    #inventory{
-      position:absolute;
-
-      top:50%;
-      left:50%;
-
-      transform:translate(-50%,-50%);
-
-      width:520px;
-
-      background:#0f172a;
-
-      border:2px solid #334155;
-
-      border-radius:20px;
-
-      padding:20px;
-
-      display:none;
-
-      z-index:20;
-    }
-
-    #inventory h2{
-      margin-bottom:20px;
-      color:#f97316;
-    }
-
-    .inventory-grid{
-      display:grid;
-
-      grid-template-columns:
-      repeat(5,1fr);
-
-      gap:10px;
-    }
-
-    .inventory-slot{
-      width:85px;
-      height:85px;
-
-      background:#1e293b;
-
-      border:2px solid #475569;
-
-      border-radius:12px;
-    }
-
-    /* TAB MENU */
-
-    #tabMenu{
-      position:absolute;
-      inset:0;
-
-      background:rgba(0,0,0,0.8);
-
-      display:none;
-
-      z-index:30;
-
-      align-items:center;
-      justify-content:center;
-    }
-
-    #tabContent{
-      background:#0f172a;
-
-      padding:40px;
-
-      border-radius:20px;
-
-      width:500px;
-
-      text-align:center;
-
-      border:2px solid #334155;
-    }
-
-    #tabContent h1{
-      color:#f97316;
-      margin-bottom:25px;
-    }
-
-    .stat{
-      margin-bottom:15px;
-      font-size:1.2rem;
+      font-size:1rem;
     }
 
     /* QUEST */
 
     #questBox{
-      position:absolute;
+      position:fixed;
+      top:90px;
+      left:15px;
+      width:260px;
 
-      top:15px;
+      background:rgba(15,23,42,0.95);
+
+      border:2px solid #f97316;
+
+      border-radius:16px;
+
+      padding:16px;
+
+      z-index:1000;
+    }
+
+    #questBox h2{
+      color:#f97316;
+      margin-bottom:10px;
+    }
+
+    /* INVENTORY */
+
+    #inventory{
+      position:fixed;
       right:15px;
+      bottom:110px;
 
-      width:280px;
+      width:320px;
 
-      background:rgba(15,23,42,0.9);
+      background:rgba(15,23,42,0.96);
 
-      border:1px solid #1e293b;
+      border:2px solid #f97316;
 
       border-radius:16px;
 
       padding:15px;
 
-      z-index:10;
+      z-index:1000;
     }
 
-    #questBox h3{
+    #inventory h2{
       color:#f97316;
-      margin-bottom:10px;
+      margin-bottom:12px;
     }
 
-    /* REWARDED ADS */
-
-    #rewardUI{
-      position:absolute;
-
-      right:15px;
-      bottom:120px;
-
-      z-index:10;
+    .inventoryGrid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:8px;
     }
 
-    #rewardBtn{
-      background:#f97316;
-      color:white;
+    .itemSlot{
+      width:65px;
+      height:65px;
 
-      border:none;
+      background:#1e293b;
 
-      padding:12px 18px;
+      border:2px solid #334155;
 
       border-radius:12px;
 
-      font-weight:bold;
+      display:flex;
+      justify-content:center;
+      align-items:center;
 
-      cursor:pointer;
+      font-size:1.8rem;
     }
 
-    #rewardBtn:hover{
-      background:#ea580c;
+    /* HOTBAR */
+
+    #hotbar{
+      position:fixed;
+      bottom:15px;
+      left:50%;
+      transform:translateX(-50%);
+
+      display:flex;
+      gap:6px;
+
+      z-index:1000;
     }
 
-    #boostTimer{
-      margin-top:10px;
+    .hotbarSlot{
+      width:65px;
+      height:65px;
+
+      background:#1e293b;
+
+      border:3px solid #334155;
+
+      border-radius:12px;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      font-size:1.6rem;
+    }
+
+    .selected{
+      border-color:#f97316;
+    }
+
+    /* TAB MENU */
+
+    #tabMenu{
+      position:fixed;
+      inset:0;
+
+      background:rgba(0,0,0,0.82);
+
+      z-index:9999;
+
+      display:none;
+
+      justify-content:center;
+      align-items:center;
+    }
+
+    .tabInner{
+      width:75%;
+      max-width:900px;
 
       background:#0f172a;
 
-      border:1px solid #1e293b;
+      border:3px solid #f97316;
+
+      border-radius:20px;
+
+      padding:35px;
+    }
+
+    .tabInner h1{
+      color:#f97316;
+      margin-bottom:25px;
+    }
+
+    .statGrid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:15px;
+    }
+
+    .statCard{
+      background:#1e293b;
+      border-radius:14px;
+      padding:18px;
+      font-size:1.1rem;
+    }
+
+    /* ADS */
+
+    .adBox{
+      position:fixed;
+      top:120px;
+
+      width:160px;
+      height:600px;
+
+      background:#0f172a;
+
+      border:2px dashed #334155;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      text-align:center;
+
+      color:#94a3b8;
 
       padding:10px;
 
-      border-radius:12px;
+      z-index:500;
+    }
 
-      text-align:center;
+    .leftAd{
+      left:10px;
+    }
+
+    .rightAd{
+      right:10px;
+    }
+
+    /* DIALOG */
+
+    #dialogBox{
+      position:fixed;
+      bottom:100px;
+      left:50%;
+      transform:translateX(-50%);
+
+      width:500px;
+      max-width:90%;
+
+      background:rgba(15,23,42,0.96);
+
+      border:2px solid #f97316;
+
+      border-radius:16px;
+
+      padding:18px;
+
+      display:none;
+
+      z-index:9999;
+    }
+
+    #dialogName{
+      color:#f97316;
+      font-weight:bold;
+      margin-bottom:10px;
+      font-size:1.1rem;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:1200px){
+
+      .adBox{
+        display:none;
+      }
+
+    }
+
+    @media(max-width:800px){
+
+      #inventory{
+        width:260px;
+      }
+
+      .itemSlot,
+      .hotbarSlot{
+        width:50px;
+        height:50px;
+      }
+
     }
 
   </style>
@@ -316,532 +307,668 @@
 
 <body>
 
-  <!-- LEFT AD -->
+  <!-- ADS -->
 
-  <div class="side-ad left-ad">
+  <div class="adBox leftAd">
+    Google AdSense Space
+  </div>
 
-    <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-4335653991954613"
-      data-ad-slot="1111111111"
-      data-ad-format="vertical"></ins>
+  <div class="adBox rightAd">
+    Google AdSense Space
+  </div>
+
+  <!-- HUD -->
+
+  <div id="topHud">
+
+    <div class="hudBox">
+      ❤️ <span id="healthText">100</span>
+    </div>
+
+    <div class="hudBox">
+      🪙 <span id="coinText">0</span>
+    </div>
+
+    <div class="hudBox">
+      ⭐ LVL <span id="levelText">1</span>
+    </div>
+
+    <div class="hudBox">
+      XP <span id="xpText">0 / 100</span>
+    </div>
 
   </div>
 
-  <!-- RIGHT AD -->
+  <!-- QUEST -->
 
-  <div class="side-ad right-ad">
+  <div id="questBox">
 
-    <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-4335653991954613"
-      data-ad-slot="2222222222"
-      data-ad-format="vertical"></ins>
+    <h2>📜 Quest</h2>
+
+    <p id="questText">
+      Talk to the Teacher.
+    </p>
+
+  </div>
+
+  <!-- INVENTORY -->
+
+  <div id="inventory">
+
+    <h2>🎒 Inventory</h2>
+
+    <div class="inventoryGrid">
+
+      <div class="itemSlot">⚔️</div>
+      <div class="itemSlot">🛡️</div>
+      <div class="itemSlot">🧪</div>
+      <div class="itemSlot">📘</div>
+
+      <div class="itemSlot">🍎</div>
+      <div class="itemSlot">💎</div>
+      <div class="itemSlot">🏹</div>
+      <div class="itemSlot">🪓</div>
+
+    </div>
+
+  </div>
+
+  <!-- HOTBAR -->
+
+  <div id="hotbar">
+
+    <div class="hotbarSlot selected">⚔️</div>
+    <div class="hotbarSlot">🧪</div>
+    <div class="hotbarSlot">🍎</div>
+    <div class="hotbarSlot"></div>
+    <div class="hotbarSlot"></div>
+    <div class="hotbarSlot"></div>
+    <div class="hotbarSlot"></div>
+    <div class="hotbarSlot"></div>
+    <div class="hotbarSlot"></div>
+
+  </div>
+
+  <!-- TAB MENU -->
+
+  <div id="tabMenu">
+
+    <div class="tabInner">
+
+      <h1>School Essentials</h1>
+
+      <div class="statGrid">
+
+        <div class="statCard">
+          Level: <span id="tabLevel">1</span>
+        </div>
+
+        <div class="statCard">
+          XP: <span id="tabXP">0 / 100</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- DIALOG -->
+
+  <div id="dialogBox">
+
+    <div id="dialogName">
+      NPC
+    </div>
+
+    <div id="dialogText">
+      Hello!
+    </div>
 
   </div>
 
   <!-- GAME -->
 
-  <div id="gameContainer">
-
-    <canvas id="game"></canvas>
-
-    <!-- HUD -->
-
-    <div id="hud">
-
-      <div class="hud-box">
-        ❤️ <span id="hp">100</span>
-      </div>
-
-      <div class="hud-box">
-        🪙 <span id="coins">50</span>
-      </div>
-
-      <div class="hud-box">
-        ⭐ LVL <span id="level">1</span>
-      </div>
-
-      <div class="hud-box">
-        XP <span id="xp">0</span>/100
-      </div>
-
-    </div>
-
-    <!-- QUEST -->
-
-    <div id="questBox">
-
-      <h3>📜 Quest</h3>
-
-      <p>
-        Talk to the teacher in the classroom.
-      </p>
-
-    </div>
-
-    <!-- HOTBAR -->
-
-    <div id="hotbar">
-
-      <div class="slot">⚔️</div>
-      <div class="slot">🪓</div>
-      <div class="slot">🧪</div>
-      <div class="slot">🍎</div>
-      <div class="slot">📘</div>
-
-    </div>
-
-    <!-- REWARDED ADS -->
-
-    <div id="rewardUI">
-
-      <button id="rewardBtn"
-      onclick="watchRewardAd()">
-
-        ▶ 2x XP For 5 Minutes
-
-      </button>
-
-      <div id="boostTimer">
-
-        XP Boost Inactive
-
-      </div>
-
-    </div>
-
-    <!-- INVENTORY -->
-
-    <div id="inventory">
-
-      <h2>🎒 Inventory</h2>
-
-      <div class="inventory-grid">
-
-        <div class="inventory-slot"></div>
-        <div class="inventory-slot"></div>
-        <div class="inventory-slot"></div>
-        <div class="inventory-slot"></div>
-        <div class="inventory-slot"></div>
-
-        <div class="inventory-slot"></div>
-        <div class="inventory-slot"></div>
-        <div class="inventory-slot"></div>
-        <div class="inventory-slot"></div>
-        <div class="inventory-slot"></div>
-
-      </div>
-
-    </div>
-
-    <!-- TAB MENU -->
-
-    <div id="tabMenu">
-
-      <div id="tabContent">
-
-        <h1>School Essentials</h1>
-
-        <div class="stat">
-          Level: 1
-        </div>
-
-        <div class="stat">
-          XP: 0 / 100
-        </div>
-
-        <div class="stat">
-          Coins: 50
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
+  <canvas id="gameCanvas"></canvas>
 
   <script>
 
-    // CANVAS
-
     const canvas =
-    document.getElementById("game");
+    document.getElementById("gameCanvas");
 
     const ctx =
     canvas.getContext("2d");
 
-    resizeCanvas();
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-    window.addEventListener(
-      "resize",
-      resizeCanvas
-    );
+    let player = {
 
-    function resizeCanvas(){
+      x:1500,
+      y:1500,
 
-      canvas.width =
-      document.getElementById(
-      "gameContainer"
-      ).offsetWidth;
-
-      canvas.height =
-      window.innerHeight;
-
-    }
-
-    // PLAYER
-
-    const player = {
-
-      x:500,
-      y:300,
-
-      size:32,
+      size:36,
 
       speed:4,
 
-      color:"#f97316"
+      health:100,
+
+      coins:0,
+
+      xp:0,
+
+      level:1
 
     };
-
-    // MAP OBJECTS
-
-    const walls = [
-
-      {x:150,y:120,w:200,h:40},
-      {x:500,y:400,w:250,h:40},
-      {x:800,y:180,w:40,h:250},
-
-      // SCHOOL
-
-      {x:300,y:250,w:300,h:180}
-
-    ];
-
-    // INPUT
 
     const keys = {};
 
     document.addEventListener(
-      "keydown",
-      e => {
+    "keydown",
+    e=>{
 
-        keys[e.key.toLowerCase()] = true;
+      keys[e.key.toLowerCase()] = true;
 
-        // INVENTORY
+      if(e.key === "Tab"){
 
-        if(e.key === "e"){
+        e.preventDefault();
 
-          toggleInventory();
-
-        }
-
-        // TAB MENU
-
-        if(e.key === "Tab"){
-
-          e.preventDefault();
-
-          document.getElementById(
-          "tabMenu"
-          ).style.display = "flex";
-
-        }
+        document.getElementById(
+        "tabMenu"
+        ).style.display = "flex";
 
       }
-    );
+
+    });
 
     document.addEventListener(
-      "keyup",
-      e => {
+    "keyup",
+    e=>{
 
-        keys[e.key.toLowerCase()] = false;
+      keys[e.key.toLowerCase()] = false;
 
-        if(e.key === "Tab"){
+      if(e.key === "Tab"){
 
-          document.getElementById(
-          "tabMenu"
-          ).style.display = "none";
-
-        }
+        document.getElementById(
+        "tabMenu"
+        ).style.display = "none";
 
       }
-    );
 
-    // INVENTORY
+    });
 
-    function toggleInventory(){
+    const mapObjects = [];
 
-      const inv =
-      document.getElementById(
-      "inventory"
-      );
+    for(let i=0;i<150;i++){
 
-      inv.style.display =
-      inv.style.display === "block"
-      ? "none"
-      : "block";
+      mapObjects.push({
+
+        x:Math.random()*4000,
+        y:Math.random()*4000,
+
+        size:40 + Math.random()*60,
+
+        type:Math.random() > 0.5
+        ? "tree"
+        : "rock"
+
+      });
 
     }
 
-    // GAME LOOP
+    const buildings = [
 
-    function gameLoop(){
+      {
+        x:1200,
+        y:1300,
+        w:300,
+        h:220,
+        color:"#64748b",
+        name:"School"
+      },
 
-      update();
+      {
+        x:1800,
+        y:1100,
+        w:260,
+        h:200,
+        color:"#92400e",
+        name:"Blacksmith"
+      },
 
-      draw();
+      {
+        x:2300,
+        y:1700,
+        w:320,
+        h:260,
+        color:"#1d4ed8",
+        name:"Dungeon"
+      }
 
-      requestAnimationFrame(
-      gameLoop
-      );
+    ];
+
+    const npcs = [
+
+      {
+        x:1400,
+        y:1450,
+        color:"#f97316",
+        name:"Teacher",
+        text:"Defeat enemies and level up!"
+      },
+
+      {
+        x:1900,
+        y:1200,
+        color:"#9ca3af",
+        name:"Blacksmith",
+        text:"I will upgrade your gear soon."
+      }
+
+    ];
+
+    const enemies = [];
+
+    for(let i=0;i<25;i++){
+
+      enemies.push({
+
+        x:Math.random()*3500,
+        y:Math.random()*3500,
+
+        size:34,
+
+        hp:50
+
+      });
 
     }
 
-    gameLoop();
+    function drawMap(cameraX,cameraY){
 
-    // UPDATE
-
-    function update(){
-
-      if(keys["w"]){
-
-        player.y -= player.speed;
-
-      }
-
-      if(keys["s"]){
-
-        player.y += player.speed;
-
-      }
-
-      if(keys["a"]){
-
-        player.x -= player.speed;
-
-      }
-
-      if(keys["d"]){
-
-        player.x += player.speed;
-
-      }
-
-    }
-
-    // DRAW
-
-    function draw(){
-
-      // GRASS
-
-      ctx.fillStyle = "#2d5a27";
+      ctx.fillStyle = "#4ade80";
 
       ctx.fillRect(
-      0,0,
+      0,
+      0,
       canvas.width,
       canvas.height
       );
 
-      // GRID
+      /* PATHS */
 
-      ctx.strokeStyle =
-      "rgba(255,255,255,0.03)";
+      ctx.fillStyle="#d6d3d1";
 
-      for(let x = 0;
-      x < canvas.width;
-      x += 64){
+      ctx.fillRect(
+      -cameraX + 1000,
+      -cameraY + 1450,
+      2000,
+      120
+      );
 
-        ctx.beginPath();
+      ctx.fillRect(
+      -cameraX + 1450,
+      -cameraY + 600,
+      120,
+      2200
+      );
 
-        ctx.moveTo(x,0);
+      /* TREES + ROCKS */
 
-        ctx.lineTo(
-        x,
-        canvas.height
-        );
+      mapObjects.forEach(obj=>{
 
-        ctx.stroke();
+        if(obj.type === "tree"){
 
-      }
+          ctx.fillStyle="#166534";
 
-      for(let y = 0;
-      y < canvas.height;
-      y += 64){
+          ctx.beginPath();
 
-        ctx.beginPath();
+          ctx.arc(
+          obj.x-cameraX,
+          obj.y-cameraY,
+          obj.size/2,
+          0,
+          Math.PI*2
+          );
 
-        ctx.moveTo(0,y);
+          ctx.fill();
 
-        ctx.lineTo(
-        canvas.width,
-        y
-        );
+        }
 
-        ctx.stroke();
+        else{
 
-      }
+          ctx.fillStyle="#6b7280";
 
-      // WALLS
+          ctx.fillRect(
+          obj.x-cameraX,
+          obj.y-cameraY,
+          obj.size,
+          obj.size
+          );
 
-      walls.forEach(w => {
+        }
 
-        ctx.fillStyle = "#475569";
+      });
+
+      /* BUILDINGS */
+
+      buildings.forEach(building=>{
+
+        ctx.fillStyle =
+        building.color;
 
         ctx.fillRect(
-        w.x,w.y,
-        w.w,w.h
+        building.x-cameraX,
+        building.y-cameraY,
+        building.w,
+        building.h
+        );
+
+        ctx.fillStyle="white";
+
+        ctx.font="22px Arial";
+
+        ctx.fillText(
+        building.name,
+        building.x-cameraX+20,
+        building.y-cameraY-10
         );
 
       });
 
-      // PLAYER SHADOW
+    }
 
-      ctx.fillStyle =
-      "rgba(0,0,0,0.3)";
+    function drawPlayer(cameraX,cameraY){
 
-      ctx.beginPath();
-
-      ctx.ellipse(
-      player.x + 16,
-      player.y + 30,
-      16,
-      8,
-      0,
-      0,
-      Math.PI * 2
-      );
-
-      ctx.fill();
-
-      // PLAYER
-
-      ctx.fillStyle =
-      player.color;
+      ctx.fillStyle="#2563eb";
 
       ctx.fillRect(
-      player.x,
-      player.y,
+      player.x-cameraX,
+      player.y-cameraY,
       player.size,
       player.size
       );
 
-      // EYES
-
-      ctx.fillStyle = "white";
-
-      ctx.fillRect(
-      player.x + 7,
-      player.y + 8,
-      4,
-      4
-      );
-
-      ctx.fillRect(
-      player.x + 20,
-      player.y + 8,
-      4,
-      4
-      );
-
     }
 
-    // SAVE SYSTEM
+    function drawNPCs(cameraX,cameraY){
 
-    setInterval(() => {
+      npcs.forEach(npc=>{
 
-      localStorage.setItem(
-      "schoolPlayer",
-      JSON.stringify(player)
-      );
+        ctx.fillStyle =
+        npc.color;
 
-    },3000);
-
-    const save =
-    localStorage.getItem(
-    "schoolPlayer"
-    );
-
-    if(save){
-
-      Object.assign(
-      player,
-      JSON.parse(save)
-      );
-
-    }
-
-    // REWARDED ADS
-
-    let boostSeconds = 0;
-
-    function watchRewardAd(){
-
-      if(boostSeconds > 0){
-
-        return;
-
-      }
-
-      rewardBtn.innerText =
-      "Loading Ad...";
-
-      setTimeout(() => {
-
-        boostSeconds = 300;
-
-        rewardBtn.innerText =
-        "2x XP Active";
-
-      },3000);
-
-    }
-
-    setInterval(() => {
-
-      if(boostSeconds > 0){
-
-        boostSeconds--;
-
-        let mins =
-        Math.floor(
-        boostSeconds / 60
+        ctx.fillRect(
+        npc.x-cameraX,
+        npc.y-cameraY,
+        36,
+        36
         );
 
-        let secs =
-        boostSeconds % 60;
+        ctx.fillStyle="black";
 
-        if(secs < 10){
+        ctx.font="16px Arial";
 
-          secs = "0" + secs;
+        ctx.fillText(
+        npc.name,
+        npc.x-cameraX-10,
+        npc.y-cameraY-10
+        );
+
+      });
+
+    }
+
+    function drawEnemies(cameraX,cameraY){
+
+      enemies.forEach(enemy=>{
+
+        ctx.fillStyle="#dc2626";
+
+        ctx.fillRect(
+        enemy.x-cameraX,
+        enemy.y-cameraY,
+        enemy.size,
+        enemy.size
+        );
+
+      });
+
+    }
+
+    function movePlayer(){
+
+      if(keys["w"]){
+        player.y -= player.speed;
+      }
+
+      if(keys["s"]){
+        player.y += player.speed;
+      }
+
+      if(keys["a"]){
+        player.x -= player.speed;
+      }
+
+      if(keys["d"]){
+        player.x += player.speed;
+      }
+
+    }
+
+    function npcInteraction(){
+
+      npcs.forEach(npc=>{
+
+        let dx =
+        player.x - npc.x;
+
+        let dy =
+        player.y - npc.y;
+
+        let dist =
+        Math.sqrt(dx*dx + dy*dy);
+
+        if(dist < 80){
+
+          document.getElementById(
+          "dialogBox"
+          ).style.display = "block";
+
+          document.getElementById(
+          "dialogName"
+          ).innerText = npc.name;
+
+          document.getElementById(
+          "dialogText"
+          ).innerText = npc.text;
 
         }
 
-        document.getElementById(
-        "boostTimer"
-        ).innerText =
+      });
 
-        "2x XP: " +
-        mins + ":" + secs;
+    }
+
+    function hideDialog(){
+
+      let nearNPC = false;
+
+      npcs.forEach(npc=>{
+
+        let dx =
+        player.x - npc.x;
+
+        let dy =
+        player.y - npc.y;
+
+        let dist =
+        Math.sqrt(dx*dx + dy*dy);
+
+        if(dist < 80){
+          nearNPC = true;
+        }
+
+      });
+
+      if(!nearNPC){
+
+        document.getElementById(
+        "dialogBox"
+        ).style.display = "none";
 
       }
 
-      else{
+    }
 
-        document.getElementById(
-        "boostTimer"
-        ).innerText =
+    function attackEnemies(){
 
-        "XP Boost Inactive";
+      enemies.forEach(enemy=>{
 
-        rewardBtn.innerText =
-        "▶ 2x XP For 5 Minutes";
+        let dx =
+        player.x - enemy.x;
+
+        let dy =
+        player.y - enemy.y;
+
+        let dist =
+        Math.sqrt(dx*dx + dy*dy);
+
+        if(dist < 70 && keys[" "]){
+
+          enemy.hp -= 1;
+
+          if(enemy.hp <= 0){
+
+            player.coins += 10;
+            player.xp += 25;
+
+            enemy.x =
+            Math.random()*3500;
+
+            enemy.y =
+            Math.random()*3500;
+
+            enemy.hp = 50;
+
+          }
+
+        }
+
+      });
+
+    }
+
+    function levelSystem(){
+
+      let needed =
+      player.level * 100;
+
+      if(player.xp >= needed){
+
+        player.level++;
+
+        player.xp = 0;
+
+        player.health = 100;
 
       }
 
-    },1000);
+    }
+
+    function updateHUD(){
+
+      document.getElementById(
+      "healthText"
+      ).innerText = player.health;
+
+      document.getElementById(
+      "coinText"
+      ).innerText = player.coins;
+
+      document.getElementById(
+      "levelText"
+      ).innerText = player.level;
+
+      document.getElementById(
+      "xpText"
+      ).innerText =
+      player.xp + " / " +
+      (player.level*100);
+
+      document.getElementById(
+      "tabLevel"
+      ).innerText = player.level;
+
+      document.getElementById(
+      "tabXP"
+      ).innerText =
+      player.xp + " / " +
+      (player.level*100);
+
+    }
+
+    function saveGame(){
+
+      localStorage.setItem(
+      "schoolMMORPGSave",
+      JSON.stringify(player)
+      );
+
+    }
+
+    function loadGame(){
+
+      let save =
+      localStorage.getItem(
+      "schoolMMORPGSave"
+      );
+
+      if(save){
+
+        player =
+        JSON.parse(save);
+
+      }
+
+    }
+
+    loadGame();
+
+    setInterval(saveGame,3000);
+
+    function gameLoop(){
+
+      movePlayer();
+
+      npcInteraction();
+
+      hideDialog();
+
+      attackEnemies();
+
+      levelSystem();
+
+      updateHUD();
+
+      const cameraX =
+      player.x - canvas.width/2;
+
+      const cameraY =
+      player.y - canvas.height/2;
+
+      drawMap(cameraX,cameraY);
+
+      drawEnemies(cameraX,cameraY);
+
+      drawNPCs(cameraX,cameraY);
+
+      drawPlayer(cameraX,cameraY);
+
+      requestAnimationFrame(gameLoop);
+
+    }
+
+    gameLoop();
 
   </script>
 
