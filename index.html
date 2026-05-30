@@ -2,52 +2,18 @@
 <html lang="en">
 <head>
 
-<!-- GOOGLE ADSENSE -->
+<!-- ADSENSE -->
 <script async
 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4335653991954613"
 crossorigin="anonymous"></script>
 
-<!-- GOOGLE FUNDING CHOICES -->
-<script async
-src="https://fundingchoicesmessages.google.com/i/pub-4335653991954613?ers=1">
-</script>
-
-<script>
-(function() {
-function signalGooglefcPresent() {
-if (!window.frames['googlefcPresent']) {
-if (document.body) {
-
-const iframe =
-document.createElement('iframe');
-
-iframe.style =
-'width:0;height:0;border:none;z-index:-1000;left:-1000px;top:-1000px;';
-
-iframe.style.display = 'none';
-
-iframe.name = 'googlefcPresent';
-
-document.body.appendChild(iframe);
-
-}
-else{
-setTimeout(signalGooglefcPresent,0);
-}
-}
-}
-signalGooglefcPresent();
-})();
-</script>
-
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>School Essentials</title>
 
 <meta name="google-adsense-account"
 content="ca-pub-4335653991954613">
-
-<title>School Essentials MMO</title>
 
 <style>
 
@@ -59,1148 +25,338 @@ font-family:Arial,sans-serif;
 }
 
 body{
-overflow:hidden;
-background:#0b1220;
+background:#020617;
 color:white;
 }
 
-/* GAME */
-
-#game{
-position:relative;
-width:100vw;
-height:100vh;
-overflow:hidden;
-}
-
-#world{
-position:absolute;
-width:5000px;
-height:5000px;
-
-background:
-linear-gradient(
-to bottom,
-#2d8b57,
-#246c45
-);
-}
-
-/* ROADS */
-
-.road{
-position:absolute;
-background:#8b7355;
-}
-
-/* WATER */
-
-.water{
-position:absolute;
-background:#3399ff;
-border-radius:20px;
-}
-
-/* BUILDINGS */
-
-.building{
-position:absolute;
-background:#d1d5db;
-border:6px solid #6b7280;
-border-radius:20px;
-}
-
-.school-label{
-position:absolute;
-top:-55px;
-left:50%;
-transform:translateX(-50%);
-font-size:38px;
-font-weight:bold;
-color:white;
-text-shadow:0 0 10px black;
-z-index:999;
-}
-
-/* TREES */
-
-.tree{
-position:absolute;
-width:90px;
-height:90px;
-background:#1d7a37;
-border-radius:50%;
-}
-
-.tree::after{
-content:'';
-position:absolute;
-width:18px;
-height:45px;
-background:#5b3a1d;
-left:36px;
-top:60px;
-}
-
-/* PLAYER */
-
-#player{
-position:absolute;
-width:64px;
-height:64px;
-background:#3b82f6;
-border-radius:14px;
-border:4px solid white;
-z-index:100;
-}
-
-#player::after{
-content:'';
-position:absolute;
-width:22px;
-height:22px;
-background:#93c5fd;
-border-radius:50%;
-top:8px;
-left:18px;
-}
-
-/* NPC */
-
-.npc{
-position:absolute;
-width:60px;
-height:60px;
-background:#f59e0b;
-border-radius:50%;
-border:4px solid white;
-display:flex;
-justify-content:center;
-align-items:center;
-font-weight:bold;
-font-size:20px;
-}
-
-/* ENEMY */
-
-.enemy{
-position:absolute;
-width:60px;
-height:60px;
-background:#dc2626;
-border-radius:14px;
-border:4px solid white;
-}
-
-/* HUD */
-
-#topHud{
-position:fixed;
-top:15px;
-left:50%;
-transform:translateX(-50%);
-display:flex;
-gap:14px;
-z-index:999;
-}
-
-.hudBox{
-background:rgba(15,23,42,0.9);
-padding:12px 18px;
-border-radius:14px;
-border:2px solid #334155;
-font-weight:bold;
-}
-
-/* QUEST */
-
-#quest{
-position:fixed;
-top:80px;
-left:50%;
-transform:translateX(-50%);
-background:rgba(15,23,42,0.95);
-padding:14px 20px;
-border-radius:14px;
-border:2px solid #334155;
-z-index:999;
-}
-
-/* HOTBAR */
-
-#hotbar{
-position:fixed;
-bottom:20px;
-left:50%;
-transform:translateX(-50%);
-display:flex;
-gap:8px;
-z-index:999;
-}
-
-.slot{
-width:70px;
-height:70px;
-background:#1e293b;
-border:3px solid #475569;
-border-radius:14px;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:30px;
-}
-
-.slot.active{
-border-color:#f97316;
-transform:translateY(-5px);
-}
-
-/* INVENTORY */
-
-#inventory{
-position:fixed;
-left:50%;
-top:50%;
-transform:translate(-50%,-50%);
-width:650px;
-background:rgba(15,23,42,0.97);
-padding:25px;
-border-radius:22px;
-border:3px solid #334155;
-display:none;
-z-index:3000;
-}
-
-#inventoryGrid{
-display:grid;
-grid-template-columns:repeat(6,1fr);
-gap:10px;
-margin-top:20px;
-}
-
-.invSlot{
-height:80px;
-background:#1e293b;
-border:2px solid #475569;
-border-radius:12px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:32px;
-}
-
-/* TAB */
-
-#tabMenu{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,0.7);
-display:none;
-justify-content:center;
-align-items:center;
-z-index:4000;
-}
-
-#tabContent{
-width:400px;
+header{
 background:#0f172a;
-padding:35px;
-border-radius:24px;
-border:3px solid #334155;
+padding:18px;
 text-align:center;
+border-bottom:2px solid #1e293b;
 }
 
-/* ADS */
+.logo{
+font-size:2rem;
+font-weight:bold;
+color:#f97316;
+}
 
-#adLeft,
-#adRight{
-position:fixed;
-top:120px;
-width:160px;
-height:600px;
-background:#111827;
+.search{
+display:block;
+margin:20px auto;
+width:90%;
+max-width:600px;
+padding:14px;
+border-radius:12px;
+border:none;
+background:#0f172a;
+color:white;
+border:1px solid #334155;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+padding:20px;
+max-width:1400px;
+margin:auto;
+}
+
+.card{
+background:#0f172a;
+border:1px solid #334155;
 border-radius:18px;
-border:2px solid #1e293b;
-padding:10px;
-z-index:500;
+overflow:hidden;
 }
 
-#adLeft{
-left:10px;
+.thumb{
+height:160px;
+background:#1e293b;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:60px;
 }
 
-#adRight{
-right:10px;
+.content{
+padding:16px;
 }
 
-/* REWARD */
+.content h3{
+margin-bottom:10px;
+color:#f97316;
+}
 
-#rewardBtn{
-position:fixed;
-right:30px;
-bottom:120px;
-padding:16px 22px;
+.btn{
+width:100%;
+padding:12px;
 background:#f97316;
 border:none;
-border-radius:16px;
-font-size:16px;
-font-weight:bold;
 color:white;
+font-weight:bold;
+border-radius:10px;
 cursor:pointer;
-z-index:1000;
 }
 
-#boostTimer{
-position:fixed;
-right:30px;
-bottom:70px;
-background:#0f172a;
-padding:12px 18px;
-border-radius:14px;
-border:2px solid #334155;
-font-weight:bold;
-z-index:999;
+.btn:hover{
+background:#ea580c;
 }
 
-/* DAMAGE */
-
-#damageText{
-position:fixed;
-top:140px;
-left:50%;
-transform:translateX(-50%);
-font-size:34px;
-font-weight:bold;
-color:#ff6666;
-z-index:5000;
-pointer-events:none;
+#adTop{
+max-width:1200px;
+margin:20px auto;
+padding:10px;
 }
 
-/* MOBILE */
-
-@media(max-width:1000px){
-
-#adLeft,
-#adRight{
+#player{
 display:none;
+position:fixed;
+inset:0;
+background:black;
+z-index:9999;
+flex-direction:column;
 }
 
+#topBar{
+background:#0f172a;
+padding:10px;
+display:flex;
+justify-content:space-between;
+}
+
+iframe{
+flex:1;
+border:none;
+width:100%;
 }
 
 </style>
 </head>
-
 <body>
 
-<div id="game">
+<header>
+<div class="logo">🎮 School Essentials</div>
+</header>
 
-<div id="world">
-
-<!-- SCHOOL -->
-
-<div class="building"
-style="
-left:2100px;
-top:1800px;
-width:700px;
-height:420px;
-">
-
-<div class="school-label">
-SCHOOL
-</div>
-
-</div>
-
-<!-- EXTRA BUILDINGS -->
-
-<div class="building"
-style="
-left:1400px;
-top:1600px;
-width:350px;
-height:260px;
-background:#c084fc;
-"></div>
-
-<div class="building"
-style="
-left:3200px;
-top:1800px;
-width:420px;
-height:320px;
-background:#60a5fa;
-"></div>
-
-<!-- ROADS -->
-
-<div class="road"
-style="
-left:0;
-top:1980px;
-width:5000px;
-height:140px;
-"></div>
-
-<div class="road"
-style="
-left:2400px;
-top:0;
-width:140px;
-height:5000px;
-"></div>
-
-<!-- WATER -->
-
-<div class="water"
-style="
-left:900px;
-top:600px;
-width:600px;
-height:350px;
-"></div>
-
-<!-- TREES -->
-
-<div class="tree"
-style="left:600px;top:1200px;"></div>
-
-<div class="tree"
-style="left:700px;top:1300px;"></div>
-
-<div class="tree"
-style="left:3200px;top:2200px;"></div>
-
-<!-- NPCS -->
-
-<div class="npc"
-id="teacher"
-style="left:2350px;top:2050px;">
-!
-</div>
-
-<div class="npc"
-id="blacksmith"
-style="left:1800px;top:2200px;">
-⚒
-</div>
-
-<div class="npc"
-id="merchant"
-style="left:1600px;top:1800px;">
-$
-</div>
-
-<!-- ENEMIES -->
-
-<div class="enemy"
-style="left:3000px;top:2500px;"></div>
-
-<div class="enemy"
-style="left:3300px;top:2400px;"></div>
-
-<div class="enemy"
-style="left:2800px;top:2900px;"></div>
-
-<!-- PLAYER -->
-
-<div id="player"></div>
-
-</div>
-
-<!-- HUD -->
-
-<div id="topHud">
-
-<div class="hudBox">
-Lvl: <span id="level">1</span>
-</div>
-
-<div class="hudBox">
-XP: <span id="xp">0</span>/100
-</div>
-
-<div class="hudBox">
-Coins: <span id="coins">0</span>
-</div>
-
-<div class="hudBox">
-HP: <span id="hp">100</span>
-</div>
-
-</div>
-
-<!-- QUEST -->
-
-<div id="quest">
-Quest: Talk to the teacher.
-</div>
-
-<!-- DAMAGE -->
-
-<div id="damageText"></div>
-
-<!-- HOTBAR -->
-
-<div id="hotbar">
-
-<div class="slot active"
-data-slot="1">🗡</div>
-
-<div class="slot"
-data-slot="2">🏹</div>
-
-<div class="slot"
-data-slot="3">🧪</div>
-
-<div class="slot"
-data-slot="4">🛡</div>
-
-<div class="slot"
-data-slot="5">🍖</div>
-
-</div>
-
-<!-- INVENTORY -->
-
-<div id="inventory">
-
-<h1 style="color:#f97316;">
-Inventory
-</h1>
-
-<div id="inventoryGrid"></div>
-
-</div>
-
-<!-- TAB -->
-
-<div id="tabMenu">
-
-<div id="tabContent">
-
-<h1 style="color:#f97316;">
-Player Stats
-</h1>
-
-<p>
-Level:
-<span id="tabLevel">1</span>
-</p>
-
-<p>
-XP:
-<span id="tabXP">0</span>
-</p>
-
-<p>
-Coins:
-<span id="tabCoins">0</span>
-</p>
-
-</div>
-
-</div>
-
-<!-- ADS -->
-
-<div id="adLeft">
+<div id="adTop">
 
 <ins class="adsbygoogle"
 style="display:block"
 data-ad-client="ca-pub-4335653991954613"
 data-ad-slot="1234567890"
-data-ad-format="vertical"></ins>
+data-ad-format="auto"
+data-full-width-responsive="true"></ins>
 
 </div>
 
-<div id="adRight">
+<input
+id="search"
+class="search"
+placeholder="Search games..."
+onkeyup="searchGames()">
 
-<ins class="adsbygoogle"
-style="display:block"
-data-ad-client="ca-pub-4335653991954613"
-data-ad-slot="1234567890"
-data-ad-format="vertical"></ins>
+<div class="grid" id="games">
+
+<!-- GAME 1 -->
+<div class="card game">
+<div class="thumb">🟨</div>
+<div class="content">
+<h3>2048</h3>
+<button class="btn"
+onclick="openGame('https://play2048.co/')">
+Play
+</button>
+</div>
+</div>
+
+<!-- GAME 2 -->
+<div class="card game">
+<div class="thumb">🍪</div>
+<div class="content">
+<h3>Cookie Clicker</h3>
+<button class="btn"
+onclick="openGame('https://orteil.dashnet.org/cookieclicker/')">
+Play
+</button>
+</div>
+</div>
+
+<!-- GAME 3 -->
+<div class="card game">
+<div class="thumb">📈</div>
+<div class="content">
+<h3>Slope</h3>
+<button class="btn"
+onclick="openGame('https://slopegame.io/')">
+Play
+</button>
+</div>
+</div>
+
+<!-- GAME 4 -->
+<div class="card game">
+<div class="thumb">🏃</div>
+<div class="content">
+<h3>Run 3</h3>
+<button class="btn"
+onclick="openGame('https://run3.io/')">
+Play
+</button>
+</div>
+</div>
+
+<!-- GAME 5 -->
+<div class="card game">
+<div class="thumb">🐦</div>
+<div class="content">
+<h3>Flappy Bird</h3>
+<button class="btn"
+onclick="openGame('https://flappybird.io/')">
+Play
+</button>
+</div>
+</div>
+
+<!-- GAME 6 -->
+<div class="card game">
+<div class="thumb">🦖</div>
+<div class="content">
+<h3>Chrome Dino</h3>
+<button class="btn"
+onclick="openGame('https://chromedino.com/')">
+Play
+</button>
+</div>
+</div>
+
+<!-- GAME 7 -->
+<div class="card game">
+<div class="thumb">👻</div>
+<div class="content">
+<h3>Pacman</h3>
+<button class="btn"
+onclick="openGame('https://freepacman.org/')">
+Play
+</button>
+</div>
+</div>
+
+<!-- GAME 8 -->
+<div class="card game">
+<div class="thumb">♟️</div>
+<div class="content">
+<h3>Chess</h3>
+<button class="btn"
+onclick="openGame('https://www.mathsisfun.com/games/chess.html')">
+Play
+</button>
+</div>
+</div>
+
+<!-- GAME 9 -->
+<div class="card game">
+<div class="thumb">⭕</div>
+<div class="content">
+<h3>Tic Tac Toe</h3>
+<button class="btn"
+onclick="openGame('https://play.gamepix.com/tic-tac-toe/embed')">
+Play
+</button>
+</div>
+</div>
+
+<!-- GAME 10 -->
+<div class="card game">
+<div class="thumb">💣</div>
+<div class="content">
+<h3>Minesweeper</h3>
+<button class="btn"
+onclick="openGame('https://minesweeperonline.com/')">
+Play
+</button>
+</div>
+</div>
 
 </div>
 
-<!-- REWARD -->
+<div id="player">
 
-<button id="rewardBtn">
-▶ Watch Ad → Double XP
+<div id="topBar">
+
+<button class="btn"
+style="width:auto"
+onclick="closeGame()">
+Close
 </button>
 
-<div id="boostTimer">
-XP Boost: 0:00
+<button class="btn"
+style="width:auto"
+onclick="fullscreenGame()">
+Fullscreen
+</button>
+
 </div>
+
+<iframe
+id="frame"
+allowfullscreen>
+</iframe>
 
 </div>
 
 <script>
 
-/* ADS */
-
-(adsbygoogle = window.adsbygoogle || []).push({});
 (adsbygoogle = window.adsbygoogle || []).push({});
 
-/* VARIABLES */
+function openGame(url){
 
-const player =
-document.getElementById('player');
-
-const world =
-document.getElementById('world');
-
-const enemies =
-document.querySelectorAll('.enemy');
-
-let x = 2400;
-let y = 2400;
-
-let speed = 6;
-
-let keys = {};
-
-let xp = 0;
-let level = 1;
-let coins = 0;
-let hp = 100;
-
-let damage = 15;
-
-let xpNeeded = 100;
-
-let doubleXP = false;
-
-let boostSeconds = 0;
-
-let questStage = 0;
-
-let inventory = [
-'🗡',
-'🏹',
-'🧪',
-'🛡',
-'🍖',
-'',
-'',
-'',
-'',
-'',
-'',
-''
-];
-
-const monsterDrops = [
-'🪙',
-'🧪',
-'💎',
-'⚔',
-'🛡',
-'🍖'
-];
-
-/* LOAD */
-
-function loadGame(){
-
-const save =
-JSON.parse(
-localStorage.getItem(
-'schoolMMO'
-));
-
-if(save){
-
-x = save.x || 2400;
-y = save.y || 2400;
-xp = save.xp || 0;
-level = save.level || 1;
-coins = save.coins || 0;
-hp = save.hp || 100;
-damage = save.damage || 15;
-xpNeeded =
-save.xpNeeded || 100;
-
-inventory =
-save.inventory || inventory;
-
-questStage =
-save.questStage || 0;
-
-boostSeconds =
-save.boostSeconds || 0;
+document.getElementById('player').style.display='flex';
+document.getElementById('frame').src=url;
 
 }
 
-updateHud();
+function closeGame(){
+
+document.getElementById('player').style.display='none';
+document.getElementById('frame').src='';
 
 }
 
-loadGame();
+function fullscreenGame(){
 
-/* SAVE */
+let frame=document.getElementById('frame');
 
-setInterval(()=>{
+if(frame.requestFullscreen){
+frame.requestFullscreen();
+}
 
-localStorage.setItem(
-'schoolMMO',
+}
 
-JSON.stringify({
+function searchGames(){
 
-x,
-y,
-xp,
-level,
-coins,
-hp,
-damage,
-xpNeeded,
-inventory,
-questStage,
-boostSeconds
+let input=
+document.getElementById('search')
+.value.toLowerCase();
 
-})
+let games=
+document.querySelectorAll('.game');
 
-);
+games.forEach(game=>{
 
-},3000);
+let text=
+game.innerText.toLowerCase();
 
-/* INVENTORY */
-
-function renderInventory(){
-
-const grid =
-document.getElementById(
-'inventoryGrid'
-);
-
-grid.innerHTML = '';
-
-inventory.forEach(item=>{
-
-const slot =
-document.createElement('div');
-
-slot.className = 'invSlot';
-
-slot.innerText = item;
-
-grid.appendChild(slot);
+game.style.display=
+text.includes(input)
+? ''
+: 'none';
 
 });
 
 }
 
-renderInventory();
-
-/* HUD */
-
-function updateHud(){
-
-document.getElementById(
-'xp'
-).innerText = xp;
-
-document.getElementById(
-'level'
-).innerText = level;
-
-document.getElementById(
-'coins'
-).innerText = coins;
-
-document.getElementById(
-'hp'
-).innerText = hp;
-
-document.getElementById(
-'tabXP'
-).innerText = xp;
-
-document.getElementById(
-'tabLevel'
-).innerText = level;
-
-document.getElementById(
-'tabCoins'
-).innerText = coins;
-
-renderInventory();
-
-}
-
-/* XP */
-
-function gainXP(amount){
-
-xp += amount;
-
-while(xp >= xpNeeded){
-
-xp -= xpNeeded;
-
-level++;
-
-xpNeeded =
-Math.floor(
-xpNeeded * 1.35
-);
-
-damage += 5;
-
-hp += 20;
-
-coins += 50;
-
-}
-
-updateHud();
-
-}
-
-/* CONTROLS */
-
-window.addEventListener(
-'keydown',
-
-e=>{
-
-keys[e.key.toLowerCase()] = true;
-
-if(e.key === 'Tab'){
-
-e.preventDefault();
-
-document.getElementById(
-'tabMenu'
-).style.display = 'flex';
-
-}
-
-if(e.key.toLowerCase() === 'e'){
-
-const inv =
-document.getElementById(
-'inventory'
-);
-
-if(inv.style.display === 'block'){
-
-inv.style.display = 'none';
-
-}
-else{
-
-inv.style.display = 'block';
-
-}
-
-}
-
-if(e.key === ' '){
-
-attack();
-
-}
-
-if(['1','2','3','4','5']
-.includes(e.key)){
-
-selectSlot(e.key);
-
-}
-
-});
-
-window.addEventListener(
-'keyup',
-
-e=>{
-
-keys[e.key.toLowerCase()] = false;
-
-if(e.key === 'Tab'){
-
-document.getElementById(
-'tabMenu'
-).style.display = 'none';
-
-}
-
-});
-
-/* HOTBAR */
-
-function selectSlot(num){
-
-document.querySelectorAll('.slot')
-.forEach(slot=>{
-
-slot.classList.remove('active');
-
-if(slot.dataset.slot === num){
-
-slot.classList.add('active');
-
-}
-
-});
-
-}
-
-/* ATTACK */
-
-function attack(){
-
-const damageText =
-document.getElementById(
-'damageText'
-);
-
-enemies.forEach(enemy=>{
-
-if(enemy.style.display === 'none')
-return;
-
-let ex =
-parseInt(enemy.style.left);
-
-let ey =
-parseInt(enemy.style.top);
-
-let dist =
-Math.hypot(ex - x, ey - y);
-
-if(dist < 140){
-
-damageText.innerText =
-'-' + damage;
-
-setTimeout(()=>{
-
-damageText.innerText = '';
-
-},400);
-
-enemy.style.display = 'none';
-
-coins +=
-Math.floor(
-Math.random()*60
-)+20;
-
-gainXP(
-doubleXP ? 45 : 25
-);
-
-const rngDrop =
-monsterDrops[
-Math.floor(
-Math.random() *
-monsterDrops.length
-)
-];
-
-let empty =
-inventory.indexOf('');
-
-if(empty !== -1){
-
-inventory[empty] =
-rngDrop;
-
-}
-
-updateHud();
-
-setTimeout(()=>{
-
-enemy.style.display = 'block';
-
-enemy.style.left =
-(Math.random()*4200+300)+'px';
-
-enemy.style.top =
-(Math.random()*4200+300)+'px';
-
-},15000);
-
-}
-
-});
-
-}
-
-/* QUEST */
-
-const teacher =
-document.getElementById(
-'teacher'
-);
-
-const blacksmith =
-document.getElementById(
-'blacksmith'
-);
-
-setInterval(()=>{
-
-if(questStage === 0){
-
-let tx =
-parseInt(teacher.style.left);
-
-let ty =
-parseInt(teacher.style.top);
-
-let dist =
-Math.hypot(tx - x, ty - y);
-
-if(dist < 120){
-
-questStage = 1;
-
-coins += 100;
-
-gainXP(50);
-
-document.getElementById(
-'quest'
-).innerText =
-
-'Quest 2: Visit the blacksmith';
-
-}
-
-}
-
-else if(questStage === 1){
-
-let bx =
-parseInt(blacksmith.style.left);
-
-let by =
-parseInt(blacksmith.style.top);
-
-let dist =
-Math.hypot(bx - x, by - y);
-
-if(dist < 120){
-
-questStage = 2;
-
-coins += 150;
-
-gainXP(75);
-
-damage += 5;
-
-document.getElementById(
-'quest'
-).innerText =
-
-'Quest 3: Defeat enemies';
-
-}
-
-}
-
-},1000);
-
-/* REWARD */
-
-document.getElementById(
-'rewardBtn'
-).onclick = ()=>{
-
-doubleXP = true;
-
-boostSeconds = 300;
-
-document.getElementById(
-'rewardBtn'
-).innerText =
-
-'Double XP Active!';
-
-};
-
-/* BOOST TIMER */
-
-setInterval(()=>{
-
-if(boostSeconds > 0){
-
-boostSeconds--;
-
-const mins =
-Math.floor(
-boostSeconds / 60
-);
-
-const secs =
-boostSeconds % 60;
-
-document.getElementById(
-'boostTimer'
-).innerText =
-
-`XP Boost: ${mins}:${secs
-.toString()
-.padStart(2,'0')}`;
-
-if(boostSeconds <= 0){
-
-doubleXP = false;
-
-document.getElementById(
-'rewardBtn'
-).innerText =
-
-'▶ Watch Ad → Double XP';
-
-}
-
-}
-
-},1000);
-
-/* GAME LOOP */
-
-function gameLoop(){
-
-if(keys['w']) y -= speed;
-if(keys['s']) y += speed;
-if(keys['a']) x -= speed;
-if(keys['d']) x += speed;
-
-player.style.left = x + 'px';
-player.style.top = y + 'px';
-
-const camX =
-window.innerWidth / 2 - x - 32;
-
-const camY =
-window.innerHeight / 2 - y - 32;
-
-world.style.transform =
-`translate(${camX}px, ${camY}px)`;
-
-requestAnimationFrame(gameLoop);
-
-}
-
-updateHud();
-
-gameLoop();
-
-</script>
-
-<!-- ADSENSE AUTO ADS -->
-
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
 </body>
