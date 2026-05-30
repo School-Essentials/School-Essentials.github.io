@@ -2,14 +2,25 @@
 <html lang="en">
 <head>
 
+<<<<<<< HEAD
 <!-- ADSENSE -->
 <script async
 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4335653991954613"
 crossorigin="anonymous"></script>
+=======
+  <!-- GOOGLE ADSENSE -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4335653991954613"
+    crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+>>>>>>> parent of 72bc9d4 (Update index.html)
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<<<<<<< HEAD
 <title>School Essentials</title>
 
 <meta name="google-adsense-account"
@@ -23,12 +34,23 @@ padding:0;
 box-sizing:border-box;
 font-family:Arial,sans-serif;
 }
+=======
+  <!-- ADSENSE VERIFY -->
+  <meta name="google-adsense-account"
+        content="ca-pub-4335653991954613">
+
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <style>
+>>>>>>> parent of 72bc9d4 (Update index.html)
 
 body{
 background:#020617;
 color:white;
 }
 
+<<<<<<< HEAD
 header{
 background:#0f172a;
 padding:18px;
@@ -131,11 +153,294 @@ flex:1;
 border:none;
 width:100%;
 }
+=======
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#020617;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    /* HEADER */
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:#0f172a;
+      border-bottom:1px solid #1e293b;
+      padding:16px 24px;
+
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .logo{
+      font-size:1.8rem;
+      font-weight:bold;
+      color:#f97316;
+    }
+
+    nav{
+      display:flex;
+      gap:18px;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      font-weight:bold;
+      transition:0.2s;
+    }
+
+    nav a:hover{
+      color:#f97316;
+    }
+
+    /* HERO */
+
+    .hero{
+      text-align:center;
+      padding:70px 20px 50px;
+
+      background:
+      linear-gradient(
+      to bottom,
+      #0f172a,
+      #020617
+      );
+    }
+
+    .hero h1{
+      font-size:4rem;
+      color:#f97316;
+      margin-bottom:15px;
+    }
+
+    .hero p{
+      color:#cbd5e1;
+      font-size:1.15rem;
+      max-width:700px;
+      margin:auto;
+      line-height:1.5;
+    }
+
+    .btn{
+      background:#f97316;
+      color:white;
+      border:none;
+
+      padding:14px 24px;
+
+      border-radius:14px;
+
+      font-size:1rem;
+      font-weight:bold;
+
+      cursor:pointer;
+
+      transition:0.2s;
+    }
+
+    .btn:hover{
+      background:#ea580c;
+      transform:translateY(-3px);
+    }
+
+    .hero-btn{
+      margin-top:25px;
+    }
+
+    /* ADS */
+
+    .ad-box{
+      max-width:1200px;
+      margin:10px auto 35px;
+      background:#0f172a;
+      border:1px solid #1e293b;
+      border-radius:18px;
+      padding:18px;
+    }
+
+    /* GAMES */
+
+    .games-section{
+      max-width:1450px;
+      margin:auto;
+      padding:20px;
+    }
+
+    .section-title{
+      text-align:center;
+      color:#f97316;
+      font-size:2.3rem;
+      margin-bottom:25px;
+    }
+
+    .search-bar{
+      width:100%;
+      max-width:520px;
+
+      display:block;
+
+      margin:0 auto 30px;
+
+      padding:14px 18px;
+
+      border:none;
+
+      border-radius:14px;
+
+      background:#0f172a;
+
+      border:1px solid #1e293b;
+
+      color:white;
+
+      font-size:1rem;
+    }
+
+    .search-bar:focus{
+      outline:none;
+      border-color:#f97316;
+    }
+
+    .grid{
+      display:grid;
+
+      grid-template-columns:
+      repeat(auto-fit,minmax(280px,1fr));
+
+      gap:24px;
+    }
+
+    .card{
+      background:#0f172a;
+
+      border:1px solid #1e293b;
+
+      border-radius:20px;
+
+      overflow:hidden;
+
+      transition:0.2s;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+      border-color:#f97316;
+    }
+
+    .game-thumb{
+      width:100%;
+      height:190px;
+      object-fit:cover;
+      display:block;
+      background:#1e293b;
+    }
+
+    .card-content{
+      padding:18px;
+    }
+
+    .card h3{
+      color:#f97316;
+      margin-bottom:10px;
+      font-size:1.4rem;
+    }
+
+    .card p{
+      color:#cbd5e1;
+      margin-bottom:16px;
+      line-height:1.4;
+    }
+
+    .play-btn{
+      width:100%;
+    }
+
+    /* PLAYER */
+
+    .game-player{
+      position:fixed;
+      inset:0;
+      background:black;
+      z-index:9999;
+      display:none;
+      flex-direction:column;
+    }
+
+    .player-top{
+      background:#0f172a;
+      border-bottom:2px solid #1e293b;
+      padding:12px 15px;
+
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .player-title{
+      color:#f97316;
+      font-size:1.2rem;
+      font-weight:bold;
+    }
+
+    .player-buttons{
+      display:flex;
+      gap:10px;
+    }
+
+    .player-frame{
+      flex:1;
+      width:100%;
+      border:none;
+      background:black;
+    }
+
+    /* FOOTER */
+
+    footer{
+      margin-top:40px;
+      background:#0f172a;
+      border-top:1px solid #1e293b;
+      text-align:center;
+      padding:25px;
+      color:#94a3b8;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:700px){
+
+      header{
+        flex-direction:column;
+        gap:12px;
+      }
+
+      .hero h1{
+        font-size:2.5rem;
+      }
+
+      nav{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+    }
+
+  </style>
+>>>>>>> parent of 72bc9d4 (Update index.html)
 
 </style>
 </head>
 <body>
 
+<<<<<<< HEAD
 <header>
 <div class="logo">🎮 School Essentials</div>
 </header>
@@ -352,12 +657,510 @@ game.style.display=
 text.includes(input)
 ? ''
 : 'none';
+=======
+  <!-- HEADER -->
+
+  <header>
+
+    <div class="logo">
+      🎮 School Essentials
+    </div>
+
+    <nav>
+      <a href="#games">Games</a>
+    </nav>
+
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <h1>School Essentials</h1>
+
+    <p>
+      Fast unblocked games with fullscreen support.
+    </p>
+
+    <button
+      class="btn hero-btn"
+      onclick="document.getElementById('games').scrollIntoView()">
+
+      Browse Games
+
+    </button>
+
+  </section>
+
+  <!-- ADS -->
+
+  <div class="ad-box">
+
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-4335653991954613"
+      data-ad-slot="1234567890"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+>>>>>>> parent of 72bc9d4 (Update index.html)
 
 });
 
+<<<<<<< HEAD
 }
 
 </script>
+=======
+  <!-- GAMES -->
+
+  <section class="games-section" id="games">
+
+    <h2 class="section-title">
+      🔥 Popular Games
+    </h2>
+
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search games..."
+      class="search-bar"
+      onkeyup="searchGames()">
+
+    <div class="grid">
+
+      <!-- FLAPPY -->
+
+      <div class="card game-card">
+
+        <img class="game-thumb"
+        src="flappybird.png">
+
+        <div class="card-content">
+
+          <h3>Flappy Bird</h3>
+
+          <p>Fly through pipes and survive.</p>
+
+          <button class="btn play-btn"
+          onclick="openGame(
+          'Flappy Bird',
+          'https://flappybird.io'
+          )">
+
+            Play Now
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- DINO -->
+
+      <div class="card game-card">
+
+        <img class="game-thumb"
+        src="dino.png">
+
+        <div class="card-content">
+
+          <h3>Chrome Dino</h3>
+
+          <p>Jump over obstacles and survive.</p>
+
+          <button class="btn play-btn"
+          onclick="openGame(
+          'Chrome Dino',
+          'https://chromedino.com'
+          )">
+
+            Play Now
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- PACMAN -->
+
+      <div class="card game-card">
+
+        <img class="game-thumb"
+        src="pacman.png">
+
+        <div class="card-content">
+
+          <h3>Pacman</h3>
+
+          <p>Classic arcade maze game.</p>
+
+          <button class="btn play-btn"
+          onclick="openGame(
+          'Pacman',
+          'https://freepacman.org'
+          )">
+
+            Play Now
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- SLOPE -->
+
+      <div class="card game-card">
+
+        <img class="game-thumb"
+        src="slope.png">
+
+        <div class="card-content">
+
+          <h3>Slope</h3>
+
+          <p>Roll fast and avoid falling.</p>
+
+          <button class="btn play-btn"
+          onclick="openGame(
+          'Slope',
+          'https://slopegame.io'
+          )">
+
+            Play Now
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- 2048 -->
+
+      <div class="card game-card">
+
+        <img class="game-thumb"
+        src="2048.png">
+
+        <div class="card-content">
+
+          <h3>2048</h3>
+
+          <p>Combine numbers and reach 2048.</p>
+
+          <button class="btn play-btn"
+          onclick="openGame(
+          '2048',
+          'https://games.crazygames.com/en_US/2048/index.html'
+          )">
+
+            Play Now
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- TIC TAC TOE -->
+
+      <div class="card game-card">
+
+        <img class="game-thumb"
+        src="tictactoe.png">
+
+        <div class="card-content">
+
+          <h3>Tic Tac Toe</h3>
+
+          <p>Classic X and O strategy game.</p>
+
+          <button class="btn play-btn"
+          onclick="openGame(
+          'Tic Tac Toe',
+          'https://play.gamepix.com/tic-tac-toe/embed'
+          )">
+
+            Play Now
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- COOKIE CLICKER -->
+
+      <div class="card game-card">
+
+        <img class="game-thumb"
+        src="clicker.png">
+
+        <div class="card-content">
+
+          <h3>Cookie Clicker</h3>
+
+          <p>Click cookies and build your empire.</p>
+
+          <button class="btn play-btn"
+          onclick="openGame(
+          'Cookie Clicker',
+          'https://cookieclicker.ee/'
+          )">
+
+            Play Now
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- TOWER DEFENSE -->
+
+      <div class="card game-card">
+
+        <img class="game-thumb"
+        src="towerdefense.png">
+
+        <div class="card-content">
+
+          <h3>Tower Defense</h3>
+
+          <p>Defend your base against waves.</p>
+
+          <button class="btn play-btn"
+          onclick="openGame(
+          'Tower Defense',
+          'https://play.gamepix.com/cursed-treasure-level-pack/embed'
+          )">
+
+            Play Now
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- CHESS -->
+
+      <div class="card game-card">
+
+        <img class="game-thumb"
+        src="chess.png">
+
+        <div class="card-content">
+
+          <h3>Chess</h3>
+
+          <p>Classic strategy board game.</p>
+
+          <button class="btn play-btn"
+          onclick="openGame(
+          'Chess',
+          'https://playpager.com/embed/chess/index.html'
+          )">
+
+            Play Now
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- CHECKERS -->
+
+      <div class="card game-card">
+
+        <img class="game-thumb"
+        src="checkers.png">
+
+        <div class="card-content">
+
+          <h3>Checkers</h3>
+
+          <p>Jump pieces and win the match.</p>
+
+          <button class="btn play-btn"
+          onclick="openGame(
+          'Checkers',
+          'https://playpager.com/embed/checkers/index.html'
+          )">
+
+            Play Now
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    © 2026 School Essentials
+
+  </footer>
+
+  <!-- PLAYER -->
+
+  <div class="game-player" id="gamePlayer">
+
+    <div class="player-top">
+
+      <div class="player-title"
+      id="gameTitle">
+
+        Game
+
+      </div>
+
+      <div class="player-buttons">
+
+        <button class="btn"
+        onclick="fullscreenGame()">
+
+          Fullscreen
+
+        </button>
+
+        <button class="btn"
+        onclick="closeGame()">
+
+          Close
+
+        </button>
+
+      </div>
+
+    </div>
+
+    <iframe
+      id="gameFrame"
+      class="player-frame"
+      allowfullscreen
+      allow="fullscreen; autoplay">
+    </iframe>
+
+  </div>
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    function openGame(title,url){
+
+      document.getElementById(
+      'gameTitle'
+      ).innerText = title;
+
+      document.getElementById(
+      'gameFrame'
+      ).src = url;
+
+      document.getElementById(
+      'gamePlayer'
+      ).style.display = 'flex';
+
+      document.body.style.overflow = 'hidden';
+
+    }
+
+    function closeGame(){
+
+      document.getElementById(
+      'gamePlayer'
+      ).style.display = 'none';
+
+      document.getElementById(
+      'gameFrame'
+      ).src = '';
+
+      document.body.style.overflow = 'auto';
+
+    }
+
+    function fullscreenGame(){
+
+      let iframe =
+      document.getElementById(
+      'gameFrame'
+      );
+
+      if(iframe.requestFullscreen){
+
+        iframe.requestFullscreen();
+
+      }
+
+      else if(
+      iframe.webkitRequestFullscreen
+      ){
+
+        iframe.webkitRequestFullscreen();
+
+      }
+
+      else if(
+      iframe.msRequestFullscreen
+      ){
+
+        iframe.msRequestFullscreen();
+
+      }
+
+    }
+
+    function searchGames(){
+
+      let input =
+      document.getElementById(
+      "searchInput"
+      ).value.toLowerCase();
+
+      let cards =
+      document.getElementsByClassName(
+      "game-card"
+      );
+
+      for(let i = 0; i < cards.length; i++){
+
+        let title =
+        cards[i]
+        .getElementsByTagName("h3")[0]
+        .innerText
+        .toLowerCase();
+
+        if(title.includes(input)){
+
+          cards[i].style.display = "";
+
+        }
+
+        else{
+
+          cards[i].style.display = "none";
+
+        }
+
+      }
+
+    }
+
+  </script>
+>>>>>>> parent of 72bc9d4 (Update index.html)
 
 </body>
 </html>
