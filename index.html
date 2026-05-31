@@ -17,284 +17,73 @@
   <link rel="icon" type="image/png" href="favicon.png">
 
   <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial,sans-serif;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      background:#020617;
-      color:white;
-      overflow-x:hidden;
-    }
+    *{ margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif; }
+    html{ scroll-behavior:smooth; }
+    body{ background:#020617; color:white; overflow-x:hidden; }
 
     /* HEADER */
-
     header{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      background:#0f172a;
-      border-bottom:1px solid #1e293b;
-      padding:16px 24px;
-
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
+      position:sticky; top:0; z-index:1000; background:#0f172a;
+      border-bottom:1px solid #1e293b; padding:16px 24px;
+      display:flex; justify-content:space-between; align-items:center;
     }
-
-    .logo{
-      font-size:1.8rem;
-      font-weight:bold;
-      color:#f97316;
-    }
-
-    nav{
-      display:flex;
-      gap:18px;
-    }
-
-    nav a{
-      color:white;
-      text-decoration:none;
-      font-weight:bold;
-      transition:0.2s;
-    }
-
-    nav a:hover{
-      color:#f97316;
-    }
+    .logo{ font-size:1.8rem; font-weight:bold; color:#f97316; }
+    nav{ display:flex; gap:18px; }
+    nav a{ color:white; text-decoration:none; font-weight:bold; transition:0.2s; }
+    nav a:hover{ color:#f97316; }
 
     /* HERO */
-
     .hero{
-      text-align:center;
-      padding:70px 20px 50px;
-
-      background:
-      linear-gradient(
-      to bottom,
-      #0f172a,
-      #020617
-      );
+      text-align:center; padding:70px 20px 50px;
+      background: linear-gradient(to bottom, #0f172a, #020617);
     }
-
-    .hero h1{
-      font-size:4rem;
-      color:#f97316;
-      margin-bottom:15px;
-    }
-
-    .hero p{
-      color:#cbd5e1;
-      font-size:1.15rem;
-      max-width:700px;
-      margin:auto;
-      line-height:1.5;
-    }
-
+    .hero h1{ font-size:4rem; color:#f97316; margin-bottom:15px; }
+    .hero p{ color:#cbd5e1; font-size:1.15rem; max-width:700px; margin:auto; line-height:1.5; }
     .btn{
-      background:#f97316;
-      color:white;
-      border:none;
-      padding:14px 24px;
-      border-radius:14px;
-      font-size:1rem;
-      font-weight:bold;
-      cursor:pointer;
-      transition:0.2s;
+      background:#f97316; color:white; border:none; padding:14px 24px;
+      border-radius:14px; font-size:1rem; font-weight:bold; cursor:pointer; transition:0.2s;
     }
-
-    .btn:hover{
-      background:#ea580c;
-      transform:translateY(-3px);
-    }
-
-    .hero-btn{
-      margin-top:25px;
-    }
+    .btn:hover{ background:#ea580c; transform:translateY(-3px); }
+    .hero-btn{ margin-top:25px; }
 
     /* ADS */
-
     .ad-box{
-      max-width:1200px;
-      margin:10px auto 35px;
-      background:#0f172a;
-      border:1px solid #1e293b;
-      border-radius:18px;
-      padding:18px;
+      max-width:1200px; margin:10px auto 35px; background:#0f172a;
+      border:1px solid #1e293b; border-radius:18px; padding:18px;
     }
 
     /* GAMES */
-
-    .games-section{
-      max-width:1450px;
-      margin:auto;
-      padding:20px;
-    }
-
-    .section-title{
-      text-align:center;
-      color:#f97316;
-      font-size:2.3rem;
-      margin-bottom:25px;
-    }
-
+    .games-section{ max-width:1450px; margin:auto; padding:20px; }
+    .section-title{ text-align:center; color:#f97316; font-size:2.3rem; margin-bottom:25px; }
     .search-bar{
-      width:100%;
-      max-width:520px;
-      display:block;
-      margin:0 auto 30px;
-      padding:14px 18px;
-      border:none;
-      border-radius:14px;
-      background:#0f172a;
-      border:1px solid #1e293b;
-      color:white;
-      font-size:1rem;
+      width:100%; max-width:520px; display:block; margin:0 auto 30px;
+      padding:14px 18px; border:none; border-radius:14px; background:#0f172a;
+      border:1px solid #1e293b; color:white; font-size:1rem;
     }
+    .grid{ display:grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap:24px; }
+    .card{ background:#0f172a; border:1px solid #1e293b; border-radius:20px; overflow:hidden; transition:0.2s; }
+    .card:hover{ transform:translateY(-5px); border-color:#f97316; }
+    .game-thumb{ width:100%; height:190px; object-fit:cover; display:block; background:#1e293b; }
+    .card-content{ padding:18px; }
+    .card h3{ color:#f97316; margin-bottom:10px; font-size:1.4rem; }
+    .card p{ color:#cbd5e1; margin-bottom:16px; line-height:1.4; }
+    .play-btn{ width:100%; }
 
-    .search-bar:focus{
-      outline:none;
-      border-color:#f97316;
-    }
+    /* PLAYER WITH SIDEBARS */
+    .game-player{ position:fixed; inset:0; background:black; z-index:9999; display:none; flex-direction:column; }
+    .player-top{ background:#0f172a; border-bottom:2px solid #1e293b; padding:12px 15px; display:flex; justify-content:space-between; align-items:center; }
+    .player-container { display: flex; flex: 1; width: 100%; overflow: hidden; }
+    .sidebar-ad { width: 180px; background: #020617; display: flex; align-items: center; justify-content: center; border: 1px solid #1e293b; }
+    .player-frame{ flex:1; border:none; background:black; }
 
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-      gap:24px;
-    }
+    footer{ margin-top:40px; background:#0f172a; border-top:1px solid #1e293b; text-align:center; padding:25px; color:#94a3b8; }
 
-    .card{
-      background:#0f172a;
-      border:1px solid #1e293b;
-      border-radius:20px;
-      overflow:hidden;
-      transition:0.2s;
-    }
-
-    .card:hover{
-      transform:translateY(-5px);
-      border-color:#f97316;
-    }
-
-    .game-thumb{
-      width:100%;
-      height:190px;
-      object-fit:cover;
-      display:block;
-      background:#1e293b;
-    }
-
-    .card-content{
-      padding:18px;
-    }
-
-    .card h3{
-      color:#f97316;
-      margin-bottom:10px;
-      font-size:1.4rem;
-    }
-
-    .card p{
-      color:#cbd5e1;
-      margin-bottom:16px;
-      line-height:1.4;
-    }
-
-    .play-btn{
-      width:100%;
-    }
-
-    /* PLAYER & SIDEBAR ADS */
-
-    .game-player{
-      position:fixed;
-      inset:0;
-      background:black;
-      z-index:9999;
-      display:none;
-      flex-direction:column;
-    }
-
-    .player-top{
-      background:#0f172a;
-      border-bottom:2px solid #1e293b;
-      padding:12px 15px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-
-    .player-title{
-      color:#f97316;
-      font-size:1.2rem;
-      font-weight:bold;
-    }
-
-    .player-buttons{
-      display:flex;
-      gap:10px;
-    }
-
-    .player-container {
-      display: flex;
-      flex: 1;
-      overflow: hidden;
-    }
-
-    .sidebar-ad {
-      width: 160px; /* Standard wide skyscraper width */
-      background: #020617;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-right: 1px solid #1e293b;
-      border-left: 1px solid #1e293b;
-    }
-
-    .player-frame{
-      flex:1;
-      border:none;
-      background:black;
-    }
-
-    /* FOOTER */
-
-    footer{
-      margin-top:40px;
-      background:#0f172a;
-      border-top:1px solid #1e293b;
-      text-align:center;
-      padding:25px;
-      color:#94a3b8;
-    }
-
-    /* MOBILE - Hide side ads on small screens to keep game playable */
-    @media(max-width:700px){
+    @media(max-width:800px){
       .sidebar-ad { display: none; }
-      header{
-        flex-direction:column;
-        gap:12px;
-      }
       .hero h1{ font-size:2.5rem; }
-      nav{
-        flex-wrap:wrap;
-        justify-content:center;
-      }
     }
-
   </style>
-
 </head>
-
 <body>
 
   <header>
@@ -309,12 +98,7 @@
   </section>
 
   <div class="ad-box">
-    <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-4335653991954613"
-      data-ad-slot="1234567890"
-      data-ad-format="auto"
-      data-full-width-responsive="true"></ins>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4335653991954613" data-ad-slot="1234567890" data-ad-format="auto"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div>
 
@@ -342,11 +126,11 @@
       </div>
 
       <div class="card game-card">
-        <img class="game-thumb" src="2048.png">
+        <img class="game-thumb" src="pacman.png">
         <div class="card-content">
-          <h3>2048</h3>
-          <p>Combine numbers and reach 2048.</p>
-          <button class="btn play-btn" onclick="openGame('2048', 'https://2048game.com')">Play Now</button>
+          <h3>Pacman</h3>
+          <p>Classic arcade maze game.</p>
+          <button class="btn play-btn" onclick="openGame('Pacman', 'https://freepacman.org')">Play Now</button>
         </div>
       </div>
 
@@ -360,6 +144,24 @@
       </div>
 
       <div class="card game-card">
+        <img class="game-thumb" src="2048.png">
+        <div class="card-content">
+          <h3>2048</h3>
+          <p>Combine numbers and reach 2048.</p>
+          <button class="btn play-btn" onclick="openGame('2048', 'https://2048game.com')">Play Now</button>
+        </div>
+      </div>
+
+      <div class="card game-card">
+        <img class="game-thumb" src="tictactoe.png">
+        <div class="card-content">
+          <h3>Tic Tac Toe</h3>
+          <p>Classic X and O strategy game.</p>
+          <button class="btn play-btn" onclick="openGame('Tic Tac Toe', 'https://play.gamepix.com/tic-tac-toe/embed')">Play Now</button>
+        </div>
+      </div>
+
+      <div class="card game-card">
         <img class="game-thumb" src="clicker.png">
         <div class="card-content">
           <h3>Cookie Clicker</h3>
@@ -367,8 +169,34 @@
           <button class="btn play-btn" onclick="openGame('Cookie Clicker', 'https://cookieclicker.ee/')">Play Now</button>
         </div>
       </div>
-      
+
+      <div class="card game-card">
+        <img class="game-thumb" src="towerdefense.png">
+        <div class="card-content">
+          <h3>Tower Defense</h3>
+          <p>Defend your base against waves.</p>
+          <button class="btn play-btn" onclick="openGame('Tower Defense', 'https://play.gamepix.com/cursed-treasure-level-pack/embed')">Play Now</button>
+        </div>
       </div>
+
+      <div class="card game-card">
+        <img class="game-thumb" src="chess.png">
+        <div class="card-content">
+          <h3>Chess</h3>
+          <p>Classic strategy board game.</p>
+          <button class="btn play-btn" onclick="openGame('Chess', 'https://playpager.com/embed/chess/index.html')">Play Now</button>
+        </div>
+      </div>
+
+      <div class="card game-card">
+        <img class="game-thumb" src="checkers.png">
+        <div class="card-content">
+          <h3>Checkers</h3>
+          <p>Jump pieces and win the match.</p>
+          <button class="btn play-btn" onclick="openGame('Checkers', 'https://playpager.com/embed/checkers/index.html')">Play Now</button>
+        </div>
+      </div>
+    </div>
   </section>
 
   <footer>© 2026 School Essentials</footer>
@@ -384,20 +212,14 @@
 
     <div class="player-container">
       <div class="sidebar-ad">
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:160px;height:600px"
-             data-ad-client="ca-pub-4335653991954613"
-             data-ad-slot="YOUR_SIDE_SLOT_ID"></ins>
+        <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-4335653991954613" data-ad-slot="SIDE_AD_1"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </div>
 
       <iframe id="gameFrame" class="player-frame" allowfullscreen allow="fullscreen; autoplay"></iframe>
 
       <div class="sidebar-ad">
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:160px;height:600px"
-             data-ad-client="ca-pub-4335653991954613"
-             data-ad-slot="YOUR_SIDE_SLOT_ID"></ins>
+        <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-4335653991954613" data-ad-slot="SIDE_AD_2"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
       </div>
     </div>
